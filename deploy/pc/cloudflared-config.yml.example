@@ -1,0 +1,16 @@
+# ==============================================================================
+# BREW & BEAN — Cloudflare Named Tunnel Config Example (Dùng ở Giai đoạn P7)
+# Sao chép vào: C:\Users\Admin\.cloudflared\config.yml khi deploy Production
+# ==============================================================================
+
+tunnel: <TUNNEL_UUID>
+credentials-file: C:\Users\Admin\.cloudflared\<TUNNEL_UUID>.json
+
+ingress:
+  - hostname: ai.<domain>
+    service: http://127.0.0.1:11434
+    originRequest:
+      httpHostHeader: "127.0.0.1:11434"   # Bắt buộc để Ollama không từ chối 403 Forbidden
+      connectTimeout: 5s
+      keepAliveTimeout: 90s
+  - service: http_status:404

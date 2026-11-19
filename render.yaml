@@ -1,0 +1,40 @@
+services:
+  - type: web
+    name: brew-bean-landing-api
+    runtime: python
+    region: singapore
+    plan: free
+    branch: main
+    rootDir: services/landing-api
+    autoDeployTrigger: checksPass
+    buildCommand: pip install --upgrade pip && pip install -r requirements-api.txt
+    startCommand: >-
+      alembic upgrade head &&
+      uvicorn app.main:app --host 0.0.0.0 --port $PORT
+      --proxy-headers --forwarded-allow-ips="*" --workers 1
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.8"
+      - key: APP_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: MIGRATION_DATABASE_URL
+        sync: false
+      - key: CORS_ORIGINS
+        value: '["https://brew-bean.vercel.app"]'
+      - key: CORS_ORIGIN_REGEX
+        value: '^https://brew-bean-[a-z0-9-]+-<team-slug>\.vercel\.app$'
+      - key: SESSION_TOKEN_PEPPER
+        generateValue: true
+      - key: OLLAMA_BASE_URL
+        value: https://ai.<domain>
+      - key: CF_ACCESS_CLIENT_ID
+        sync: false
+      - key: CF_ACCESS_CLIENT_SECRET
+        sync: false
+      - key: LLM_MODEL
+        value: qwen3:4b
+      - key: EMBEDDING_MODEL
+        value: bge-m3
