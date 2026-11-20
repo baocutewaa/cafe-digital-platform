@@ -1,0 +1,56 @@
+[
+  {
+    "slug": "signature",
+    "name_vi": "Món Đặc Trưng",
+    "name_en": "Signature Creations",
+    "description_vi": "Những công thức độc quyền kết hợp hạt Arabica Cầu Đất và nguyên liệu bản địa Việt Nam.",
+    "description_en": "House-crafted recipes pairing Cau Dat Arabica with signature Vietnamese flavors.",
+    "display_order": 1,
+    "is_active": true
+  },
+  {
+    "slug": "espresso-coffee",
+    "name_vi": "Cà Phê Espresso & Truyền Thống",
+    "name_en": "Espresso & Traditional Coffee",
+    "description_vi": "Từ cà phê phin đậm đà đến Espresso rang vừa chuẩn vị Ý.",
+    "description_en": "From bold Vietnamese phin brews to balanced Italian-style espresso classics.",
+    "display_order": 2,
+    "is_active": true
+  },
+  {
+    "slug": "cold-brew",
+    "name_vi": "Cold Brew Ủ Lạnh 18h",
+    "name_en": "18h Cold Brew",
+    "description_vi": "Ủ lạnh chậm 18 giờ cho vị ngọt tự nhiên, hậu vị thanh mát và ít chua chát.",
+    "description_en": "Slow-steeped for 18 hours for clean sweetness and crisp, smooth body.",
+    "display_order": 3,
+    "is_active": true
+  },
+  {
+    "slug": "matcha-tea",
+    "name_vi": "Matcha & Trà Trái Cây",
+    "name_en": "Matcha & Fruit Tea",
+    "description_vi": "Bột Matcha Uji Nhật Bản và trà Ô Long cao nguyên kết hợp trái cây tươi.",
+    "description_en": "Ceremonial Uji matcha and highland oolong infused with fresh orchard fruit.",
+    "display_order": 4,
+    "is_active": true
+  },
+  {
+    "slug": "non-coffee",
+    "name_vi": "Cacao & Sữa Hạt",
+    "name_en": "Cacao & Plant-Milk",
+    "description_vi": "Lựa chọn không caffeine từ cacao Đắk Lắk và sữa hạt thực vật thanh nhẹ.",
+    "description_en": "Caffeine-free Dak Lak cacao and creamy plant-based milk selections.",
+    "display_order": 5,
+    "is_active": true
+  },
+  {
+    "slug": "pastry",
+    "name_vi": "Bánh Ngọt Thủ Công",
+    "name_en": "Artisan Pastries",
+    "description_vi": "Nướng mới mỗi sáng để thưởng thức trọn vẹn cùng cà phê đặc sản.",
+    "description_en": "Freshly baked every morning to pair with specialty coffee.",
+    "display_order": 6,
+    "is_active": true
+  }
+]

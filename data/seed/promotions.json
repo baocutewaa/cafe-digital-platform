@@ -1,0 +1,67 @@
+[
+  {
+    "slug": "morning-brew-combo-20",
+    "title_vi": "Combo Sáng Tỉnh Táo — Giảm 20% Khi Kèm Bánh Ngọt",
+    "title_en": "Morning Brew Combo — 20% Off with Artisan Pastry",
+    "summary_vi": "Giảm ngay 20% hóa đơn khi gọi bất kỳ cà phê Espresso hoặc Signature kèm Croissant nướng mới.",
+    "conditions_vi": "Áp dụng từ 07:00 – 10:30 hằng ngày tại tất cả chi nhánh BREW & BEAN. Không áp dụng đồng thời với mã ưu đãi khác.",
+    "promo_code": "MORNING20",
+    "discount_type": "percentage",
+    "discount_value": 20,
+    "banner_image_url": "/images/promotions/morning-combo.webp",
+    "start_at": "2026-01-01T00:00:00+07:00",
+    "end_at": "2027-12-31T23:59:59+07:00",
+    "is_active": true,
+    "product_slugs": [
+      "ca-phe-muoi-cau-dat",
+      "ca-phe-sua-da-sai-gon",
+      "americano-cau-dat",
+      "caramel-latte",
+      "croissant-bo-phap",
+      "croissant-hanh-nhan"
+    ]
+  },
+  {
+    "slug": "cold-brew-summer-10k",
+    "title_vi": "Tuần Lễ Cold Brew 18h — Giảm Trực Tiếp 10.000đ",
+    "title_en": "18h Cold Brew Week — Instant 10,000 VND Off",
+    "summary_vi": "Ưu đãi giảm 10.000đ cho toàn bộ dòng Cold Brew ủ lạnh 18 giờ từ hạt Arabica Cầu Đất.",
+    "conditions_vi": "Áp dụng cho size Regular và Large tại quầy. Nhập hoặc đọc mã COLDBREW10K cho Barista.",
+    "promo_code": "COLDBREW10K",
+    "discount_type": "fixed_amount",
+    "discount_value": 10000,
+    "banner_image_url": "/images/promotions/cold-brew-10k.webp",
+    "start_at": "2026-01-01T00:00:00+07:00",
+    "end_at": "2027-12-31T23:59:59+07:00",
+    "is_active": true,
+    "product_slugs": [
+      "cold-brew-cam-sa",
+      "cold-brew-truyen-thong",
+      "cold-brew-yuzu-mat-ong",
+      "cold-brew-vai-hoa-hong",
+      "cold-brew-kem-muoi"
+    ]
+  },
+  {
+    "slug": "signature-afternoon-bundle",
+    "title_vi": "Chiều Thảnh Thơi — Mua 2 Đồ Uống Tặng 1 Bánh Ngọt",
+    "title_en": "Afternoon Chill Bundle — Buy 2 Drinks, Get 1 Pastry",
+    "summary_vi": "Khi đi nhóm từ 2 người vào khung giờ chiều, chọn 2 món Signature hoặc Trà bất kỳ được tặng 1 bánh ngọt thủ công.",
+    "conditions_vi": "Áp dụng từ 14:00 – 17:30 các ngày thứ Hai đến thứ Sáu. Tặng kèm Croissant Bơ Pháp hoặc Tiramisu Espresso.",
+    "promo_code": "CHILLDUO",
+    "discount_type": "bundle",
+    "discount_value": 1,
+    "banner_image_url": "/images/promotions/afternoon-bundle.webp",
+    "start_at": "2026-01-01T00:00:00+07:00",
+    "end_at": "2027-12-31T23:59:59+07:00",
+    "is_active": true,
+    "product_slugs": [
+      "macadamia-espresso-cream",
+      "bac-xiu-cot-dua-nuong",
+      "matcha-latte-uji",
+      "tra-o-long-dao-cam-sa",
+      "croissant-bo-phap",
+      "tiramisu-espresso"
+    ]
+  }
+]

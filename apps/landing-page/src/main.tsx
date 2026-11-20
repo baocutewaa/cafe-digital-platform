@@ -1,3 +1,7 @@
+import "@fontsource-variable/inter";
+import "@fontsource-variable/inter/wght-italic.css";
+import "@fontsource-variable/lora";
+import "@fontsource-variable/lora/wght-italic.css";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { AppProviders } from "@/app/providers";

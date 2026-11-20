@@ -1,13 +1,12 @@
 from __future__ import annotations
 
-from fastapi.testclient import TestClient
-
-from app.main import app
+from httpx import AsyncClient
 
 
-def test_ready_endpoint_reports_postgres_and_ollama_status() -> None:
-    client = TestClient(app)
-    resp = client.get("/ready")
+async def test_ready_endpoint_reports_postgres_and_ollama_status(
+    async_client: AsyncClient,
+) -> None:
+    resp = await async_client.get("/ready")
     assert resp.status_code == 200
     body = resp.json()
     assert body["docker_used"] is False
@@ -24,9 +23,8 @@ def test_ready_endpoint_reports_postgres_and_ollama_status() -> None:
     assert body["ai_mode"] == "online"
 
 
-def test_storefront_overview_endpoint() -> None:
-    client = TestClient(app)
-    resp = client.get("/api/v1/storefront")
+async def test_storefront_overview_endpoint(async_client: AsyncClient) -> None:
+    resp = await async_client.get("/api/v1/storefront")
     assert resp.status_code == 200
     body = resp.json()
     assert body["brand_name"] == "BREW & BEAN"

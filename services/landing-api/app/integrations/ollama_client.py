@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import asyncio
 import json
 import time
 from collections.abc import AsyncGenerator
@@ -16,7 +17,7 @@ class OllamaClient:
     Client kết nối Ollama AI Node:
     - Giai đoạn P0-P6 (Local No-Docker): http://127.0.0.1:11434
     - Giai đoạn P7 (Cloudflare Tunnel): https://ai.<domain> kèm CF-Access-Client-Id/Secret
-    Tích hợp Circuit Breaker để chuyển sang chế độ Fast Lookup khi tắt Ollama/PC.
+    Tích hợp Circuit Breaker và giới hạn đồng thời LLM_MAX_CONCURRENCY.
     """
 
     def __init__(self) -> None:
@@ -25,6 +26,11 @@ class OllamaClient:
         self._open_until = 0.0
         self._failure_threshold = 3
         self._cooldown_seconds = 15.0
+        self._cached_health: dict[str, Any] | None = None
+        self._cached_health_at: float = 0.0
+        self._health_cache_ttl: float = 10.0
+        self._llm_semaphore = asyncio.Semaphore(max(1, settings.LLM_MAX_CONCURRENCY))
+        self._model_think_modes: dict[str, str] = {}
 
     def _headers(self) -> dict[str, str]:
         headers = {"Content-Type": "application/json"}
@@ -52,7 +58,15 @@ class OllamaClient:
         if self._failure_count >= self._failure_threshold:
             self._open_until = time.monotonic() + self._cooldown_seconds
 
-    async def check_health(self) -> dict[str, Any]:
+    async def check_health(self, use_cache: bool = False) -> dict[str, Any]:
+        now = time.monotonic()
+        if (
+            use_cache
+            and self._cached_health is not None
+            and (now - self._cached_health_at) < self._health_cache_ttl
+        ):
+            return self._cached_health
+
         t0 = time.perf_counter()
         timeout = httpx.Timeout(
             connect=settings.OLLAMA_CONNECT_TIMEOUT_S,
@@ -87,7 +101,7 @@ class OllamaClient:
                 for m in installed_models
             )
 
-            return {
+            result = {
                 "status": "online",
                 "connected": True,
                 "ai_mode": "online",
@@ -101,10 +115,13 @@ class OllamaClient:
                 "installed_models": installed_models,
                 "circuit_breaker": "closed",
             }
+            self._cached_health = result
+            self._cached_health_at = time.monotonic()
+            return result
         except Exception as exc:
             self._record_failure()
             latency_ms = round((time.perf_counter() - t0) * 1000.0, 2)
-            return {
+            result = {
                 "status": "offline",
                 "connected": False,
                 "ai_mode": "fast_lookup_only",
@@ -118,6 +135,9 @@ class OllamaClient:
                 "circuit_breaker": "open" if self.is_circuit_open else "half_open",
                 "error": str(exc),
             }
+            self._cached_health = result
+            self._cached_health_at = time.monotonic()
+            return result
 
     async def embed(self, texts: str | list[str]) -> list[list[float]]:
         if self.is_circuit_open:
@@ -141,31 +161,131 @@ class OllamaClient:
             self._record_failure()
             raise OllamaUnavailableError(f"Lỗi gọi Ollama /api/embed: {exc}") from exc
 
-    async def stream_chat(
-        self, messages: list[dict[str, str]]
-    ) -> AsyncGenerator[str, None]:
+    async def _acquire_llm_slot(self) -> None:
+        try:
+            await asyncio.wait_for(
+                self._llm_semaphore.acquire(),
+                timeout=settings.LLM_QUEUE_TIMEOUT_S,
+            )
+        except TimeoutError as exc:
+            raise OllamaUnavailableError("Hàng đợi LLM quá tải (queue timeout).") from exc
+
+    async def _resolve_think_mode(
+        self, client: httpx.AsyncClient, model_name: str
+    ) -> str:
+        """
+        Determine how Ollama handles thinking for the configured model:
+        - 'none': non-thinking instruct model (e.g. qwen2.5:3b); omit `think`
+        - 'separate': thinking-only model whose template hardcodes `<think>`; pass `think=True`
+          so Ollama keeps reasoning in `message.thinking` instead of `message.content`
+        - 'disable': dual-mode thinking model; pass `think=False`
+        """
+        cached = self._model_think_modes.get(model_name)
+        if cached is not None:
+            return cached
+
+        mode = "disable"
+        try:
+            resp = await client.post(
+                f"{self.base_url}/api/show",
+                json={"model": model_name},
+                timeout=2.0,
+            )
+            if resp.status_code == 200:
+                data = resp.json()
+                capabilities = data.get("capabilities") or []
+                model_info = data.get("model_info") or {}
+                template = str(data.get("template") or "")
+                finetune = str(model_info.get("general.finetune") or "").lower()
+
+                if "thinking" not in capabilities and finetune != "thinking":
+                    mode = "none"
+                elif finetune == "thinking" or (
+                    "<think>" in template and ".Think" not in template
+                ):
+                    mode = "separate"
+                else:
+                    mode = "disable"
+                self._model_think_modes[model_name] = mode
+        except Exception:
+            pass
+        return mode
+
+    def _build_chat_payload(
+        self,
+        messages: list[dict[str, str]],
+        stream: bool,
+        think_mode: str = "disable",
+    ) -> dict[str, Any]:
+        num_predict = (
+            max(settings.LLM_NUM_PREDICT, 1024)
+            if think_mode == "separate"
+            else settings.LLM_NUM_PREDICT
+        )
+        payload: dict[str, Any] = {
+            "model": settings.LLM_MODEL,
+            "messages": messages,
+            "stream": stream,
+            "options": {
+                "num_ctx": settings.LLM_NUM_CTX,
+                "num_predict": num_predict,
+                "temperature": settings.LLM_TEMPERATURE,
+            },
+        }
+        if think_mode == "separate":
+            payload["think"] = True
+        elif think_mode == "disable":
+            payload["think"] = False
+        return payload
+
+    async def chat(self, messages: list[dict[str, str]]) -> str:
+        """Non-streaming chat completion (used for cache prewarming & evaluations)."""
         if self.is_circuit_open:
             raise OllamaUnavailableError("Circuit breaker đang mở cho Ollama AI Node.")
 
+        await self._acquire_llm_slot()
         timeout = httpx.Timeout(
             connect=settings.OLLAMA_CONNECT_TIMEOUT_S,
             read=settings.OLLAMA_READ_TIMEOUT_S,
             write=10.0,
             pool=5.0,
         )
-        payload = {
-            "model": settings.LLM_MODEL,
-            "messages": messages,
-            "stream": True,
-            "think": False,
-            "options": {
-                "num_ctx": settings.LLM_NUM_CTX,
-                "num_predict": settings.LLM_NUM_PREDICT,
-                "temperature": settings.LLM_TEMPERATURE,
-            },
-        }
         try:
             async with httpx.AsyncClient(timeout=timeout, headers=self._headers()) as client:
+                think_mode = await self._resolve_think_mode(client, settings.LLM_MODEL)
+                payload = self._build_chat_payload(
+                    messages, stream=False, think_mode=think_mode
+                )
+                resp = await client.post(f"{self.base_url}/api/chat", json=payload)
+                resp.raise_for_status()
+                data = resp.json()
+                self._record_success()
+                return str(data.get("message", {}).get("content", "")).strip()
+        except Exception as exc:
+            self._record_failure()
+            raise OllamaUnavailableError(f"Lỗi gọi Ollama /api/chat: {exc}") from exc
+        finally:
+            self._llm_semaphore.release()
+
+    async def stream_chat(
+        self, messages: list[dict[str, str]]
+    ) -> AsyncGenerator[str, None]:
+        if self.is_circuit_open:
+            raise OllamaUnavailableError("Circuit breaker đang mở cho Ollama AI Node.")
+
+        await self._acquire_llm_slot()
+        timeout = httpx.Timeout(
+            connect=settings.OLLAMA_CONNECT_TIMEOUT_S,
+            read=settings.OLLAMA_READ_TIMEOUT_S,
+            write=10.0,
+            pool=5.0,
+        )
+        try:
+            async with httpx.AsyncClient(timeout=timeout, headers=self._headers()) as client:
+                think_mode = await self._resolve_think_mode(client, settings.LLM_MODEL)
+                payload = self._build_chat_payload(
+                    messages, stream=True, think_mode=think_mode
+                )
                 async with client.stream(
                     "POST", f"{self.base_url}/api/chat", json=payload
                 ) as resp:
@@ -183,6 +303,8 @@ class OllamaClient:
         except Exception as exc:
             self._record_failure()
             raise OllamaUnavailableError(f"Lỗi stream Ollama /api/chat: {exc}") from exc
+        finally:
+            self._llm_semaphore.release()
 
 
 ollama_client = OllamaClient()

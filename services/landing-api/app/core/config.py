@@ -60,6 +60,9 @@ class Settings(BaseSettings):
     SESSION_TTL_HOURS: int = 24
     CHAT_MAX_MESSAGE_LENGTH: int = 1000
     CHAT_RATE_LIMIT_PER_MIN: int = 8
+    AUTO_SEED_ANSWER_CACHE: bool = True
+    ANSWER_CACHE_SEED_PATH: str = ""
+    ANSWER_CACHE_TTL_DAYS: int = 7
 
     @field_validator("CORS_ORIGINS", mode="before")
     @classmethod

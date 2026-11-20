@@ -4,6 +4,8 @@
 
 @layer base {
   :root {
+    --font-sans: "Inter Variable", "Inter", system-ui, -apple-system, sans-serif;
+    --font-serif: "Lora Variable", "Lora", Cambria, "Times New Roman", serif;
     --background: 36 33% 97%;
     --foreground: 24 28% 12%;
     --card: 36 30% 99%;
@@ -13,13 +15,13 @@
     --secondary: 33 38% 91%;
     --secondary-foreground: 24 40% 18%;
     --muted: 33 24% 92%;
-    --muted-foreground: 24 14% 42%;
-    --accent: 30 65% 48%;
+    --muted-foreground: 24 14% 38%;
+    --accent: 30 65% 44%;
     --accent-foreground: 36 33% 98%;
-    --destructive: 0 72% 48%;
+    --destructive: 0 72% 45%;
     --destructive-foreground: 0 0% 98%;
     --border: 30 22% 86%;
-    --input: 30 22% 86%;
+    --input: 30 22% 84%;
     --ring: 24 55% 24%;
     --radius: 0.75rem;
   }
@@ -28,7 +30,19 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+  }
+
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+  }
+}
+
+@layer utilities {
+  .font-serif {
+    font-family: var(--font-serif);
   }
 }

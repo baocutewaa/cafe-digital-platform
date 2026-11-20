@@ -1,0 +1,999 @@
+[
+  {
+    "normalized_query": "gợi ý giúp mình vài món signature dễ uống tại brew & bean",
+    "language": "vi",
+    "intent": "PRODUCT_RECOMMENDATION",
+    "answer": "Các món Signature dễ uống tại **BREW & BEAN** bạn nên thử:\n- **Bạc Xỉu Cốt Dừa Nướng** (từ 39.000đ): Độ đắng rất nhẹ `1/5`, ngọt béo cốt dừa Bến Tre, caffeine thấp (`low`).\n- **Cà Phê Muối Cầu Đất** (từ 45.000đ): Espresso Arabica Cầu Đất hòa kem muối biển mịn, độ đắng `2/5`, ngọt dịu `4/5`.\n- **Cold Brew Cam Sả** (từ 45.000đ): Ủ lạnh 18h thanh mát, không sữa bò (`dairy_free`), độ đắng `2/5`.\n- **Latte Sữa Yến Mạch Mật Ong** (từ 49.000đ): Không sữa bò, sánh mịn với sữa yến mạch và mật ong hoa cà phê.",
+    "product_slugs": [
+      "bac-xiu-cot-dua-nuong",
+      "ca-phe-muoi-cau-dat",
+      "cold-brew-cam-sa",
+      "oat-milk-honey-latte"
+    ],
+    "citations": [
+      {
+        "source_key": "menu/01_signature_drinks_guide.md",
+        "title": "Cẩm nang 5 món Signature độc quyền tại BREW & BEAN",
+        "category": "MENU",
+        "section": "Cẩm nang 5 món Signature độc quyền tại BREW & BEAN",
+        "snippet": "Dòng Signature là niềm tự hào sáng tạo của đội ngũ Barista BREW & BEAN, kết hợp hạt cà phê đặc sản Việt Nam cùng nguyên liệu bản địa tươi mới. Lấy cảm hứng từ thức uống trứ danh đấ"
+      }
+    ]
+  },
+  {
+    "normalized_query": "mình không quen uống đắng, thích vị béo nhẹ thì nên chọn món nào",
+    "language": "vi",
+    "intent": "PRODUCT_RECOMMENDATION",
+    "answer": "Nếu không quen uống đắng và thích vị béo nhẹ, bạn có thể chọn:\n- **Bạc Xỉu Cốt Dừa Nướng** (S: 39.000đ, M: 45.000đ): Độ đắng chỉ `1/5`, nhiều sữa béo thơm cốt dừa, caffeine thấp.\n- **Caramel Latte** (S: 45.000đ, M: 49.000đ): Độ đắng `2/5`, hòa quyện sữa tươi và sốt caramel dịu ngọt.\n- **Cà Phê Muối Cầu Đất** (S: 45.000đ, M: 49.000đ): Độ đắng `2/5`, lớp kem muối biển béo mịn.\n- **Matcha Latte Uji Nhật Bản** (S: 45.000đ, M: 52.000đ): Trà xanh béo dịu, độ đắng `2/5`, ít caffeine.",
+    "product_slugs": [
+      "bac-xiu-cot-dua-nuong",
+      "caramel-latte",
+      "ca-phe-muoi-cau-dat",
+      "matcha-latte-uji"
+    ],
+    "citations": [
+      {
+        "source_key": "faq/01_menu_taste_and_customization_faq.md",
+        "title": "FAQ — Khẩu vị và Tùy chỉnh đồ uống",
+        "category": "FAQ",
+        "section": "FAQ — Khẩu vị và Tùy chỉnh đồ uống",
+        "snippet": "A: Nếu bạn thích cà phê ít đắng và béo dịu, các lựa chọn phù hợp nhất gồm **Bạc Xỉu Cốt Dừa Nướng** (độ đắng 1/5, caffeine thấp), **Cà Phê Muối Cầu Đất** (độ đắng 2/5, lớp kem muối"
+      },
+      {
+        "source_key": "menu/01_signature_drinks_guide.md",
+        "title": "Cẩm nang 5 món Signature độc quyền tại BREW & BEAN",
+        "category": "MENU",
+        "section": "Cẩm nang 5 món Signature độc quyền tại BREW & BEAN",
+        "snippet": "Dòng Signature là niềm tự hào sáng tạo của đội ngũ Barista BREW & BEAN, kết hợp hạt cà phê đặc sản Việt Nam cùng nguyên liệu bản địa tươi mới. Lấy cảm hứng từ thức uống trứ danh đấ"
+      }
+    ]
+  },
+  {
+    "normalized_query": "mình muốn đồ uống ít đắng, béo nhẹ, dưới 50k uống buổi chiều",
+    "language": "vi",
+    "intent": "PRODUCT_RECOMMENDATION",
+    "answer": "Cho buổi chiều cần đồ uống **ít đắng, béo nhẹ và dưới 50.000đ**, gợi ý hợp nhất là:\n- **Bạc Xỉu Cốt Dừa Nướng** (S: 39.000đ · M: 45.000đ): Độ đắng `1/5`, béo thơm cốt dừa, caffeine thấp (`low`) nên không lo mất ngủ.\n- **Matcha Latte Uji Nhật Bản** (S: 45.000đ): Độ đắng `2/5`, sữa tươi béo dịu, caffeine thấp.\n- **Trà Ô Long Kem Cheese** (S: 44.000đ · M: 49.000đ): Độ đắng `1/5`, lớp kem phô mai mặn béo, caffeine thấp.",
+    "product_slugs": [
+      "bac-xiu-cot-dua-nuong",
+      "matcha-latte-uji",
+      "tra-o-long-kem-cheese"
+    ],
+    "citations": [
+      {
+        "source_key": "coffee_guide/04_caffeine_guide_by_time_of_day.md",
+        "title": "Hướng dẫn chọn mức Caffeine theo thời điểm Sáng, Chiều và Tối",
+        "category": "COFFEE_GUIDE",
+        "section": "Hướng dẫn chọn mức Caffeine theo thời điểm Sáng, Chiều và Tối",
+        "snippet": "Mỗi sản phẩm trên menu BREW & BEAN được phân loại rõ theo 4 mức caffeine: `high` (đậm), `medium` (vừa), `low` (nhẹ) và `none` (không caffeine), giúp bạn chọn đúng đồ uống mà vẫn gi"
+      },
+      {
+        "source_key": "faq/01_menu_taste_and_customization_faq.md",
+        "title": "FAQ — Khẩu vị và Tùy chỉnh đồ uống",
+        "category": "FAQ",
+        "section": "FAQ — Khẩu vị và Tùy chỉnh đồ uống",
+        "snippet": "A: Nếu bạn thích cà phê ít đắng và béo dịu, các lựa chọn phù hợp nhất gồm **Bạc Xỉu Cốt Dừa Nướng** (độ đắng 1/5, caffeine thấp), **Cà Phê Muối Cầu Đất** (độ đắng 2/5, lớp kem muối"
+      }
+    ]
+  },
+  {
+    "normalized_query": "đồ uống nào dưới 45k, ít đắng và dễ uống nhất",
+    "language": "vi",
+    "intent": "PRODUCT_RECOMMENDATION",
+    "answer": "Các món **dưới 45.000đ, ít đắng và dễ uống nhất** hiện có:\n- **Bạc Xỉu Cốt Dừa Nướng** (Size S: 39.000đ, Size M: 45.000đ): Độ đắng `1/5`, béo ngọt dễ uống.\n- **Trà Ô Long Đào Cam Sả** (Size S: 39.000đ, Size M: 45.000đ): Độ đắng `1/5`, thanh mát không sữa bò.\n- **Trà Hibiscus Dâu Tằm** (Size S: 38.000đ, Size M: 44.000đ): Độ đắng `1/5`, không caffeine, chua ngọt dịu.\n- **Caramel Latte** (Size S: 45.000đ) hoặc **Cold Brew Sữa Tươi** (Size S: 42.000đ): Đều có độ đắng `2/5`.",
+    "product_slugs": [
+      "bac-xiu-cot-dua-nuong",
+      "tra-o-long-dao-cam-sa",
+      "tra-hibiscus-dau-tam",
+      "caramel-latte"
+    ],
+    "citations": [
+      {
+        "source_key": "menu/07_low_bitter_and_beginner_drinks.md",
+        "title": "Cẩm nang chọn đồ uống Ít Đắng và Dễ Uống cho người mới",
+        "category": "MENU",
+        "section": "Cẩm nang chọn đồ uống Ít Đắng và Dễ Uống cho người mới",
+        "snippet": "Nhiều khách hàng e ngại vị đắng gắt của cà phê truyền thống nhưng vẫn muốn thưởng thức hương thơm đặc sản. Tại BREW & BEAN, mọi sản phẩm đều được chấm điểm **Độ đắng (1–5)** và gắn"
+      }
+    ]
+  },
+  {
+    "normalized_query": "gợi ý giúp mình đồ uống không chứa sữa bò dưới 50k",
+    "language": "vi",
+    "intent": "PRODUCT_RECOMMENDATION",
+    "answer": "Đồ uống **không chứa sữa bò dưới 50.000đ** bạn có thể chọn:\n- **Trà Ô Long Đào Cam Sả** (S: 39.000đ · M: 45.000đ) và **Trà Hibiscus Dâu Tằm** (S: 38.000đ · M: 44.000đ · L: 49.000đ).\n- **Sữa Hạnh Nhân Vanilla** (S: 39.000đ · M: 45.000đ · L: 50.000đ) hoặc **Sữa Đậu Nành Mè Đen** (S: 38.000đ · M: 44.000đ · L: 49.000đ).\n- **Cacao Sữa Dừa Đá** (S: 42.000đ · M: 48.000đ) hoặc **Cold Brew Cam Sả** (S: 45.000đ).\n*Lưu ý an toàn:* Quầy bar sử dụng chung khu vực pha chế với sữa bò, hạt, đậu nành và gluten; nếu dị ứng nặng vui lòng báo trực tiếp Barista.",
+    "product_slugs": [
+      "tra-o-long-dao-cam-sa",
+      "sua-hanh-nhan-vanilla",
+      "cacao-sua-dua-da",
+      "cold-brew-cam-sa"
+    ],
+    "citations": [
+      {
+        "source_key": "menu/08_dairy_free_and_vegan_options.md",
+        "title": "Danh sách đồ uống Không Sữa Bò (Dairy-Free) và Thuần Chay tại BREW & BEAN",
+        "category": "MENU",
+        "section": "Danh sách đồ uống Không Sữa Bò (Dairy-Free) và Thuần Chay tại BREW & BEAN",
+        "snippet": "Đối với khách hàng dị ứng đạm sữa bò (`DAIRY`), không dung nạp lactose hoặc ăn thuần chay, BREW & BEAN phân loại rõ cờ `has_milk = false` trong hệ thống và cung cấp đa dạng 13 thức"
+      },
+      {
+        "source_key": "policies/01_allergen_safety_and_cross_contact.md",
+        "title": "Chính sách Minh bạch Thành phần và An toàn Dị ứng Thực phẩm",
+        "category": "POLICY",
+        "section": "Chính sách Minh bạch Thành phần và An toàn Dị ứng Thực phẩm",
+        "snippet": "BREW & BEAN cam kết công khai đầy đủ danh sách nguyên liệu và 4 nhóm chất gây dị ứng phổ biến (`DAIRY`, `NUTS`, `SOY`, `GLUTEN`) trên từng trang chi tiết sản phẩm cũng như qua trợ "
+      }
+    ]
+  },
+  {
+    "normalized_query": "buổi tối muộn nên uống món gì để không bị mất ngủ",
+    "language": "vi",
+    "intent": "PRODUCT_RECOMMENDATION",
+    "answer": "Buổi tối muộn bạn nên chọn nhóm đồ uống **0% caffeine (`none`)** để không bị mất ngủ:\n- **Trà Hibiscus Dâu Tằm** (từ 38.000đ): Chua ngọt thanh mát, không caffeine, không sữa bò.\n- **Cacao Sữa Dừa Đá** (từ 42.000đ) hoặc **Cacao Nóng Đắk Lắk** (từ 39.000đ): Ấm/mát vị socola, không caffeine.\n- **Sữa Hạnh Nhân Vanilla** (từ 39.000đ) hoặc **Sữa Đậu Nành Mè Đen** (từ 38.000đ): Êm dịu, không caffeine.",
+    "product_slugs": [
+      "tra-hibiscus-dau-tam",
+      "cacao-sua-dua-da",
+      "sua-hanh-nhan-vanilla",
+      "sua-dau-nanh-me-den"
+    ],
+    "citations": [
+      {
+        "source_key": "coffee_guide/04_caffeine_guide_by_time_of_day.md",
+        "title": "Hướng dẫn chọn mức Caffeine theo thời điểm Sáng, Chiều và Tối",
+        "category": "COFFEE_GUIDE",
+        "section": "Hướng dẫn chọn mức Caffeine theo thời điểm Sáng, Chiều và Tối",
+        "snippet": "Mỗi sản phẩm trên menu BREW & BEAN được phân loại rõ theo 4 mức caffeine: `high` (đậm), `medium` (vừa), `low` (nhẹ) và `none` (không caffeine), giúp bạn chọn đúng đồ uống mà vẫn gi"
+      },
+      {
+        "source_key": "menu/05_non_coffee_and_plant_milk.md",
+        "title": "Đồ uống Không Caffeine và Sữa Hạt Thực Vật",
+        "category": "MENU",
+        "section": "Đồ uống Không Caffeine và Sữa Hạt Thực Vật",
+        "snippet": "Tất cả các món thuộc danh mục Cacao & Sữa Hạt tại BREW & BEAN đều có hàm lượng caffeine bằng không (`caffeine_level = none`), phù hợp uống vào buổi tối, cho trẻ em, phụ nữ mang tha"
+      }
+    ]
+  },
+  {
+    "normalized_query": "cold brew khác gì với espresso pha đá thông thường vậy bạn",
+    "language": "vi",
+    "intent": "COFFEE_KNOWLEDGE",
+    "answer": "Dù cùng dùng **100% Arabica Cầu Đất**, **Cold Brew 18h** và **Espresso pha đá** khác nhau rõ ở 3 điểm:\n- **Cách chiết xuất:** Cold Brew ngâm ủ nước lạnh **4°C suốt 18 giờ**, còn Espresso chiết xuất nước nóng **92.5°C áp suất 9 bar trong 25–30 giây**.\n- **Độ axit & hương vị:** Cold Brew giảm khoảng **65% độ axit**, vị êm mượt, ngọt thanh, dễ chịu cho dạ dày; Espresso có lớp crema thơm nồng và body đậm hơn.\n- **Gợi ý:** Muốn thanh mát nhẹ bụng hãy chọn **Cold Brew Truyền Thống 18h** (từ 40.000đ) hoặc **Cold Brew Cam Sả** (từ 45.000đ).",
+    "product_slugs": [
+      "cold-brew-truyen-thong",
+      "cold-brew-cam-sa",
+      "americano-cau-dat"
+    ],
+    "citations": [
+      {
+        "source_key": "coffee_guide/02_cold_brew_vs_iced_espresso.md",
+        "title": "Cold Brew ủ lạnh 18 giờ khác gì với Espresso pha đá?",
+        "category": "COFFEE_GUIDE",
+        "section": "Cold Brew ủ lạnh 18 giờ khác gì với Espresso pha đá?",
+        "snippet": "Đây là câu hỏi được khách hàng hỏi nhiều nhất tại quầy bar BREW & BEAN. Dù cùng sử dụng hạt **100% Arabica Cầu Đất**, hai phương pháp chiết xuất mang lại trải nghiệm khác biệt rõ r"
+      }
+    ]
+  },
+  {
+    "normalized_query": "giải thích giúp mình sự khác biệt giữa arabica cầu đất và robusta buôn ma thuột",
+    "language": "vi",
+    "intent": "COFFEE_KNOWLEDGE",
+    "answer": "Tại **BREW & BEAN**, hai giống hạt chủ lực mang phong cách khác nhau:\n- **Arabica Cầu Đất (Lâm Đồng, 1.650m):** Vị thanh tao, ít đắng, nổi bật hương hoa trắng, cam vàng và hậu ngọt caramel; lượng caffeine vừa phải (~1.2–1.5%). Dùng 100% cho dòng **Cold Brew 18h**, **Americano**, **Latte**, **Cappuccino**, **Cà Phê Muối Cầu Đất** và **V60**.\n- **Robusta Buôn Ma Thuột (Đắk Lắk):** Body dày sánh, crema đậm, nốt cacao đen và hạt rang, caffeine cao (~2.2–2.7%). Quán phối trộn **70% Robusta + 30% Arabica** cho **Cà Phê Sữa Đá Sài Gòn** và **Cà Phê Đen Đá Buôn Ma Thuột**.",
+    "product_slugs": [
+      "americano-cau-dat",
+      "ca-phe-muoi-cau-dat",
+      "ca-phe-sua-da-sai-gon",
+      "ca-phe-den-da-buon-ma-thuot"
+    ],
+    "citations": [
+      {
+        "source_key": "coffee_guide/01_arabica_cau_dat_vs_robusta_bmt.md",
+        "title": "So sánh hạt Arabica Cầu Đất 1.650m và Robusta Buôn Ma Thuột",
+        "category": "COFFEE_GUIDE",
+        "section": "So sánh hạt Arabica Cầu Đất 1.650m và Robusta Buôn Ma Thuột",
+        "snippet": "BREW & BEAN tuyển chọn hai giống hạt chủ lực từ hai vùng trồng danh tiếng bậc nhất Việt Nam để đáp ứng trọn vẹn cả gu thưởng thức hiện đại lẫn truyền thống. Khí hậu mát mẻ quanh nă"
+      }
+    ]
+  },
+  {
+    "normalized_query": "mình đang xem menu, hãy gợi ý món hợp khẩu vị giúp mình",
+    "language": "vi",
+    "intent": "PRODUCT_RECOMMENDATION",
+    "answer": "Dưới đây là một số gợi ý nổi bật theo từng gu để bạn chọn nhanh trên Menu:\n- **Gu béo dịu, ít đắng:** **Cà Phê Muối Cầu Đất** (từ 45.000đ), **Bạc Xỉu Cốt Dừa Nướng** (từ 39.000đ), **Caramel Latte** (từ 45.000đ).\n- **Gu thanh mát, không sữa bò:** **Cold Brew Cam Sả** (từ 45.000đ), **Trà Ô Long Đào Cam Sả** (từ 39.000đ).\n- **Gu đậm đà tỉnh táo:** **Cà Phê Sữa Đá Sài Gòn** (từ 35.000đ), **Cold Brew Truyền Thống 18h** (từ 40.000đ).\nBạn cho mình biết thêm ngân sách hoặc có kiêng sữa/caffeine không để mình lọc chuẩn hơn nhé!",
+    "product_slugs": [
+      "ca-phe-muoi-cau-dat",
+      "bac-xiu-cot-dua-nuong",
+      "cold-brew-cam-sa",
+      "ca-phe-sua-da-sai-gon"
+    ],
+    "citations": [
+      {
+        "source_key": "menu/01_signature_drinks_guide.md",
+        "title": "Cẩm nang 5 món Signature độc quyền tại BREW & BEAN",
+        "category": "MENU",
+        "section": "Cẩm nang 5 món Signature độc quyền tại BREW & BEAN",
+        "snippet": "Dòng Signature là niềm tự hào sáng tạo của đội ngũ Barista BREW & BEAN, kết hợp hạt cà phê đặc sản Việt Nam cùng nguyên liệu bản địa tươi mới. Lấy cảm hứng từ thức uống trứ danh đấ"
+      }
+    ]
+  },
+  {
+    "normalized_query": "sáng sớm cần tỉnh táo mạnh thì nên uống món cà phê nào",
+    "language": "vi",
+    "intent": "PRODUCT_RECOMMENDATION",
+    "answer": "Buổi sáng cần tỉnh táo mạnh (`caffeine_level = high`), bạn nên chọn:\n- **Cà Phê Đen Đá Buôn Ma Thuột** (S: 32.000đ · M: 35.000đ · L: 42.000đ): Đậm vị Robusta + Arabica, không sữa, chỉ 10–20 kcal.\n- **Cà Phê Sữa Đá Sài Gòn** (S: 35.000đ · M: 39.000đ · L: 45.000đ): Đậm đà chuẩn gu Việt hòa sữa đặc.\n- **Cold Brew Truyền Thống 18h** (S: 40.000đ · M: 45.000đ · L: 52.000đ): Tỉnh táo bền bỉ, êm dạ dày.",
+    "product_slugs": [
+      "ca-phe-den-da-buon-ma-thuot",
+      "ca-phe-sua-da-sai-gon",
+      "cold-brew-truyen-thong"
+    ],
+    "citations": [
+      {
+        "source_key": "coffee_guide/04_caffeine_guide_by_time_of_day.md",
+        "title": "Hướng dẫn chọn mức Caffeine theo thời điểm Sáng, Chiều và Tối",
+        "category": "COFFEE_GUIDE",
+        "section": "Hướng dẫn chọn mức Caffeine theo thời điểm Sáng, Chiều và Tối",
+        "snippet": "Mỗi sản phẩm trên menu BREW & BEAN được phân loại rõ theo 4 mức caffeine: `high` (đậm), `medium` (vừa), `low` (nhẹ) và `none` (không caffeine), giúp bạn chọn đúng đồ uống mà vẫn gi"
+      }
+    ]
+  },
+  {
+    "normalized_query": "buổi chiều làm việc muốn uống món ít caffeine cho dễ ngủ tối",
+    "language": "vi",
+    "intent": "STORE_INFO",
+    "answer": "Buổi chiều muốn giữ tỉnh táo nhẹ nhàng mà tối vẫn dễ ngủ, bạn nên chọn nhóm **caffeine thấp (`low`)**:\n- **Bạc Xỉu Cốt Dừa Nướng** (từ 39.000đ): Độ đắng `1/5`, béo thơm cốt dừa.\n- **Matcha Latte Uji Nhật Bản** (từ 45.000đ) hoặc **Matcha Sữa Hạnh Nhân** (từ 48.000đ): Hương trà xanh dịu, không gắt.\n- **Trà Ô Long Đào Cam Sả** (từ 39.000đ) hoặc **Trà Ô Long Kem Cheese** (từ 44.000đ): Nhẹ nhàng, sảng khoái.",
+    "product_slugs": [
+      "bac-xiu-cot-dua-nuong",
+      "matcha-latte-uji",
+      "matcha-sua-hanh-nhan",
+      "tra-o-long-dao-cam-sa"
+    ],
+    "citations": [
+      {
+        "source_key": "coffee_guide/04_caffeine_guide_by_time_of_day.md",
+        "title": "Hướng dẫn chọn mức Caffeine theo thời điểm Sáng, Chiều và Tối",
+        "category": "COFFEE_GUIDE",
+        "section": "Hướng dẫn chọn mức Caffeine theo thời điểm Sáng, Chiều và Tối",
+        "snippet": "Mỗi sản phẩm trên menu BREW & BEAN được phân loại rõ theo 4 mức caffeine: `high` (đậm), `medium` (vừa), `low` (nhẹ) và `none` (không caffeine), giúp bạn chọn đúng đồ uống mà vẫn gi"
+      }
+    ]
+  },
+  {
+    "normalized_query": "trời nóng buổi trưa có món cold brew trái cây nào thanh mát không",
+    "language": "vi",
+    "intent": "PRODUCT_RECOMMENDATION",
+    "answer": "Trời nóng buổi trưa, các món **Cold Brew trái cây thanh mát** (100% không sữa bò) rất đáng thử:\n- **Cold Brew Cam Sả** (S: 45.000đ · M: 52.000đ · L: 59.000đ): Kết hợp cam vàng tươi và sả thơm dịu.\n- **Cold Brew Yuzu Mật Ong** (S: 48.000đ · M: 55.000đ · L: 62.000đ): Vị vỏ cam Yuzu Nhật chua thanh, độ đắng chỉ `1/5`.\n- **Cold Brew Vải Hoa Hồng** (S: 46.000đ · M: 52.000đ · L: 59.000đ): Hương vải thiều ngọt thanh dịu nhẹ.",
+    "product_slugs": [
+      "cold-brew-cam-sa",
+      "cold-brew-yuzu-mat-ong",
+      "cold-brew-vai-hoa-hong"
+    ],
+    "citations": [
+      {
+        "source_key": "menu/03_cold_brew_18h_collection.md",
+        "title": "Bộ sưu tập Cold Brew Ủ Lạnh 18 Giờ",
+        "category": "MENU",
+        "section": "Bộ sưu tập Cold Brew Ủ Lạnh 18 Giờ",
+        "snippet": "Toàn bộ dòng Cold Brew tại BREW & BEAN đều được ủ chậm bằng nước lọc lạnh 4°C trong suốt 18 giờ từ hạt Arabica Cầu Đất rang vừa. Phương pháp chiết xuất lạnh giúp giảm đến 65% lượng"
+      }
+    ]
+  },
+  {
+    "normalized_query": "mình thích vị ngọt dịu, không thích vị chua gắt thì chọn món gì",
+    "language": "vi",
+    "intent": "PRODUCT_RECOMMENDATION",
+    "answer": "Nếu thích **vị ngọt dịu, không chua gắt**, bạn hãy thử:\n- **Caramel Latte** (từ 45.000đ): Độ ngọt `4/5`, độ đắng `2/5`, thơm ấm mùi caramel thủ công.\n- **Vanilla Flat White** (từ 44.000đ): Double ristretto chiết xuất ngắn giúp loại bỏ vị chát, quyện vani tự nhiên.\n- **Bạc Xỉu Cốt Dừa Nướng** (từ 39.000đ) hoặc **Cà Phê Muối Cầu Đất** (từ 45.000đ): Đều êm dịu, không chua gắt.",
+    "product_slugs": [
+      "caramel-latte",
+      "vanilla-flat-white",
+      "bac-xiu-cot-dua-nuong",
+      "ca-phe-muoi-cau-dat"
+    ],
+    "citations": [
+      {
+        "source_key": "menu/07_low_bitter_and_beginner_drinks.md",
+        "title": "Cẩm nang chọn đồ uống Ít Đắng và Dễ Uống cho người mới",
+        "category": "MENU",
+        "section": "Cẩm nang chọn đồ uống Ít Đắng và Dễ Uống cho người mới",
+        "snippet": "Nhiều khách hàng e ngại vị đắng gắt của cà phê truyền thống nhưng vẫn muốn thưởng thức hương thơm đặc sản. Tại BREW & BEAN, mọi sản phẩm đều được chấm điểm **Độ đắng (1–5)** và gắn"
+      }
+    ]
+  },
+  {
+    "normalized_query": "mình muốn tìm đồ uống ít calo nhất để giữ dáng",
+    "language": "vi",
+    "intent": "PRODUCT_LOOKUP",
+    "answer": "Các đồ uống **ít calo nhất** trên menu BREW & BEAN để bạn giữ dáng:\n- **Cà Phê Đen Đá Buôn Ma Thuột** (từ 32.000đ): Chỉ **10–20 kcal** (size S–L).\n- **Americano Cầu Đất** (từ 38.000đ): Chỉ **10–20 kcal**.\n- **Cold Brew Truyền Thống 18h** (từ 40.000đ): Chỉ **10–20 kcal**.\n- Nếu thích có hương trái cây/sữa hạt ít calo: **Cold Brew Cam Sả** (65–110 kcal), **Trà Hibiscus Dâu Tằm** (75–120 kcal), **Matcha Sữa Hạnh Nhân** (95–150 kcal).",
+    "product_slugs": [
+      "ca-phe-den-da-buon-ma-thuot",
+      "americano-cau-dat",
+      "cold-brew-truyen-thong",
+      "matcha-sua-hanh-nhan"
+    ],
+    "citations": [
+      {
+        "source_key": "menu/03_cold_brew_18h_collection.md",
+        "title": "Bộ sưu tập Cold Brew Ủ Lạnh 18 Giờ",
+        "category": "MENU",
+        "section": "Bộ sưu tập Cold Brew Ủ Lạnh 18 Giờ",
+        "snippet": "Toàn bộ dòng Cold Brew tại BREW & BEAN đều được ủ chậm bằng nước lọc lạnh 4°C trong suốt 18 giờ từ hạt Arabica Cầu Đất rang vừa. Phương pháp chiết xuất lạnh giúp giảm đến 65% lượng"
+      }
+    ]
+  },
+  {
+    "normalized_query": "quán có đồ uống nào có hương hoa hoặc trái cây nhẹ nhàng không",
+    "language": "vi",
+    "intent": "PRODUCT_RECOMMENDATION",
+    "answer": "Các món mang **hương hoa hoặc trái cây nhẹ nhàng** tại quán gồm:\n- **Cold Brew Vải Hoa Hồng** (từ 46.000đ): Hương vải thiều thanh ngọt hòa hoa hồng dịu nhẹ, độ đắng `1/5`.\n- **Cold Brew Cam Sả** (từ 45.000đ) & **Cold Brew Yuzu Mật Ong** (từ 48.000đ): Tươi mát hương cam chanh.\n- **Trà Hibiscus Dâu Tằm** (từ 38.000đ): Hoa atiso đỏ và dâu tằm Đà Lạt, không caffeine.\n- **Trà Ô Long Đào Cam Sả** (từ 39.000đ) & **Americano Cầu Đất** (từ 38.000đ): Có nốt hương hoa trắng và quả chín tự nhiên.",
+    "product_slugs": [
+      "cold-brew-vai-hoa-hong",
+      "cold-brew-cam-sa",
+      "cold-brew-yuzu-mat-ong",
+      "tra-hibiscus-dau-tam"
+    ],
+    "citations": [
+      {
+        "source_key": "coffee_guide/03_roasting_profiles_and_flavor.md",
+        "title": "Triết lý Rang vừa (Medium Roast) và Cách nhận biết Hương vị Cà phê",
+        "category": "COFFEE_GUIDE",
+        "section": "Triết lý Rang vừa (Medium Roast) và Cách nhận biết Hương vị Cà phê",
+        "snippet": "Tại xưởng rang của BREW & BEAN, toàn bộ hạt Arabica Cầu Đất và Robusta Buôn Ma Thuột đều được rang theo từng mẻ nhỏ 12 kg ở mức **Medium Roast (Rang vừa)** thay vì rang cháy đen (D"
+      },
+      {
+        "source_key": "menu/03_cold_brew_18h_collection.md",
+        "title": "Bộ sưu tập Cold Brew Ủ Lạnh 18 Giờ",
+        "category": "MENU",
+        "section": "Bộ sưu tập Cold Brew Ủ Lạnh 18 Giờ",
+        "snippet": "Toàn bộ dòng Cold Brew tại BREW & BEAN đều được ủ chậm bằng nước lọc lạnh 4°C trong suốt 18 giờ từ hạt Arabica Cầu Đất rang vừa. Phương pháp chiết xuất lạnh giúp giảm đến 65% lượng"
+      }
+    ]
+  },
+  {
+    "normalized_query": "cà phê muối cầu đất có vị như thế nào, có quá mặn hoặc quá đắng không",
+    "language": "vi",
+    "intent": "COFFEE_KNOWLEDGE",
+    "answer": "**Cà Phê Muối Cầu Đất** (S: 45.000đ · M: 49.000đ · L: 55.000đ) không bị quá mặn hay quá đắng:\n- Sử dụng 100% Arabica Cầu Đất rang vừa kết hợp sữa đặc và lớp kem muối biển đánh bông lạnh.\n- Độ đắng chỉ **`2/5`**, độ ngọt **`4/5`**, caffeine mức vừa (`medium`). Vị mặn nhẹ của kem muối giúp tôn lên hậu vị caramel và độ béo bùi rất dễ uống.\n- *Lưu ý:* Món có chứa sữa động vật (`DAIRY`) và ngon nhất trong 20 phút đầu.",
+    "product_slugs": [
+      "ca-phe-muoi-cau-dat"
+    ],
+    "citations": [
+      {
+        "source_key": "menu/01_signature_drinks_guide.md",
+        "title": "Cẩm nang 5 món Signature độc quyền tại BREW & BEAN",
+        "category": "MENU",
+        "section": "Cẩm nang 5 món Signature độc quyền tại BREW & BEAN",
+        "snippet": "Dòng Signature là niềm tự hào sáng tạo của đội ngũ Barista BREW & BEAN, kết hợp hạt cà phê đặc sản Việt Nam cùng nguyên liệu bản địa tươi mới. Lấy cảm hứng từ thức uống trứ danh đấ"
+      },
+      {
+        "source_key": "policies/02_quality_guarantee_and_remake.md",
+        "title": "Chính sách Bảo đảm Chất lượng và Pha lại Miễn phí",
+        "category": "POLICY",
+        "section": "Chính sách Bảo đảm Chất lượng và Pha lại Miễn phí",
+        "snippet": "Trải nghiệm hương vị trọn vẹn của khách hàng là ưu tiên số một tại BREW & BEAN. - **Pha lại miễn phí tại quầy:** Nếu ly đồ uống bạn nhận được chưa đúng yêu cầu (nhầm size, sai nhiệ"
+      }
+    ]
+  },
+  {
+    "normalized_query": "cold brew cam sả có ngọt lắm không và có chứa sữa không",
+    "language": "vi",
+    "intent": "PRODUCT_RECOMMENDATION",
+    "answer": "**Cold Brew Cam Sả** (S: 45.000đ · M: 52.000đ · L: 59.000đ) có vị thanh mát vừa phải:\n- **Độ ngọt:** Mức **`3/5`** (chủ yếu từ nước cam vàng tươi và mật ong tùy chọn, không bị gắt, độ đắng chỉ `2/5`). Bạn cũng có thể yêu cầu giảm ngọt/bỏ mật ong.\n- **Sữa bò:** **Hoàn toàn không chứa sữa bò** (`has_milk = false`, `dairy_free`).\n*Lưu ý an toàn:* Quầy bar có dùng chung khu vực pha chế với sữa bò, hạt, đậu nành và gluten.",
+    "product_slugs": [
+      "cold-brew-cam-sa"
+    ],
+    "citations": [
+      {
+        "source_key": "menu/01_signature_drinks_guide.md",
+        "title": "Cẩm nang 5 món Signature độc quyền tại BREW & BEAN",
+        "category": "MENU",
+        "section": "Cẩm nang 5 món Signature độc quyền tại BREW & BEAN",
+        "snippet": "Dòng Signature là niềm tự hào sáng tạo của đội ngũ Barista BREW & BEAN, kết hợp hạt cà phê đặc sản Việt Nam cùng nguyên liệu bản địa tươi mới. Lấy cảm hứng từ thức uống trứ danh đấ"
+      },
+      {
+        "source_key": "menu/08_dairy_free_and_vegan_options.md",
+        "title": "Danh sách đồ uống Không Sữa Bò (Dairy-Free) và Thuần Chay tại BREW & BEAN",
+        "category": "MENU",
+        "section": "Danh sách đồ uống Không Sữa Bò (Dairy-Free) và Thuần Chay tại BREW & BEAN",
+        "snippet": "Đối với khách hàng dị ứng đạm sữa bò (`DAIRY`), không dung nạp lactose hoặc ăn thuần chay, BREW & BEAN phân loại rõ cờ `has_milk = false` trong hệ thống và cung cấp đa dạng 13 thức"
+      }
+    ]
+  },
+  {
+    "normalized_query": "bạc xỉu cốt dừa nướng có nhiều caffeine không",
+    "language": "vi",
+    "intent": "PRODUCT_RECOMMENDATION",
+    "answer": "**Bạc Xỉu Cốt Dừa Nướng** (S: 39.000đ · M: 45.000đ · L: 52.000đ) có **lượng caffeine thấp (`low`)**!\n- Món thiên về sữa tươi, sữa đặc (`DAIRY`) và nước cốt dừa Bến Tre, độ đắng rất nhẹ **`1/5`**, độ ngọt `4/5`.\n- Rất phù hợp cho người mới uống cà phê hoặc muốn thưởng thức vào buổi chiều mà ít lo mất ngủ.",
+    "product_slugs": [
+      "bac-xiu-cot-dua-nuong"
+    ],
+    "citations": [
+      {
+        "source_key": "menu/01_signature_drinks_guide.md",
+        "title": "Cẩm nang 5 món Signature độc quyền tại BREW & BEAN",
+        "category": "MENU",
+        "section": "Cẩm nang 5 món Signature độc quyền tại BREW & BEAN",
+        "snippet": "Dòng Signature là niềm tự hào sáng tạo của đội ngũ Barista BREW & BEAN, kết hợp hạt cà phê đặc sản Việt Nam cùng nguyên liệu bản địa tươi mới. Lấy cảm hứng từ thức uống trứ danh đấ"
+      },
+      {
+        "source_key": "coffee_guide/04_caffeine_guide_by_time_of_day.md",
+        "title": "Hướng dẫn chọn mức Caffeine theo thời điểm Sáng, Chiều và Tối",
+        "category": "COFFEE_GUIDE",
+        "section": "Hướng dẫn chọn mức Caffeine theo thời điểm Sáng, Chiều và Tối",
+        "snippet": "Mỗi sản phẩm trên menu BREW & BEAN được phân loại rõ theo 4 mức caffeine: `high` (đậm), `medium` (vừa), `low` (nhẹ) và `none` (không caffeine), giúp bạn chọn đúng đồ uống mà vẫn gi"
+      }
+    ]
+  },
+  {
+    "normalized_query": "latte sữa yến mạch mật ong hợp với ai",
+    "language": "vi",
+    "intent": "COFFEE_KNOWLEDGE",
+    "answer": "**Latte Sữa Yến Mạch Mật Ong** (S: 49.000đ · M: 55.000đ · L: 62.000đ) phù hợp nhất cho:\n- Khách **dị ứng sữa bò (`DAIRY`) hoặc không dung nạp lactose** nhưng vẫn muốn ly Latte sánh mịn, béo nhẹ.\n- Khách **ăn chay** (lưu ý công thức chuẩn có mật ong hoa cà phê; nếu ăn thuần chay nghiêm ngặt có thể dặn Barista bỏ mật ong).\n- Người thích vị cà phê êm dịu (`độ đắng 2/5`, `độ ngọt 3/5`, caffeine mức `medium`).",
+    "product_slugs": [
+      "oat-milk-honey-latte"
+    ],
+    "citations": [
+      {
+        "source_key": "menu/01_signature_drinks_guide.md",
+        "title": "Cẩm nang 5 món Signature độc quyền tại BREW & BEAN",
+        "category": "MENU",
+        "section": "Cẩm nang 5 món Signature độc quyền tại BREW & BEAN",
+        "snippet": "Dòng Signature là niềm tự hào sáng tạo của đội ngũ Barista BREW & BEAN, kết hợp hạt cà phê đặc sản Việt Nam cùng nguyên liệu bản địa tươi mới. Lấy cảm hứng từ thức uống trứ danh đấ"
+      },
+      {
+        "source_key": "menu/08_dairy_free_and_vegan_options.md",
+        "title": "Danh sách đồ uống Không Sữa Bò (Dairy-Free) và Thuần Chay tại BREW & BEAN",
+        "category": "MENU",
+        "section": "Danh sách đồ uống Không Sữa Bò (Dairy-Free) và Thuần Chay tại BREW & BEAN",
+        "snippet": "Đối với khách hàng dị ứng đạm sữa bò (`DAIRY`), không dung nạp lactose hoặc ăn thuần chay, BREW & BEAN phân loại rõ cờ `has_milk = false` trong hệ thống và cung cấp đa dạng 13 thức"
+      }
+    ]
+  },
+  {
+    "normalized_query": "matcha latte uji và matcha sữa hạnh nhân khác nhau điểm nào",
+    "language": "vi",
+    "intent": "COFFEE_KNOWLEDGE",
+    "answer": "Hai món Matcha Uji tại quán khác nhau chủ yếu ở **nền sữa, lượng calo và dị ứng**:\n- **Matcha Latte Uji Nhật Bản** (S: 45.000đ · M: 52.000đ · L: 59.000đ): Dùng **sữa tươi thanh trùng (`DAIRY`)** và sữa đặc tùy chọn; vị béo ngậy hơn (`độ ngọt 3/5`, `150–230 kcal`).\n- **Matcha Sữa Hạnh Nhân** (S: 48.000đ · M: 54.000đ · L: 60.000đ): **100% không sữa bò** (`has_milk = false`), dùng sữa hạnh nhân nguyên chất (`NUTS`), thanh nhẹ và ít calo hơn (`95–150 kcal`, `độ ngọt 2/5`).\nCả hai đều có `caffeine_level = low` và `độ đắng 2/5`.",
+    "product_slugs": [
+      "matcha-latte-uji",
+      "matcha-sua-hanh-nhan"
+    ],
+    "citations": [
+      {
+        "source_key": "menu/04_matcha_and_fruit_tea_guide.md",
+        "title": "Matcha Uji Nhật Bản và Trà Trái Cây Cao Nguyên",
+        "category": "MENU",
+        "section": "Matcha Uji Nhật Bản và Trà Trái Cây Cao Nguyên",
+        "snippet": "Nhóm Matcha & Trà tại BREW & BEAN được thiết kế cho những ai muốn tìm thức uống nhẹ nhàng, ít caffeine (hoặc hoàn toàn không caffeine) và giàu chất chống oxy hóa. - **Matcha Latte "
+      }
+    ]
+  },
+  {
+    "normalized_query": "mình bị dị ứng sữa bò (dairy) thì uống món nào được",
+    "language": "vi",
+    "intent": "ALLERGEN_INGREDIENT",
+    "answer": "Với khách **dị ứng sữa bò (`DAIRY`)**, hệ thống xác nhận **13 đồ uống không chứa sữa bò (`has_milk = false`)**:\n- **Nhóm sữa thực vật béo nhẹ:** **Latte Sữa Yến Mạch Mật Ong** (từ 49.000đ), **Cacao Sữa Dừa Đá** (từ 42.000đ), **Matcha Sữa Hạnh Nhân** (từ 48.000đ, chứa `NUTS`), **Sữa Hạnh Nhân Vanilla** (từ 39.000đ, chứa `NUTS`), **Sữa Đậu Nành Mè Đen** (từ 38.000đ, chứa `SOY`).\n- **Nhóm Cold Brew, cà phê đen & trà:** **Cold Brew Cam Sả**, **Cold Brew Truyền Thống 18h**, **Cold Brew Yuzu Mật Ong**, **Cold Brew Vải Hoa Hồng**, **Trà Ô Long Đào Cam Sả**, **Trà Hibiscus Dâu Tằm**, **Americano Cầu Đất**, **Cà Phê Đen Đá Buôn Ma Thuột**.\n*Lưu ý an toàn:* Quầy bar dùng chung vòi đánh sữa/bình lắc với `DAIRY`, `NUTS`, `SOY`, `GLUTEN`; nếu dị ứng nặng vui lòng báo Trưởng ca Barista khi gọi món.",
+    "product_slugs": [
+      "oat-milk-honey-latte",
+      "cacao-sua-dua-da",
+      "cold-brew-cam-sa",
+      "tra-hibiscus-dau-tam"
+    ],
+    "citations": [
+      {
+        "source_key": "faq/02_allergens_and_dietary_faq.md",
+        "title": "FAQ — Dị ứng thực phẩm và Chế độ ăn kiêng",
+        "category": "FAQ",
+        "section": "FAQ — Dị ứng thực phẩm và Chế độ ăn kiêng",
+        "snippet": "A: Bạn có 13 đồ uống hoàn toàn không chứa sữa bò (`has_milk = false`): - Nhóm có sữa hạt béo nhẹ: **Latte Sữa Yến Mạch Mật Ong**, **Cacao Sữa Dừa Đá**, **Matcha Sữa Hạnh Nhân** (`N"
+      },
+      {
+        "source_key": "policies/01_allergen_safety_and_cross_contact.md",
+        "title": "Chính sách Minh bạch Thành phần và An toàn Dị ứng Thực phẩm",
+        "category": "POLICY",
+        "section": "Chính sách Minh bạch Thành phần và An toàn Dị ứng Thực phẩm",
+        "snippet": "BREW & BEAN cam kết công khai đầy đủ danh sách nguyên liệu và 4 nhóm chất gây dị ứng phổ biến (`DAIRY`, `NUTS`, `SOY`, `GLUTEN`) trên từng trang chi tiết sản phẩm cũng như qua trợ "
+      }
+    ]
+  },
+  {
+    "normalized_query": "mình bị dị ứng các loại hạt (nuts) thì nên tránh và nên chọn món nào",
+    "language": "vi",
+    "intent": "ALLERGEN_INGREDIENT",
+    "answer": "Nếu bạn **dị ứng các loại hạt (`NUTS`)**:\n- **Cần TRÁNH 5 món:** **Macadamia Espresso Cream** (macca), **Hazelnut Mocha** (hạt phỉ), **Matcha Sữa Hạnh Nhân**, **Sữa Hạnh Nhân Vanilla** và **Croissant Hạnh Nhân**.\n- **Các món AN TOÀN (`NUTS`-free) gợi ý:** **Cà Phê Muối Cầu Đất** (từ 45.000đ), **Latte Sữa Yến Mạch Mật Ong** (từ 49.000đ), **Cacao Sữa Dừa Đá** (từ 42.000đ), **Sữa Đậu Nành Mè Đen** (từ 38.000đ), **Cold Brew Cam Sả** (từ 45.000đ) và **Trà Ô Long Đào Cam Sả** (từ 39.000đ).\n*Lưu ý an toàn:* Quầy bar có nguy cơ nhiễm chéo (`DAIRY`, `NUTS`, `SOY`, `GLUTEN`), vui lòng báo trực tiếp Barista nếu dị ứng nặng.",
+    "product_slugs": [
+      "ca-phe-muoi-cau-dat",
+      "oat-milk-honey-latte",
+      "cacao-sua-dua-da",
+      "sua-dau-nanh-me-den"
+    ],
+    "citations": [
+      {
+        "source_key": "faq/02_allergens_and_dietary_faq.md",
+        "title": "FAQ — Dị ứng thực phẩm và Chế độ ăn kiêng",
+        "category": "FAQ",
+        "section": "FAQ — Dị ứng thực phẩm và Chế độ ăn kiêng",
+        "snippet": "A: Bạn có 13 đồ uống hoàn toàn không chứa sữa bò (`has_milk = false`): - Nhóm có sữa hạt béo nhẹ: **Latte Sữa Yến Mạch Mật Ong**, **Cacao Sữa Dừa Đá**, **Matcha Sữa Hạnh Nhân** (`N"
+      },
+      {
+        "source_key": "policies/01_allergen_safety_and_cross_contact.md",
+        "title": "Chính sách Minh bạch Thành phần và An toàn Dị ứng Thực phẩm",
+        "category": "POLICY",
+        "section": "Chính sách Minh bạch Thành phần và An toàn Dị ứng Thực phẩm",
+        "snippet": "BREW & BEAN cam kết công khai đầy đủ danh sách nguyên liệu và 4 nhóm chất gây dị ứng phổ biến (`DAIRY`, `NUTS`, `SOY`, `GLUTEN`) trên từng trang chi tiết sản phẩm cũng như qua trợ "
+      }
+    ]
+  },
+  {
+    "normalized_query": "khách dị ứng đậu nành (soy) cần lưu ý món nào trên menu",
+    "language": "vi",
+    "intent": "ALLERGEN_INGREDIENT",
+    "answer": "Đối với khách **dị ứng đậu nành (`SOY`)**:\n- Trong công thức chuẩn của BREW & BEAN, **chỉ có món Sữa Đậu Nành Mè Đen** sử dụng sữa đậu nành hữu cơ (`SOY`).\n- Tất cả các đồ uống còn lại (như **Latte Sữa Yến Mạch Mật Ong**, **Cacao Sữa Dừa Đá**, **Cà Phê Muối Cầu Đất**, dòng **Cold Brew** và **Trà**) đều không chứa đậu nành.\n*Lưu ý an toàn:* Quầy bar sử dụng chung khu vực pha chế có `DAIRY`, `NUTS`, `SOY`, `GLUTEN`; nếu dị ứng nặng hãy báo Barista dùng dụng cụ riêng.",
+    "product_slugs": [
+      "oat-milk-honey-latte",
+      "cacao-sua-dua-da",
+      "cold-brew-cam-sa",
+      "ca-phe-muoi-cau-dat"
+    ],
+    "citations": [
+      {
+        "source_key": "faq/02_allergens_and_dietary_faq.md",
+        "title": "FAQ — Dị ứng thực phẩm và Chế độ ăn kiêng",
+        "category": "FAQ",
+        "section": "FAQ — Dị ứng thực phẩm và Chế độ ăn kiêng",
+        "snippet": "A: Bạn có 13 đồ uống hoàn toàn không chứa sữa bò (`has_milk = false`): - Nhóm có sữa hạt béo nhẹ: **Latte Sữa Yến Mạch Mật Ong**, **Cacao Sữa Dừa Đá**, **Matcha Sữa Hạnh Nhân** (`N"
+      },
+      {
+        "source_key": "policies/01_allergen_safety_and_cross_contact.md",
+        "title": "Chính sách Minh bạch Thành phần và An toàn Dị ứng Thực phẩm",
+        "category": "POLICY",
+        "section": "Chính sách Minh bạch Thành phần và An toàn Dị ứng Thực phẩm",
+        "snippet": "BREW & BEAN cam kết công khai đầy đủ danh sách nguyên liệu và 4 nhóm chất gây dị ứng phổ biến (`DAIRY`, `NUTS`, `SOY`, `GLUTEN`) trên từng trang chi tiết sản phẩm cũng như qua trợ "
+      }
+    ]
+  },
+  {
+    "normalized_query": "quán có bánh ngọt nào không chứa gluten hoặc không chứa sữa bò không",
+    "language": "vi",
+    "intent": "ALLERGEN_INGREDIENT",
+    "answer": "Hiện tại **cả 4 món bánh ngọt thủ công** trên menu (**Croissant Bơ Pháp**, **Croissant Hạnh Nhân**, **Tiramisu Espresso**, **Basque Burnt Cheesecake**) đều sử dụng **bột mì Pháp (`GLUTEN`)** và **bơ/phô mai/kem (`DAIRY`)**.\n- Do đó quán **chưa có bánh ngọt không Gluten hoặc không sữa bò**.\n- Nếu bạn kiêng `GLUTEN` hoặc `DAIRY`, vui lòng chọn trong 13 đồ uống không sữa bò (`has_milk = false`) như **Latte Sữa Yến Mạch Mật Ong**, **Cacao Sữa Dừa Đá** hoặc dòng **Cold Brew / Trà**.\n*Lưu ý an toàn:* Khu vực quầy bar và tủ bánh có nguy cơ nhiễm chéo `DAIRY`, `NUTS`, `SOY`, `GLUTEN`.",
+    "product_slugs": [
+      "oat-milk-honey-latte",
+      "cacao-sua-dua-da",
+      "cold-brew-cam-sa"
+    ],
+    "citations": [
+      {
+        "source_key": "faq/02_allergens_and_dietary_faq.md",
+        "title": "FAQ — Dị ứng thực phẩm và Chế độ ăn kiêng",
+        "category": "FAQ",
+        "section": "FAQ — Dị ứng thực phẩm và Chế độ ăn kiêng",
+        "snippet": "A: Bạn có 13 đồ uống hoàn toàn không chứa sữa bò (`has_milk = false`): - Nhóm có sữa hạt béo nhẹ: **Latte Sữa Yến Mạch Mật Ong**, **Cacao Sữa Dừa Đá**, **Matcha Sữa Hạnh Nhân** (`N"
+      },
+      {
+        "source_key": "menu/06_artisan_pastry_pairings.md",
+        "title": "Bánh Ngọt Thủ Công và Gợi ý Ghép Cặp Đồ Uống",
+        "category": "MENU",
+        "section": "Bánh Ngọt Thủ Công và Gợi ý Ghép Cặp Đồ Uống",
+        "snippet": "Quầy bánh tại BREW & BEAN được nướng mới mỗi sáng, đóng gói theo khẩu phần tiêu chuẩn (`regular`) để đồng hành cùng tách cà phê hoặc trà của bạn. Tất cả các món bánh hiện tại đều c"
+      }
+    ]
+  },
+  {
+    "normalized_query": "người ăn thuần chay (vegan) uống được những món nào ở brew & bean",
+    "language": "vi",
+    "intent": "PRODUCT_RECOMMENDATION",
+    "answer": "Người ăn **thuần chay (vegan)** không dùng sữa bò có thể chọn trong **13 đồ uống `has_milk = false`**:\n- **Nhóm thuần thực vật 100% không mật ong:** **Cold Brew Truyền Thống 18h** (từ 40.000đ), **Cold Brew Vải Hoa Hồng** (từ 46.000đ), **Trà Ô Long Đào Cam Sả** (từ 39.000đ), **Americano Cầu Đất** (từ 38.000đ), **Cà Phê Đen Đá Buôn Ma Thuột** (từ 32.000đ), **Sữa Đậu Nành Mè Đen** (từ 38.000đ).\n- **Nhóm có mật ong tùy chọn (có thể dặn bỏ mật ong):** **Cold Brew Cam Sả**, **Matcha Sữa Hạnh Nhân**, **Trà Hibiscus Dâu Tằm**, **Cacao Sữa Dừa Đá**, **Sữa Hạnh Nhân Vanilla**.\n- **Lưu ý riêng:** **Latte Sữa Yến Mạch Mật Ong** và **Cold Brew Yuzu Mật Ong** có mật ong trong công thức chuẩn — khách thuần chay nghiêm ngặt hãy báo Barista giảm/bỏ mật ong. Các món bánh hiện đều chứa `DAIRY`.",
+    "product_slugs": [
+      "cacao-sua-dua-da",
+      "sua-dau-nanh-me-den",
+      "tra-o-long-dao-cam-sa",
+      "oat-milk-honey-latte"
+    ],
+    "citations": [
+      {
+        "source_key": "menu/08_dairy_free_and_vegan_options.md",
+        "title": "Danh sách đồ uống Không Sữa Bò (Dairy-Free) và Thuần Chay tại BREW & BEAN",
+        "category": "MENU",
+        "section": "Danh sách đồ uống Không Sữa Bò (Dairy-Free) và Thuần Chay tại BREW & BEAN",
+        "snippet": "Đối với khách hàng dị ứng đạm sữa bò (`DAIRY`), không dung nạp lactose hoặc ăn thuần chay, BREW & BEAN phân loại rõ cờ `has_milk = false` trong hệ thống và cung cấp đa dạng 13 thức"
+      }
+    ]
+  },
+  {
+    "normalized_query": "cacao sữa dừa đá có chứa sữa bò hay các loại hạt cứng không",
+    "language": "vi",
+    "intent": "PRODUCT_LOOKUP",
+    "answer": "**Cacao Sữa Dừa Đá** (S: 42.000đ · M: 48.000đ · L: 54.000đ) **KHÔNG chứa sữa bò (`DAIRY`) và KHÔNG chứa các loại hạt cứng (`NUTS`)** trong công thức chuẩn:\n- Thành phần gồm: Bột Cacao Đắk Lắk, Nước cốt dừa Bến Tre và mật ong hoa cà phê (tùy chọn).\n*Lưu ý an toàn:* Quầy bar pha chế chung khu vực có sữa bò, hạt, đậu nành và gluten; nếu bạn dị ứng nặng vui lòng báo trực tiếp Barista.",
+    "product_slugs": [
+      "cacao-sua-dua-da"
+    ],
+    "citations": [
+      {
+        "source_key": "menu/05_non_coffee_and_plant_milk.md",
+        "title": "Đồ uống Không Caffeine và Sữa Hạt Thực Vật",
+        "category": "MENU",
+        "section": "Đồ uống Không Caffeine và Sữa Hạt Thực Vật",
+        "snippet": "Tất cả các món thuộc danh mục Cacao & Sữa Hạt tại BREW & BEAN đều có hàm lượng caffeine bằng không (`caffeine_level = none`), phù hợp uống vào buổi tối, cho trẻ em, phụ nữ mang tha"
+      },
+      {
+        "source_key": "menu/08_dairy_free_and_vegan_options.md",
+        "title": "Danh sách đồ uống Không Sữa Bò (Dairy-Free) và Thuần Chay tại BREW & BEAN",
+        "category": "MENU",
+        "section": "Danh sách đồ uống Không Sữa Bò (Dairy-Free) và Thuần Chay tại BREW & BEAN",
+        "snippet": "Đối với khách hàng dị ứng đạm sữa bò (`DAIRY`), không dung nạp lactose hoặc ăn thuần chay, BREW & BEAN phân loại rõ cờ `has_milk = false` trong hệ thống và cung cấp đa dạng 13 thức"
+      }
+    ]
+  },
+  {
+    "normalized_query": "sữa đậu nành mè đen có phù hợp cho người dị ứng sữa bò và dị ứng hạt không",
+    "language": "vi",
+    "intent": "ALLERGEN_INGREDIENT",
+    "answer": "**Có!** **Sữa Đậu Nành Mè Đen** (S: 38.000đ · M: 44.000đ · L: 49.000đ) **phù hợp cho người dị ứng sữa bò (`DAIRY`) và dị ứng các loại hạt cứng (`NUTS`)**:\n- Thành phần chuẩn chỉ gồm **Sữa đậu nành hữu cơ (`SOY`)** và **Mè đen rang xay** (`has_milk = false`, không caffeine).\n- *Lưu ý:* Món có chứa **`SOY`** (đậu nành) và được pha chế tại quầy bar dùng chung khu vực có `DAIRY`, `NUTS`, `SOY`, `GLUTEN`, nên nếu bạn dị ứng nặng hãy báo Barista lưu ý dụng cụ.",
+    "product_slugs": [
+      "sua-dau-nanh-me-den"
+    ],
+    "citations": [
+      {
+        "source_key": "menu/05_non_coffee_and_plant_milk.md",
+        "title": "Đồ uống Không Caffeine và Sữa Hạt Thực Vật",
+        "category": "MENU",
+        "section": "Đồ uống Không Caffeine và Sữa Hạt Thực Vật",
+        "snippet": "Tất cả các món thuộc danh mục Cacao & Sữa Hạt tại BREW & BEAN đều có hàm lượng caffeine bằng không (`caffeine_level = none`), phù hợp uống vào buổi tối, cho trẻ em, phụ nữ mang tha"
+      },
+      {
+        "source_key": "policies/01_allergen_safety_and_cross_contact.md",
+        "title": "Chính sách Minh bạch Thành phần và An toàn Dị ứng Thực phẩm",
+        "category": "POLICY",
+        "section": "Chính sách Minh bạch Thành phần và An toàn Dị ứng Thực phẩm",
+        "snippet": "BREW & BEAN cam kết công khai đầy đủ danh sách nguyên liệu và 4 nhóm chất gây dị ứng phổ biến (`DAIRY`, `NUTS`, `SOY`, `GLUTEN`) trên từng trang chi tiết sản phẩm cũng như qua trợ "
+      }
+    ]
+  },
+  {
+    "normalized_query": "croissant bơ pháp và basque burnt cheesecake có chứa sữa bò không",
+    "language": "vi",
+    "intent": "PRODUCT_LOOKUP",
+    "answer": "**Có.** Cả **Croissant Bơ Pháp** (38.000đ · 280 kcal) và **Basque Burnt Cheesecake** (59.000đ · 360 kcal) **đều chứa sữa bò (`DAIRY`)** và bột mì (`GLUTEN`):\n- **Croissant Bơ Pháp:** Chứa Bơ lạt Pháp (`DAIRY`) và Bột mì T55 Pháp (`GLUTEN`).\n- **Basque Burnt Cheesecake:** Chứa Cream Cheese (`DAIRY`), Whipping Cream (`DAIRY`) và Bột mì (`GLUTEN`).",
+    "product_slugs": [
+      "croissant-bo-phap",
+      "basque-burnt-cheesecake"
+    ],
+    "citations": [
+      {
+        "source_key": "menu/06_artisan_pastry_pairings.md",
+        "title": "Bánh Ngọt Thủ Công và Gợi ý Ghép Cặp Đồ Uống",
+        "category": "MENU",
+        "section": "Bánh Ngọt Thủ Công và Gợi ý Ghép Cặp Đồ Uống",
+        "snippet": "Quầy bánh tại BREW & BEAN được nướng mới mỗi sáng, đóng gói theo khẩu phần tiêu chuẩn (`regular`) để đồng hành cùng tách cà phê hoặc trà của bạn. Tất cả các món bánh hiện tại đều c"
+      },
+      {
+        "source_key": "faq/02_allergens_and_dietary_faq.md",
+        "title": "FAQ — Dị ứng thực phẩm và Chế độ ăn kiêng",
+        "category": "FAQ",
+        "section": "FAQ — Dị ứng thực phẩm và Chế độ ăn kiêng",
+        "snippet": "A: Bạn có 13 đồ uống hoàn toàn không chứa sữa bò (`has_milk = false`): - Nhóm có sữa hạt béo nhẹ: **Latte Sữa Yến Mạch Mật Ong**, **Cacao Sữa Dừa Đá**, **Matcha Sữa Hạnh Nhân** (`N"
+      }
+    ]
+  },
+  {
+    "normalized_query": "vì sao brew & bean chọn rang vừa medium roast thay vì rang đậm",
+    "language": "vi",
+    "intent": "COFFEE_KNOWLEDGE",
+    "answer": "BREW & BEAN rang từng mẻ nhỏ 12 kg ở mức **Medium Roast (Rang vừa)** thay vì rang đậm (Dark Roast) để:\n- **Giữ vị ngọt caramel & hương trái cây tự nhiên:** Rang quá sẫm làm cháy đường tự nhiên và che lấp đặc trưng vùng trồng Cầu Đất / Buôn Ma Thuột.\n- **Cân bằng, êm dịu dễ uống:** Hạt đạt sự hài hòa giữa độ ngọt tự nhiên, độ chua thanh trái cây và body mượt mà, **không gây đắng khét hay khô cổ** sau khi uống.",
+    "product_slugs": [
+      "americano-cau-dat",
+      "caramel-latte",
+      "ca-phe-muoi-cau-dat"
+    ],
+    "citations": [
+      {
+        "source_key": "coffee_guide/03_roasting_profiles_and_flavor.md",
+        "title": "Triết lý Rang vừa (Medium Roast) và Cách nhận biết Hương vị Cà phê",
+        "category": "COFFEE_GUIDE",
+        "section": "Triết lý Rang vừa (Medium Roast) và Cách nhận biết Hương vị Cà phê",
+        "snippet": "Tại xưởng rang của BREW & BEAN, toàn bộ hạt Arabica Cầu Đất và Robusta Buôn Ma Thuột đều được rang theo từng mẻ nhỏ 12 kg ở mức **Medium Roast (Rang vừa)** thay vì rang cháy đen (D"
+      }
+    ]
+  },
+  {
+    "normalized_query": "uống cold brew ủ lạnh 18 giờ có bị cồn cào dạ dày không",
+    "language": "vi",
+    "intent": "COFFEE_KNOWLEDGE",
+    "answer": "**Cold Brew ủ lạnh 18 giờ** cực kỳ **dễ chịu cho dạ dày** hơn cà phê pha nóng:\n- Do được ngâm ủ trong nước lọc lạnh **4°C suốt 18 giờ**, nước lạnh không hòa tan nhiều hợp chất axit gắt và tinh dầu đắng — giúp **giảm đến 65% độ axit** so với Espresso pha nóng.\n- Nếu dạ dày nhạy cảm, bạn có thể chọn thêm **Cold Brew Sữa Tươi** (từ 42.000đ) để êm bụng hơn nữa.",
+    "product_slugs": [
+      "cold-brew-truyen-thong",
+      "cold-brew-sua-tuoi",
+      "cold-brew-cam-sa"
+    ],
+    "citations": [
+      {
+        "source_key": "coffee_guide/02_cold_brew_vs_iced_espresso.md",
+        "title": "Cold Brew ủ lạnh 18 giờ khác gì với Espresso pha đá?",
+        "category": "COFFEE_GUIDE",
+        "section": "Cold Brew ủ lạnh 18 giờ khác gì với Espresso pha đá?",
+        "snippet": "Đây là câu hỏi được khách hàng hỏi nhiều nhất tại quầy bar BREW & BEAN. Dù cùng sử dụng hạt **100% Arabica Cầu Đất**, hai phương pháp chiết xuất mang lại trải nghiệm khác biệt rõ r"
+      }
+    ]
+  },
+  {
+    "normalized_query": "phương pháp hand-poured v60 có ở chi nhánh nào và hương vị ra sao",
+    "language": "vi",
+    "intent": "STORE_INFO",
+    "answer": "Phương pháp **Hand-Poured V60** hiện được phục vụ tại quầy **Pour-over Bar** ở chi nhánh **BREW & BEAN Flagship Nguyễn Huệ** (88 Nguyễn Huệ, Quận 1):\n- Pha thủ công bằng nước **91°C** chia 3 lần rót chậm trong 2.5–3 phút từ 100% Arabica Cầu Đất.\n- **Hương vị:** Tách cà phê trong trẻo như trà hoa, nổi bật hương hoa trắng, cam chanh và vị ngọt hậu kéo dài.",
+    "product_slugs": [
+      "americano-cau-dat"
+    ],
+    "citations": [
+      {
+        "source_key": "coffee_guide/05_pouring_methods_espresso_v60_coldbrew.md",
+        "title": "Ba phương pháp pha chế chủ đạo: Espresso 9 Bar, Cold Brew 18h và V60",
+        "category": "COFFEE_GUIDE",
+        "section": "Ba phương pháp pha chế chủ đạo: Espresso 9 Bar, Cold Brew 18h và V60",
+        "snippet": "Tại quầy bar BREW & BEAN, mỗi phương pháp chiết xuất được hiệu chỉnh thông số riêng về cỡ xay, nhiệt độ nước và tỷ lệ cà phê nhằm khai thác ưu điểm tốt nhất của từng loại hạt. Sử d"
+      }
+    ]
+  },
+  {
+    "normalized_query": "quán có hỗ trợ giảm đường 70%, 50% hoặc pha không đường không",
+    "language": "vi",
+    "intent": "COFFEE_KNOWLEDGE",
+    "answer": "**Có.** Tất cả đồ uống pha chế theo đơn tại BREW & BEAN đều hỗ trợ tùy chỉnh mức độ ngọt linh hoạt: **100% (mặc định) / 70% (ít ngọt) / 50% / 30% / 0% (không đường)**.\n- *Lưu ý:* Các món có **sữa đặc** (như **Cà Phê Sữa Đá Sài Gòn**, **Bạc Xỉu Cốt Dừa Nướng**) vẫn có vị ngọt tự nhiên từ sữa đặc, trừ khi bạn đổi sang nền sữa tươi hoặc sữa yến mạch không đường.\n- Ngoài ra bạn còn có thể tùy chỉnh lượng đá (*bình thường / ít đá / đá riêng*) và số shot espresso.",
+    "product_slugs": [
+      "cold-brew-sua-tuoi",
+      "americano-cau-dat",
+      "matcha-sua-hanh-nhan"
+    ],
+    "citations": [
+      {
+        "source_key": "coffee_guide/07_sweetness_ice_adjustment_guide.md",
+        "title": "Hướng dẫn tùy chỉnh độ ngọt, lượng đá và shot espresso theo khẩu vị",
+        "category": "COFFEE_GUIDE",
+        "section": "Hướng dẫn tùy chỉnh độ ngọt, lượng đá và shot espresso theo khẩu vị",
+        "snippet": "Mỗi vị khách có một khẩu vị riêng. Khi gọi món tại quầy hoặc trò chuyện với Bean AI, bạn có thể linh hoạt tùy chỉnh đồ uống theo 4 tiêu chí sau: 1. **Mức độ ngọt (Đường / Sữa đặc /"
+      },
+      {
+        "source_key": "faq/01_menu_taste_and_customization_faq.md",
+        "title": "FAQ — Khẩu vị và Tùy chỉnh đồ uống",
+        "category": "FAQ",
+        "section": "FAQ — Khẩu vị và Tùy chỉnh đồ uống",
+        "snippet": "A: Nếu bạn thích cà phê ít đắng và béo dịu, các lựa chọn phù hợp nhất gồm **Bạc Xỉu Cốt Dừa Nướng** (độ đắng 1/5, caffeine thấp), **Cà Phê Muối Cầu Đất** (độ đắng 2/5, lớp kem muối"
+      }
+    ]
+  },
+  {
+    "normalized_query": "tôi có thể đổi sữa tươi sang sữa yến mạch hoặc sữa hạnh nhân cho latte được không",
+    "language": "vi",
+    "intent": "COFFEE_KNOWLEDGE",
+    "answer": "**Có.** Bạn có thể yêu cầu đổi nền sữa tươi sang **Sữa Yến Mạch Barista** (sánh mịn gần giống sữa tươi nhất) hoặc **Sữa Hạnh Nhân** (`NUTS`, ít calo) cho hầu hết các món Latte, Cappuccino và Matcha Latte.\n- Ngoài ra quán có sẵn 2 công thức chuẩn không sữa bò là **Latte Sữa Yến Mạch Mật Ong** (từ 49.000đ) và **Matcha Sữa Hạnh Nhân** (từ 48.000đ).\n- *Lưu ý:* Món có lớp kem phủ (*Kem muối*, *Kem phô mai*) vẫn chứa `DAIRY` ở phần kem nếu bạn không yêu cầu bỏ kem.",
+    "product_slugs": [
+      "oat-milk-honey-latte",
+      "matcha-sua-hanh-nhan",
+      "caramel-latte",
+      "cappuccino-arabica"
+    ],
+    "citations": [
+      {
+        "source_key": "coffee_guide/07_sweetness_ice_adjustment_guide.md",
+        "title": "Hướng dẫn tùy chỉnh độ ngọt, lượng đá và shot espresso theo khẩu vị",
+        "category": "COFFEE_GUIDE",
+        "section": "Hướng dẫn tùy chỉnh độ ngọt, lượng đá và shot espresso theo khẩu vị",
+        "snippet": "Mỗi vị khách có một khẩu vị riêng. Khi gọi món tại quầy hoặc trò chuyện với Bean AI, bạn có thể linh hoạt tùy chỉnh đồ uống theo 4 tiêu chí sau: 1. **Mức độ ngọt (Đường / Sữa đặc /"
+      },
+      {
+        "source_key": "coffee_guide/06_milk_and_plant_milk_pairings.md",
+        "title": "Sữa tươi thanh trùng và các loại Sữa hạt Thực vật trong pha chế",
+        "category": "COFFEE_GUIDE",
+        "section": "Sữa tươi thanh trùng và các loại Sữa hạt Thực vật trong pha chế",
+        "snippet": "Việc chọn nền sữa quyết định trực tiếp đến độ béo, vị ngọt và tính an toàn dị ứng của ly đồ uống. BREW & BEAN sử dụng 5 nền sữa khác nhau tại quầy bar: - **Sữa tươi thanh trùng & S"
+      }
+    ]
+  },
+  {
+    "normalized_query": "bánh croissant bơ pháp và croissant hạnh nhân nên uống kèm cà phê nào",
+    "language": "vi",
+    "intent": "PRODUCT_RECOMMENDATION",
+    "answer": "Gợi ý ghép cặp chuẩn vị cùng 2 loại bánh Croissant nướng mới mỗi sáng:\n- **Croissant Bơ Pháp** (38.000đ · 280 kcal): Vỏ 27 lớp bơ lạt giòn rụm, rất hợp chấm cùng **Cappuccino Arabica** (từ 42.000đ), **Cà Phê Muối Cầu Đất** (từ 45.000đ) hoặc **Americano Cầu Đất** (từ 38.000đ) — đặc biệt có ưu đãi Combo Sáng `MORNING20`.\n- **Croissant Hạnh Nhân** (46.000đ · 340 kcal): Nhân kem hạnh nhân ngọt béo, hợp nhất với **Americano Cầu Đất** hoặc **Cold Brew Truyền Thống 18h** (từ 40.000đ) để cân bằng vị béo.",
+    "product_slugs": [
+      "croissant-bo-phap",
+      "croissant-hanh-nhan",
+      "cappuccino-arabica",
+      "americano-cau-dat"
+    ],
+    "citations": [
+      {
+        "source_key": "menu/06_artisan_pastry_pairings.md",
+        "title": "Bánh Ngọt Thủ Công và Gợi ý Ghép Cặp Đồ Uống",
+        "category": "MENU",
+        "section": "Bánh Ngọt Thủ Công và Gợi ý Ghép Cặp Đồ Uống",
+        "snippet": "Quầy bánh tại BREW & BEAN được nướng mới mỗi sáng, đóng gói theo khẩu phần tiêu chuẩn (`regular`) để đồng hành cùng tách cà phê hoặc trà của bạn. Tất cả các món bánh hiện tại đều c"
+      }
+    ]
+  },
+  {
+    "normalized_query": "tiramisu espresso có chứa caffeine và sữa bò không",
+    "language": "vi",
+    "intent": "PRODUCT_LOOKUP",
+    "answer": "**Có cả hai.** **Tiramisu Espresso** (55.000đ · 320 kcal) chứa:\n- **Caffeine:** Mức **nhẹ (`low`)** do bánh được tẩm Espresso Arabica Cầu Đất và phủ bột cacao Đắk Lắk.\n- **Sữa bò (`DAIRY`) & Gluten (`GLUTEN`):** Thành phần gồm Phô mai kem Cream Cheese (`DAIRY`), Kem tươi Whipping Cream (`DAIRY`) và Bột mì T55 Pháp (`GLUTEN`).",
+    "product_slugs": [
+      "tiramisu-espresso"
+    ],
+    "citations": [
+      {
+        "source_key": "menu/06_artisan_pastry_pairings.md",
+        "title": "Bánh Ngọt Thủ Công và Gợi ý Ghép Cặp Đồ Uống",
+        "category": "MENU",
+        "section": "Bánh Ngọt Thủ Công và Gợi ý Ghép Cặp Đồ Uống",
+        "snippet": "Quầy bánh tại BREW & BEAN được nướng mới mỗi sáng, đóng gói theo khẩu phần tiêu chuẩn (`regular`) để đồng hành cùng tách cà phê hoặc trà của bạn. Tất cả các món bánh hiện tại đều c"
+      }
+    ]
+  },
+  {
+    "normalized_query": "quán có chính sách pha lại miễn phí nếu đồ uống chưa hợp khẩu vị không",
+    "language": "vi",
+    "intent": "COFFEE_KNOWLEDGE",
+    "answer": "**Có!** BREW & BEAN áp dụng **chính sách pha lại miễn phí tại quầy**:\n- Nếu ly đồ uống bạn nhận được chưa đúng yêu cầu (nhầm size, sai nóng/đá, sai loại sữa hoặc quá ngọt/quá đắng so với khẩu vị đã chọn), hãy báo ngay cho Barista tại quầy để được pha lại ly mới **miễn phí trong vòng 3–5 phút**.\n- Lưu ý các món có kem muối/kem phô mai ngon nhất khi dùng trong 20 phút đầu.",
+    "product_slugs": [],
+    "citations": [
+      {
+        "source_key": "policies/02_quality_guarantee_and_remake.md",
+        "title": "Chính sách Bảo đảm Chất lượng và Pha lại Miễn phí",
+        "category": "POLICY",
+        "section": "Chính sách Bảo đảm Chất lượng và Pha lại Miễn phí",
+        "snippet": "Trải nghiệm hương vị trọn vẹn của khách hàng là ưu tiên số một tại BREW & BEAN. - **Pha lại miễn phí tại quầy:** Nếu ly đồ uống bạn nhận được chưa đúng yêu cầu (nhầm size, sai nhiệ"
+      }
+    ]
+  },
+  {
+    "normalized_query": "quy định về nguy cơ nhiễm chéo dị ứng thực phẩm tại quầy bar ra sao",
+    "language": "vi",
+    "intent": "ALLERGEN_INGREDIENT",
+    "answer": "Quy định an toàn dị ứng và nguy cơ nhiễm chéo tại quầy bar BREW & BEAN:\n1. **Minh bạch 4 nhóm dị ứng:** Quán công khai rõ nguyên liệu thuộc nhóm `DAIRY`, `NUTS`, `SOY`, `GLUTEN` trên từng món.\n2. **Nguy cơ nhiễm chéo (Cross-contact):** Mặc dù có 13 đồ uống `has_milk = false` không chứa sữa bò trong công thức, toàn bộ đồ uống được pha trong cùng khu vực quầy bar có sử dụng vòi đánh sữa, bình lắc và tủ bánh chứa `DAIRY`, `NUTS`, `SOY`, `GLUTEN`.\n3. **Khách dị ứng nặng:** Vui lòng báo trực tiếp **Trưởng ca Barista** khi gọi món để quầy sử dụng dụng cụ vệ sinh riêng biệt.",
+    "product_slugs": [],
+    "citations": [
+      {
+        "source_key": "policies/01_allergen_safety_and_cross_contact.md",
+        "title": "Chính sách Minh bạch Thành phần và An toàn Dị ứng Thực phẩm",
+        "category": "POLICY",
+        "section": "Chính sách Minh bạch Thành phần và An toàn Dị ứng Thực phẩm",
+        "snippet": "BREW & BEAN cam kết công khai đầy đủ danh sách nguyên liệu và 4 nhóm chất gây dị ứng phổ biến (`DAIRY`, `NUTS`, `SOY`, `GLUTEN`) trên từng trang chi tiết sản phẩm cũng như qua trợ "
+      }
+    ]
+  },
+  {
+    "normalized_query": "quy định không gian yên tĩnh, wi-fi và mang thú cưng tại quán như thế nào",
+    "language": "vi",
+    "intent": "COFFEE_KNOWLEDGE",
+    "answer": "Quy định không gian làm việc, Wi-Fi và thú cưng tại BREW & BEAN:\n- **Wi-Fi & Ổ cắm:** Miễn phí **không giới hạn thời gian** sử dụng Wi-Fi cho khách gọi đồ uống. Bàn họp nhóm tại chi nhánh Võ Văn Tần khuyến khích đặt trước qua hotline nếu đi từ 5 người trở lên.\n- **Khu vực yên tĩnh (`quiet_zone`):** Vui lòng đeo tai nghe khi họp trực tuyến hoặc xem video; toàn bộ phòng máy lạnh cấm hút thuốc và thuốc lá điện tử.\n- **Thú cưng (`pet_friendly`):** Chỉ áp dụng tại khu vực **sân vườn ngoài trời của BREW & BEAN Thảo Điền Garden** (24 Xuân Thủy, Thủ Đức); vui lòng giữ dây dắt.",
+    "product_slugs": [],
+    "citations": [
+      {
+        "source_key": "policies/03_wifi_workspace_and_pet_policy.md",
+        "title": "Quy định Không gian làm việc, Giữ chỗ và Đón Thú cưng",
+        "category": "POLICY",
+        "section": "Quy định Không gian làm việc, Giữ chỗ và Đón Thú cưng",
+        "snippet": "- **Wi-Fi & Ổ cắm:** Miễn phí không giới hạn thời gian sử dụng Wi-Fi cho tất cả khách gọi đồ uống tại quán. Bàn họp nhóm tại chi nhánh Võ Văn Tần khuyến khích đặt trước qua hotline"
+      }
+    ]
+  },
+  {
+    "normalized_query": "khách mang bình cá nhân hoặc xin bã cà phê về trồng cây có được không",
+    "language": "vi",
+    "intent": "COFFEE_KNOWLEDGE",
+    "answer": "**Cả hai đều được!** BREW & BEAN khuyến khích lối sống xanh tại quầy bar:\n- **Mang bình/ly cá nhân:** Khách mang bình/ly sạch có dung tích phù hợp size S/M/L (350ml–550ml) sẽ được ưu tiên pha chế trực tiếp.\n- **Xin bã cà phê:** Mỗi cuối ngày, bã cà phê Espresso và Cold Brew được đóng túi khô **tặng miễn phí** để khách mang về bón cây cảnh hoặc khử mùi tự nhiên.",
+    "product_slugs": [],
+    "citations": [
+      {
+        "source_key": "policies/04_sustainability_and_packaging.md",
+        "title": "Chính sách Môi trường, Mang Bình Cá Nhân và Bã Cà phê",
+        "category": "POLICY",
+        "section": "Chính sách Môi trường, Mang Bình Cá Nhân và Bã Cà phê",
+        "snippet": "BREW & BEAN hướng tới vận hành bền vững từ nông trại tới quầy bar đô thị: - **Ly & Ống hút thân thiện môi trường:** Toàn bộ ly mang đi dùng giấy chứng nhận FSC hoặc nhựa sinh học t"
+      }
+    ]
+  },
+  {
+    "normalized_query": "câu chuyện thương hiệu và 3 giá trị cốt lõi của brew & bean là gì",
+    "language": "vi",
+    "intent": "COFFEE_KNOWLEDGE",
+    "answer": "**BREW & BEAN** được sáng lập tại TP. Hồ Chí Minh với sứ mệnh nâng tầm trải nghiệm cà phê đặc sản Việt Nam bằng sự minh bạch thông số hương vị, dinh dưỡng và trợ lý **Bean AI Barista**.\n**Ba giá trị cốt lõi:**\n1. **Hạt Việt tuyển chọn:** 100% Arabica Cầu Đất (1.650m) và Robusta Buôn Ma Thuột sơ chế sạch, rang vừa từng mẻ nhỏ.\n2. **Minh bạch khẩu vị & sức khỏe:** Công khai thang Độ đắng (1–5), Độ ngọt (1–5), Caffeine và cảnh báo dị ứng.\n3. **Công nghệ phục vụ trải nghiệm con người:** Bean AI gợi ý nhanh trong vài giây để Barista tập trung pha chế thủ công tỉ mỉ.",
+    "product_slugs": [],
+    "citations": [
+      {
+        "source_key": "brand/01_brew_and_bean_story.md",
+        "title": "Câu chuyện Thương hiệu BREW & BEAN",
+        "category": "BRAND",
+        "section": "Câu chuyện Thương hiệu BREW & BEAN",
+        "snippet": "BREW & BEAN được sáng lập tại TP. Hồ Chí Minh với sứ mệnh nâng tầm trải nghiệm cà phê đặc sản Việt Nam: kết hợp quy trình rang xay chuẩn mực cùng sự minh bạch về thông số hương vị,"
+      }
+    ]
+  },
+  {
+    "normalized_query": "brew & bean thu mua hạt cà phê từ vùng trồng nào",
+    "language": "vi",
+    "intent": "COFFEE_KNOWLEDGE",
+    "answer": "BREW & BEAN hợp tác **thu mua trực tiếp (Direct Trade)** không qua trung gian với các hộ nông dân tại hai vùng trồng:\n- **Cầu Đất (Đà Lạt, Lâm Đồng — độ cao 1.650m):** Trồng giống **Arabica** chín chậm, vị thanh tao, ít đắng, hương hoa và trái cây.\n- **Buôn Ma Thuột (Đắk Lắk — đất đỏ bazan):** Trồng giống **Fine Robusta** sơ chế sạch, body dày, hương cacao đậm.\nHạt được thu hoạch chọn lọc >95% quả chín đỏ, sơ chế ướt/mật ong và truy xuất rõ từng mẻ rang.",
+    "product_slugs": [],
+    "citations": [
+      {
+        "source_key": "brand/03_direct_trade_highland_farms.md",
+        "title": "Hợp tác Thu mua Trực tiếp từ Nông trại Cầu Đất và Buôn Ma Thuột",
+        "category": "BRAND",
+        "section": "Hợp tác Thu mua Trực tiếp từ Nông trại Cầu Đất và Buôn Ma Thuột",
+        "snippet": "Thay vì thu mua trôi nổi qua nhiều tầng trung gian, BREW & BEAN xây dựng mối liên kết trực tiếp (Direct Trade) với các hộ nông dân trồng cà phê bền vững tại **Cầu Đất (Đà Lạt)** và"
+      },
+      {
+        "source_key": "coffee_guide/01_arabica_cau_dat_vs_robusta_bmt.md",
+        "title": "So sánh hạt Arabica Cầu Đất 1.650m và Robusta Buôn Ma Thuột",
+        "category": "COFFEE_GUIDE",
+        "section": "So sánh hạt Arabica Cầu Đất 1.650m và Robusta Buôn Ma Thuột",
+        "snippet": "BREW & BEAN tuyển chọn hai giống hạt chủ lực từ hai vùng trồng danh tiếng bậc nhất Việt Nam để đáp ứng trọn vẹn cả gu thưởng thức hiện đại lẫn truyền thống. Khí hậu mát mẻ quanh nă"
+      }
+    ]
+  },
+  {
+    "normalized_query": "what coffee do you recommend if i prefer less bitter and creamy taste",
+    "language": "en",
+    "intent": "PRODUCT_RECOMMENDATION",
+    "answer": "If you prefer a **less bitter and creamy** coffee at BREW & BEAN, here are our top picks:\n- **Toasted Coconut Bac Xiu (Bạc Xỉu Cốt Dừa Nướng)** (from 39,000 VND): Bitterness `1/5`, rich Ben Tre coconut cream, low caffeine.\n- **Cau Dat Sea Salt Coffee (Cà Phê Muối Cầu Đất)** (from 45,000 VND): Bitterness `2/5`, topped with velvety sea salt cream foam.\n- **Caramel Latte** (from 45,000 VND): Bitterness `2/5`, smooth fresh milk with house-made caramel.\n- **Oat Milk Honey Latte** (from 49,000 VND): Dairy-free creamy oat milk and coffee blossom honey (bitterness `2/5`).",
+    "product_slugs": [
+      "bac-xiu-cot-dua-nuong",
+      "ca-phe-muoi-cau-dat",
+      "caramel-latte",
+      "oat-milk-honey-latte"
+    ],
+    "citations": [
+      {
+        "source_key": "menu/01_signature_drinks_guide.md",
+        "title": "Cẩm nang 5 món Signature độc quyền tại BREW & BEAN",
+        "category": "MENU",
+        "section": "Cẩm nang 5 món Signature độc quyền tại BREW & BEAN",
+        "snippet": "Dòng Signature là niềm tự hào sáng tạo của đội ngũ Barista BREW & BEAN, kết hợp hạt cà phê đặc sản Việt Nam cùng nguyên liệu bản địa tươi mới. Lấy cảm hứng từ thức uống trứ danh đấ"
+      }
+    ]
+  },
+  {
+    "normalized_query": "what dairy-free drinks do you have at brew & bean",
+    "language": "en",
+    "intent": "PRODUCT_RECOMMENDATION",
+    "answer": "BREW & BEAN offers **13 verified dairy-free drinks** (`has_milk = false`):\n- **Creamy plant-milk options:** **Oat Milk Honey Latte** (from 49,000 VND), **Iced Coconut Cacao** (from 42,000 VND), **Almond Milk Matcha** (from 48,000 VND, contains `NUTS`), **Vanilla Almond Milk** (from 39,000 VND, `NUTS`), **Black Sesame Soy Milk** (from 38,000 VND, `SOY`).\n- **Refreshing Cold Brews, black coffee & teas:** **Orange Lemongrass Cold Brew**, **Classic 18h Cold Brew**, **Yuzu Honey Cold Brew**, **Lychee Rose Cold Brew**, **Peach Lemongrass Oolong Tea**, **Mulberry Hibiscus Tea**, **Cau Dat Americano**, and **Buon Ma Thuot Iced Black Coffee**.\n*Allergy note:* Our bar shares equipment with `DAIRY`, `NUTS`, `SOY`, and `GLUTEN`; please inform our Barista if you have a severe allergy.",
+    "product_slugs": [
+      "oat-milk-honey-latte",
+      "cacao-sua-dua-da",
+      "cold-brew-cam-sa",
+      "tra-hibiscus-dau-tam"
+    ],
+    "citations": [
+      {
+        "source_key": "menu/08_dairy_free_and_vegan_options.md",
+        "title": "Danh sách đồ uống Không Sữa Bò (Dairy-Free) và Thuần Chay tại BREW & BEAN",
+        "category": "MENU",
+        "section": "Danh sách đồ uống Không Sữa Bò (Dairy-Free) và Thuần Chay tại BREW & BEAN",
+        "snippet": "Đối với khách hàng dị ứng đạm sữa bò (`DAIRY`), không dung nạp lactose hoặc ăn thuần chay, BREW & BEAN phân loại rõ cờ `has_milk = false` trong hệ thống và cung cấp đa dạng 13 thức"
+      },
+      {
+        "source_key": "policies/01_allergen_safety_and_cross_contact.md",
+        "title": "Chính sách Minh bạch Thành phần và An toàn Dị ứng Thực phẩm",
+        "category": "POLICY",
+        "section": "Chính sách Minh bạch Thành phần và An toàn Dị ứng Thực phẩm",
+        "snippet": "BREW & BEAN cam kết công khai đầy đủ danh sách nguyên liệu và 4 nhóm chất gây dị ứng phổ biến (`DAIRY`, `NUTS`, `SOY`, `GLUTEN`) trên từng trang chi tiết sản phẩm cũng như qua trợ "
+      }
+    ]
+  },
+  {
+    "normalized_query": "how is your 18h cold brew different from iced espresso",
+    "language": "en",
+    "intent": "COFFEE_KNOWLEDGE",
+    "answer": "Although both use **100% Cau Dat Arabica**, our **18h Cold Brew** differs from **iced Espresso** in extraction, acidity, and mouthfeel:\n- **Extraction:** Cold Brew is coarsely ground and steeped in **4°C filtered water for 18 hours**, whereas Espresso is brewed at **92.5°C under 9 bar pressure for 25–30 seconds**.\n- **Acidity & Taste:** Cold-steeping reduces acidity by roughly **65%**, yielding a smooth, naturally sweet cup that is gentle on the stomach; iced Espresso retains crema and brighter, punchier aromatics.\n- **Recommended picks:** Try **Classic 18h Cold Brew** (from 40,000 VND) or **Orange Lemongrass Cold Brew** (from 45,000 VND).",
+    "product_slugs": [
+      "cold-brew-truyen-thong",
+      "cold-brew-cam-sa",
+      "americano-cau-dat"
+    ],
+    "citations": [
+      {
+        "source_key": "coffee_guide/02_cold_brew_vs_iced_espresso.md",
+        "title": "Cold Brew ủ lạnh 18 giờ khác gì với Espresso pha đá?",
+        "category": "COFFEE_GUIDE",
+        "section": "Cold Brew ủ lạnh 18 giờ khác gì với Espresso pha đá?",
+        "snippet": "Đây là câu hỏi được khách hàng hỏi nhiều nhất tại quầy bar BREW & BEAN. Dù cùng sử dụng hạt **100% Arabica Cầu Đất**, hai phương pháp chiết xuất mang lại trải nghiệm khác biệt rõ r"
+      }
+    ]
+  }
+]

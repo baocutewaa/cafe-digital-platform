@@ -43,8 +43,8 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-        serif: ["Georgia", "Cambria", "Times New Roman", "serif"],
+        sans: ["var(--font-sans)", '"Inter Variable"', '"Inter"', "system-ui", "-apple-system", "sans-serif"],
+        serif: ["var(--font-serif)", '"Lora Variable"', '"Lora"', "Cambria", '"Times New Roman"', "serif"],
       },
     },
   },

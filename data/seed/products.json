@@ -1,0 +1,830 @@
+[
+  {
+    "slug": "ca-phe-muoi-cau-dat",
+    "category_slug": "signature",
+    "name_vi": "Cà Phê Muối Cầu Đất",
+    "name_en": "Cau Dat Sea Salt Coffee",
+    "short_description_vi": "Espresso Cầu Đất hòa quyện lớp kem muối biển mặn béo mịn và sữa đặc dịu ngọt.",
+    "short_description_en": "Cau Dat espresso topped with velvety sea salt cream foam and smooth condensed milk.",
+    "story_vi": "Lấy cảm hứng từ cà phê muối Huế, BREW & BEAN sử dụng 100% Arabica Cầu Đất rang vừa kết hợp lớp kem muối biển đánh bông lạnh tạo hậu vị béo bùi khó quên.",
+    "image_url": "/images/products/ca-phe-muoi-cau-dat.webp",
+    "taste_tags": ["sweet", "creamy", "less_bitter", "salted_caramel"],
+    "caffeine_level": "medium",
+    "bitterness_level": 2,
+    "sweetness_level": 4,
+    "has_milk": true,
+    "is_signature": true,
+    "is_featured": true,
+    "display_order": 1,
+    "variants": [
+      { "sku": "BB-SALT-S", "size": "small", "temperature": "both", "price_vnd": 45000, "calories_kcal": 180, "is_available": true },
+      { "sku": "BB-SALT-M", "size": "regular", "temperature": "both", "price_vnd": 49000, "calories_kcal": 220, "is_available": true },
+      { "sku": "BB-SALT-L", "size": "large", "temperature": "iced", "price_vnd": 55000, "calories_kcal": 270, "is_available": true }
+    ],
+    "ingredients": [
+      { "code": "arabica_caudat", "is_optional": false },
+      { "code": "salted_foam", "is_optional": false },
+      { "code": "condensed_milk", "is_optional": false }
+    ]
+  },
+  {
+    "slug": "cold-brew-cam-sa",
+    "category_slug": "signature",
+    "name_vi": "Cold Brew Cam Sả",
+    "name_en": "Orange Lemongrass Cold Brew",
+    "short_description_vi": "Cà phê ủ lạnh 18 giờ thanh mát kết hợp cam vàng tươi và sả thơm dịu nhẹ.",
+    "short_description_en": "18-hour cold brew infused with fresh navel orange juice and aromatic lemongrass.",
+    "story_vi": "Sự kết hợp sảng khoái giữa nốt hương cam chanh của Arabica Cầu Đất và sả tươi Việt Nam, hoàn toàn không sữa và ít đắng.",
+    "image_url": "/images/products/cold-brew-cam-sa.webp",
+    "taste_tags": ["fruity", "refreshing", "less_bitter", "dairy_free"],
+    "caffeine_level": "medium",
+    "bitterness_level": 2,
+    "sweetness_level": 3,
+    "has_milk": false,
+    "is_signature": true,
+    "is_featured": true,
+    "display_order": 2,
+    "variants": [
+      { "sku": "BB-CBCS-S", "size": "small", "temperature": "iced", "price_vnd": 45000, "calories_kcal": 65, "is_available": true },
+      { "sku": "BB-CBCS-M", "size": "regular", "temperature": "iced", "price_vnd": 52000, "calories_kcal": 85, "is_available": true },
+      { "sku": "BB-CBCS-L", "size": "large", "temperature": "iced", "price_vnd": 59000, "calories_kcal": 110, "is_available": true }
+    ],
+    "ingredients": [
+      { "code": "cold_brew_base", "is_optional": false },
+      { "code": "orange_juice", "is_optional": false },
+      { "code": "lemongrass", "is_optional": false },
+      { "code": "honey", "is_optional": true }
+    ]
+  },
+  {
+    "slug": "macadamia-espresso-cream",
+    "category_slug": "signature",
+    "name_vi": "Macadamia Espresso Cream",
+    "name_en": "Macadamia Espresso Cream",
+    "short_description_vi": "Latte mịn màng với sốt hạt Macca Tây Nguyên béo bùi và lớp kem tươi nhẹ.",
+    "short_description_en": "Silky espresso latte layered with highland macadamia syrup and light cream.",
+    "story_vi": "Hạt Macca Đắk Lắk rang thơm được xay nhuyễn làm sốt, giúp cân bằng độ đắng của espresso thành ly cà phê êm ái như món tráng miệng.",
+    "image_url": "/images/products/macadamia-espresso-cream.webp",
+    "taste_tags": ["nutty", "creamy", "less_bitter", "sweet"],
+    "caffeine_level": "medium",
+    "bitterness_level": 2,
+    "sweetness_level": 3,
+    "has_milk": true,
+    "is_signature": true,
+    "is_featured": false,
+    "display_order": 3,
+    "variants": [
+      { "sku": "BB-MACA-S", "size": "small", "temperature": "both", "price_vnd": 49000, "calories_kcal": 195, "is_available": true },
+      { "sku": "BB-MACA-M", "size": "regular", "temperature": "both", "price_vnd": 55000, "calories_kcal": 240, "is_available": true },
+      { "sku": "BB-MACA-L", "size": "large", "temperature": "iced", "price_vnd": 62000, "calories_kcal": 290, "is_available": true }
+    ],
+    "ingredients": [
+      { "code": "arabica_caudat", "is_optional": false },
+      { "code": "fresh_milk", "is_optional": false },
+      { "code": "macadamia_syrup", "is_optional": false },
+      { "code": "whipping_cream", "is_optional": false }
+    ]
+  },
+  {
+    "slug": "bac-xiu-cot-dua-nuong",
+    "category_slug": "signature",
+    "name_vi": "Bạc Xỉu Cốt Dừa Nướng",
+    "name_en": "Toasted Coconut Bac Xiu",
+    "short_description_vi": "Nhiều sữa béo thơm mùi cốt dừa Bến Tre, cà phê nhẹ nhàng dễ uống cho người không quen đắng.",
+    "short_description_en": "Extra-milky Saigon bac xiu enriched with fragrant Ben Tre coconut cream.",
+    "story_vi": "Phiên bản nâng cấp của Bạc Xỉu Sài Gòn với nước cốt dừa Bến Tre thanh béo, lượng caffeine thấp thích hợp dùng cả buổi chiều.",
+    "image_url": "/images/products/bac-xiu-cot-dua-nuong.webp",
+    "taste_tags": ["sweet", "creamy", "less_bitter", "coconut"],
+    "caffeine_level": "low",
+    "bitterness_level": 1,
+    "sweetness_level": 4,
+    "has_milk": true,
+    "is_signature": true,
+    "is_featured": true,
+    "display_order": 4,
+    "variants": [
+      { "sku": "BB-BXCD-S", "size": "small", "temperature": "iced", "price_vnd": 39000, "calories_kcal": 190, "is_available": true },
+      { "sku": "BB-BXCD-M", "size": "regular", "temperature": "iced", "price_vnd": 45000, "calories_kcal": 240, "is_available": true },
+      { "sku": "BB-BXCD-L", "size": "large", "temperature": "iced", "price_vnd": 52000, "calories_kcal": 295, "is_available": true }
+    ],
+    "ingredients": [
+      { "code": "arabica_caudat", "is_optional": false },
+      { "code": "fresh_milk", "is_optional": false },
+      { "code": "condensed_milk", "is_optional": false },
+      { "code": "coconut_milk", "is_optional": false }
+    ]
+  },
+  {
+    "slug": "oat-milk-honey-latte",
+    "category_slug": "signature",
+    "name_vi": "Latte Sữa Yến Mạch Mật Ong",
+    "name_en": "Oat Milk Honey Latte",
+    "short_description_vi": "100% không sữa bò, dùng sữa yến mạch Barista sánh mịn cùng mật ong hoa cà phê.",
+    "short_description_en": "Dairy-free barista oat milk latte naturally sweetened with coffee blossom honey.",
+    "story_vi": "Lựa chọn lý tưởng cho khách ăn chay hoặc dị ứng sữa bò nhưng vẫn muốn vị béo sánh mượt mà cùng hương mật ong Tây Nguyên.",
+    "image_url": "/images/products/oat-milk-honey-latte.webp",
+    "taste_tags": ["sweet", "creamy", "less_bitter", "dairy_free"],
+    "caffeine_level": "medium",
+    "bitterness_level": 2,
+    "sweetness_level": 3,
+    "has_milk": false,
+    "is_signature": true,
+    "is_featured": false,
+    "display_order": 5,
+    "variants": [
+      { "sku": "BB-OATH-S", "size": "small", "temperature": "both", "price_vnd": 49000, "calories_kcal": 135, "is_available": true },
+      { "sku": "BB-OATH-M", "size": "regular", "temperature": "both", "price_vnd": 55000, "calories_kcal": 170, "is_available": true },
+      { "sku": "BB-OATH-L", "size": "large", "temperature": "iced", "price_vnd": 62000, "calories_kcal": 210, "is_available": true }
+    ],
+    "ingredients": [
+      { "code": "arabica_caudat", "is_optional": false },
+      { "code": "oat_milk", "is_optional": false },
+      { "code": "honey", "is_optional": false }
+    ]
+  },
+  {
+    "slug": "ca-phe-sua-da-sai-gon",
+    "category_slug": "espresso-coffee",
+    "name_vi": "Cà Phê Sữa Đá Sài Gòn",
+    "name_en": "Saigon Iced Milk Coffee",
+    "short_description_vi": "Đậm đà chuẩn gu Việt từ Robusta Buôn Ma Thuột và Arabica Cầu Đất hòa sữa đặc.",
+    "short_description_en": "Rich Vietnamese phin-inspired coffee blended with Buon Ma Thuot Robusta and condensed milk.",
+    "story_vi": "Tỷ lệ 70% Robusta Buôn Ma Thuột và 30% Arabica Cầu Đất tạo độ đậm tỉnh táo mà vẫn thơm hương socola đen.",
+    "image_url": "/images/products/ca-phe-sua-da-sai-gon.webp",
+    "taste_tags": ["bold", "sweet", "creamy"],
+    "caffeine_level": "high",
+    "bitterness_level": 4,
+    "sweetness_level": 4,
+    "has_milk": true,
+    "is_signature": false,
+    "is_featured": true,
+    "display_order": 6,
+    "variants": [
+      { "sku": "BB-CFSD-S", "size": "small", "temperature": "both", "price_vnd": 35000, "calories_kcal": 150, "is_available": true },
+      { "sku": "BB-CFSD-M", "size": "regular", "temperature": "both", "price_vnd": 39000, "calories_kcal": 185, "is_available": true },
+      { "sku": "BB-CFSD-L", "size": "large", "temperature": "iced", "price_vnd": 45000, "calories_kcal": 230, "is_available": true }
+    ],
+    "ingredients": [
+      { "code": "robusta_bmt", "is_optional": false },
+      { "code": "arabica_caudat", "is_optional": false },
+      { "code": "condensed_milk", "is_optional": false }
+    ]
+  },
+  {
+    "slug": "ca-phe-den-da-buon-ma-thuot",
+    "category_slug": "espresso-coffee",
+    "name_vi": "Cà Phê Đen Đá Buôn Ma Thuột",
+    "name_en": "Buon Ma Thuot Iced Black Coffee",
+    "short_description_vi": "Nguyên bản đậm vị rang vừa, không sữa, tỉnh táo tức thì cho buổi sáng bận rộn.",
+    "short_description_en": "Bold, dairy-free Vietnamese black coffee roasted for deep cocoa and nutty notes.",
+    "story_vi": "Rang ở mức medium-dark để giữ hậu vị ngọt dịu của cacao mà không bị khét, phục vụ nóng hoặc đá.",
+    "image_url": "/images/products/ca-phe-den-da.webp",
+    "taste_tags": ["bold", "dairy_free"],
+    "caffeine_level": "high",
+    "bitterness_level": 5,
+    "sweetness_level": 1,
+    "has_milk": false,
+    "is_signature": false,
+    "is_featured": false,
+    "display_order": 7,
+    "variants": [
+      { "sku": "BB-CFDD-S", "size": "small", "temperature": "both", "price_vnd": 32000, "calories_kcal": 10, "is_available": true },
+      { "sku": "BB-CFDD-M", "size": "regular", "temperature": "both", "price_vnd": 35000, "calories_kcal": 15, "is_available": true },
+      { "sku": "BB-CFDD-L", "size": "large", "temperature": "iced", "price_vnd": 42000, "calories_kcal": 20, "is_available": true }
+    ],
+    "ingredients": [
+      { "code": "robusta_bmt", "is_optional": false },
+      { "code": "arabica_caudat", "is_optional": false }
+    ]
+  },
+  {
+    "slug": "americano-cau-dat",
+    "category_slug": "espresso-coffee",
+    "name_vi": "Americano Cầu Đất",
+    "name_en": "Cau Dat Americano",
+    "short_description_vi": "Double-shot Arabica Cầu Đất pha loãng thanh khiết, giữ trọn hương quả chín và hoa trắng.",
+    "short_description_en": "Crisp double-shot Cau Dat Arabica over water with subtle stone fruit aromatics.",
+    "story_vi": "Không đường, không sữa, ít calo, phù hợp với những ai yêu vị cà phê thuần khiết thanh nhẹ.",
+    "image_url": "/images/products/americano-cau-dat.webp",
+    "taste_tags": ["bold", "fruity", "dairy_free"],
+    "caffeine_level": "medium",
+    "bitterness_level": 3,
+    "sweetness_level": 1,
+    "has_milk": false,
+    "is_signature": false,
+    "is_featured": false,
+    "display_order": 8,
+    "variants": [
+      { "sku": "BB-AMER-S", "size": "small", "temperature": "both", "price_vnd": 38000, "calories_kcal": 10, "is_available": true },
+      { "sku": "BB-AMER-M", "size": "regular", "temperature": "both", "price_vnd": 42000, "calories_kcal": 15, "is_available": true },
+      { "sku": "BB-AMER-L", "size": "large", "temperature": "iced", "price_vnd": 49000, "calories_kcal": 20, "is_available": true }
+    ],
+    "ingredients": [
+      { "code": "arabica_caudat", "is_optional": false }
+    ]
+  },
+  {
+    "slug": "caramel-latte",
+    "category_slug": "espresso-coffee",
+    "name_vi": "Caramel Latte",
+    "name_en": "Caramel Latte",
+    "short_description_vi": "Espresso êm dịu quyện sữa tươi thanh trùng và sốt caramel nấu thủ công ngọt nhẹ.",
+    "short_description_en": "Velvety espresso and steamed fresh milk swirled with house-made caramel sauce.",
+    "story_vi": "Món được yêu thích nhất cho người mới làm quen cà phê nhờ độ đắng thấp và mùi thơm caramel ấm áp.",
+    "image_url": "/images/products/caramel-latte.webp",
+    "taste_tags": ["sweet", "creamy", "less_bitter", "caramel"],
+    "caffeine_level": "medium",
+    "bitterness_level": 2,
+    "sweetness_level": 4,
+    "has_milk": true,
+    "is_signature": false,
+    "is_featured": true,
+    "display_order": 9,
+    "variants": [
+      { "sku": "BB-CLAT-S", "size": "small", "temperature": "both", "price_vnd": 45000, "calories_kcal": 175, "is_available": true },
+      { "sku": "BB-CLAT-M", "size": "regular", "temperature": "both", "price_vnd": 49000, "calories_kcal": 215, "is_available": true },
+      { "sku": "BB-CLAT-L", "size": "large", "temperature": "iced", "price_vnd": 55000, "calories_kcal": 265, "is_available": true }
+    ],
+    "ingredients": [
+      { "code": "arabica_caudat", "is_optional": false },
+      { "code": "fresh_milk", "is_optional": false },
+      { "code": "caramel_sauce", "is_optional": false }
+    ]
+  },
+  {
+    "slug": "cappuccino-arabica",
+    "category_slug": "espresso-coffee",
+    "name_vi": "Cappuccino Arabica",
+    "name_en": "Arabica Cappuccino",
+    "short_description_vi": "Cân bằng giữa espresso Cầu Đất, sữa nóng và lớp bọt microfoam dày mịn.",
+    "short_description_en": "Classic balance of Cau Dat espresso, steamed milk, and thick microfoam.",
+    "story_vi": "Độ ngọt tự nhiên từ sữa tươi đánh ở 62°C giúp tôn lên nốt hương hạt dẻ của Arabica Cầu Đất.",
+    "image_url": "/images/products/cappuccino-arabica.webp",
+    "taste_tags": ["creamy", "balanced"],
+    "caffeine_level": "medium",
+    "bitterness_level": 3,
+    "sweetness_level": 2,
+    "has_milk": true,
+    "is_signature": false,
+    "is_featured": false,
+    "display_order": 10,
+    "variants": [
+      { "sku": "BB-CAPU-S", "size": "small", "temperature": "hot", "price_vnd": 42000, "calories_kcal": 115, "is_available": true },
+      { "sku": "BB-CAPU-M", "size": "regular", "temperature": "both", "price_vnd": 48000, "calories_kcal": 145, "is_available": true },
+      { "sku": "BB-CAPU-L", "size": "large", "temperature": "iced", "price_vnd": 54000, "calories_kcal": 180, "is_available": true }
+    ],
+    "ingredients": [
+      { "code": "arabica_caudat", "is_optional": false },
+      { "code": "fresh_milk", "is_optional": false }
+    ]
+  },
+  {
+    "slug": "vanilla-flat-white",
+    "category_slug": "espresso-coffee",
+    "name_vi": "Vanilla Flat White",
+    "name_en": "Vanilla Flat White",
+    "short_description_vi": "Sữa đánh mịn ít bọt hòa quyện chiết xuất vani tự nhiên và double ristretto êm ái.",
+    "short_description_en": "Double ristretto folded into glossy microfoam with a touch of natural vanilla.",
+    "story_vi": "Chiết xuất ristretto ngắn giữ vị ngọt đậm và loại bỏ vị chát, cực kỳ hợp với hương vani dịu nhẹ.",
+    "image_url": "/images/products/vanilla-flat-white.webp",
+    "taste_tags": ["creamy", "less_bitter", "sweet"],
+    "caffeine_level": "medium",
+    "bitterness_level": 2,
+    "sweetness_level": 3,
+    "has_milk": true,
+    "is_signature": false,
+    "is_featured": false,
+    "display_order": 11,
+    "variants": [
+      { "sku": "BB-VFW-S", "size": "small", "temperature": "both", "price_vnd": 44000, "calories_kcal": 140, "is_available": true },
+      { "sku": "BB-VFW-M", "size": "regular", "temperature": "both", "price_vnd": 49000, "calories_kcal": 175, "is_available": true },
+      { "sku": "BB-VFW-L", "size": "large", "temperature": "iced", "price_vnd": 55000, "calories_kcal": 215, "is_available": true }
+    ],
+    "ingredients": [
+      { "code": "arabica_caudat", "is_optional": false },
+      { "code": "fresh_milk", "is_optional": false },
+      { "code": "vanilla_bean", "is_optional": false }
+    ]
+  },
+  {
+    "slug": "hazelnut-mocha",
+    "category_slug": "espresso-coffee",
+    "name_vi": "Hazelnut Mocha",
+    "name_en": "Hazelnut Mocha",
+    "short_description_vi": "Cacao Đắk Lắk quyện espresso, sữa tươi và siro hạt phỉ thơm ngậy.",
+    "short_description_en": "Dak Lak cacao melted into espresso and steamed milk with roasted hazelnut notes.",
+    "story_vi": "Món uống ấm áp dành cho tín đồ socola muốn thêm chút tỉnh táo từ cà phê đặc sản.",
+    "image_url": "/images/products/hazelnut-mocha.webp",
+    "taste_tags": ["sweet", "chocolatey", "nutty", "creamy", "less_bitter"],
+    "caffeine_level": "medium",
+    "bitterness_level": 2,
+    "sweetness_level": 4,
+    "has_milk": true,
+    "is_signature": false,
+    "is_featured": false,
+    "display_order": 12,
+    "variants": [
+      { "sku": "BB-HMOCH-S", "size": "small", "temperature": "both", "price_vnd": 48000, "calories_kcal": 205, "is_available": true },
+      { "sku": "BB-HMOCH-M", "size": "regular", "temperature": "both", "price_vnd": 54000, "calories_kcal": 250, "is_available": true },
+      { "sku": "BB-HMOCH-L", "size": "large", "temperature": "iced", "price_vnd": 59000, "calories_kcal": 300, "is_available": true }
+    ],
+    "ingredients": [
+      { "code": "arabica_caudat", "is_optional": false },
+      { "code": "cacao_daklak", "is_optional": false },
+      { "code": "fresh_milk", "is_optional": false },
+      { "code": "hazelnut_syrup", "is_optional": false }
+    ]
+  },
+  {
+    "slug": "cold-brew-truyen-thong",
+    "category_slug": "cold-brew",
+    "name_vi": "Cold Brew Truyền Thống 18h",
+    "name_en": "Classic 18h Cold Brew",
+    "short_description_vi": "Ủ lạnh 18 giờ từ Arabica Cầu Đất cho vị êm mượt, không chua gắt và hậu vị socola.",
+    "short_description_en": "Pure 18-hour cold-steeped Cau Dat Arabica with smooth body and cocoa finish.",
+    "story_vi": "Chiết xuất nước lạnh giúp giảm đến 65% độ axit so với pha nóng, giữ vị thanh khiết và tỉnh táo bền bỉ.",
+    "image_url": "/images/products/cold-brew-truyen-thong.webp",
+    "taste_tags": ["refreshing", "less_bitter", "fruity", "dairy_free"],
+    "caffeine_level": "high",
+    "bitterness_level": 2,
+    "sweetness_level": 1,
+    "has_milk": false,
+    "is_signature": false,
+    "is_featured": true,
+    "display_order": 13,
+    "variants": [
+      { "sku": "BB-CBTT-S", "size": "small", "temperature": "iced", "price_vnd": 40000, "calories_kcal": 10, "is_available": true },
+      { "sku": "BB-CBTT-M", "size": "regular", "temperature": "iced", "price_vnd": 45000, "calories_kcal": 15, "is_available": true },
+      { "sku": "BB-CBTT-L", "size": "large", "temperature": "iced", "price_vnd": 52000, "calories_kcal": 20, "is_available": true }
+    ],
+    "ingredients": [
+      { "code": "cold_brew_base", "is_optional": false }
+    ]
+  },
+  {
+    "slug": "cold-brew-sua-tuoi",
+    "category_slug": "cold-brew",
+    "name_vi": "Cold Brew Sữa Tươi",
+    "name_en": "Cold Brew Fresh Milk",
+    "short_description_vi": "Cold Brew ủ lạnh kết hợp sữa tươi thanh trùng, ít ngọt, thanh mát và êm bụng.",
+    "short_description_en": "Smooth 18-hour cold brew poured over cold fresh milk with minimal bitterness.",
+    "story_vi": "Không dùng đường tinh luyện theo công thức mặc định, tôn lên độ ngọt tự nhiên của sữa tươi và hương hạt rang.",
+    "image_url": "/images/products/cold-brew-sua-tuoi.webp",
+    "taste_tags": ["creamy", "less_bitter", "refreshing"],
+    "caffeine_level": "medium",
+    "bitterness_level": 2,
+    "sweetness_level": 2,
+    "has_milk": true,
+    "is_signature": false,
+    "is_featured": false,
+    "display_order": 14,
+    "variants": [
+      { "sku": "BB-CBST-S", "size": "small", "temperature": "iced", "price_vnd": 42000, "calories_kcal": 105, "is_available": true },
+      { "sku": "BB-CBST-M", "size": "regular", "temperature": "iced", "price_vnd": 48000, "calories_kcal": 135, "is_available": true },
+      { "sku": "BB-CBST-L", "size": "large", "temperature": "iced", "price_vnd": 55000, "calories_kcal": 165, "is_available": true }
+    ],
+    "ingredients": [
+      { "code": "cold_brew_base", "is_optional": false },
+      { "code": "fresh_milk", "is_optional": false }
+    ]
+  },
+  {
+    "slug": "cold-brew-yuzu-mat-ong",
+    "category_slug": "cold-brew",
+    "name_vi": "Cold Brew Yuzu Mật Ong",
+    "name_en": "Yuzu Honey Cold Brew",
+    "short_description_vi": "Hương cam Yuzu Nhật Bản thanh chua quyện mật ong hoa cà phê trên nền Cold Brew.",
+    "short_description_en": "Bright Japanese Yuzu citrus and honey layered with crisp 18-hour cold brew.",
+    "story_vi": "Nốt hương chanh cam bùng nổ giải nhiệt ngày nắng nóng, không sữa, ít đắng.",
+    "image_url": "/images/products/cold-brew-yuzu.webp",
+    "taste_tags": ["fruity", "refreshing", "less_bitter", "sweet", "dairy_free"],
+    "caffeine_level": "medium",
+    "bitterness_level": 1,
+    "sweetness_level": 3,
+    "has_milk": false,
+    "is_signature": false,
+    "is_featured": false,
+    "display_order": 15,
+    "variants": [
+      { "sku": "BB-CBYZ-S", "size": "small", "temperature": "iced", "price_vnd": 48000, "calories_kcal": 80, "is_available": true },
+      { "sku": "BB-CBYZ-M", "size": "regular", "temperature": "iced", "price_vnd": 55000, "calories_kcal": 105, "is_available": true },
+      { "sku": "BB-CBYZ-L", "size": "large", "temperature": "iced", "price_vnd": 62000, "calories_kcal": 130, "is_available": true }
+    ],
+    "ingredients": [
+      { "code": "cold_brew_base", "is_optional": false },
+      { "code": "yuzu_puree", "is_optional": false },
+      { "code": "honey", "is_optional": false }
+    ]
+  },
+  {
+    "slug": "cold-brew-vai-hoa-hong",
+    "category_slug": "cold-brew",
+    "name_vi": "Cold Brew Vải Hoa Hồng",
+    "name_en": "Lychee Rose Cold Brew",
+    "short_description_vi": "Vải thiều ngọt thanh cùng hương hoa hồng dịu nhẹ hòa quyện Cold Brew thanh mát.",
+    "short_description_en": "Fragrant lychee and subtle rose aroma paired with silky cold brew.",
+    "story_vi": "Gợi ý tuyệt vời cho những ai muốn trải nghiệm cà phê ủ lạnh theo phong cách trà trái cây hiện đại.",
+    "image_url": "/images/products/cold-brew-vai-hoa-hong.webp",
+    "taste_tags": ["fruity", "floral", "sweet", "refreshing", "less_bitter", "dairy_free"],
+    "caffeine_level": "medium",
+    "bitterness_level": 1,
+    "sweetness_level": 4,
+    "has_milk": false,
+    "is_signature": false,
+    "is_featured": false,
+    "display_order": 16,
+    "variants": [
+      { "sku": "BB-CBVH-S", "size": "small", "temperature": "iced", "price_vnd": 46000, "calories_kcal": 90, "is_available": true },
+      { "sku": "BB-CBVH-M", "size": "regular", "temperature": "iced", "price_vnd": 52000, "calories_kcal": 115, "is_available": true },
+      { "sku": "BB-CBVH-L", "size": "large", "temperature": "iced", "price_vnd": 59000, "calories_kcal": 145, "is_available": true }
+    ],
+    "ingredients": [
+      { "code": "cold_brew_base", "is_optional": false },
+      { "code": "lychee_syrup", "is_optional": false }
+    ]
+  },
+  {
+    "slug": "cold-brew-kem-muoi",
+    "category_slug": "cold-brew",
+    "name_vi": "Cold Brew Kem Muối",
+    "name_en": "Salted Cream Cold Brew",
+    "short_description_vi": "Nền Cold Brew thanh dịu phủ lớp kem muối biển sánh mịn cân bằng hoàn hảo.",
+    "short_description_en": "Clean 18-hour cold brew crowned with velvety sea-salted cream foam.",
+    "story_vi": "Ít ngọt hơn Cà Phê Muối truyền thống, mang cảm giác nhẹ bụng và sảng khoái hơn.",
+    "image_url": "/images/products/cold-brew-kem-muoi.webp",
+    "taste_tags": ["creamy", "salted_caramel", "less_bitter"],
+    "caffeine_level": "medium",
+    "bitterness_level": 2,
+    "sweetness_level": 3,
+    "has_milk": true,
+    "is_signature": false,
+    "is_featured": false,
+    "display_order": 17,
+    "variants": [
+      { "sku": "BB-CBKM-S", "size": "small", "temperature": "iced", "price_vnd": 46000, "calories_kcal": 145, "is_available": true },
+      { "sku": "BB-CBKM-M", "size": "regular", "temperature": "iced", "price_vnd": 52000, "calories_kcal": 180, "is_available": true },
+      { "sku": "BB-CBKM-L", "size": "large", "temperature": "iced", "price_vnd": 58000, "calories_kcal": 220, "is_available": true }
+    ],
+    "ingredients": [
+      { "code": "cold_brew_base", "is_optional": false },
+      { "code": "salted_foam", "is_optional": false }
+    ]
+  },
+  {
+    "slug": "matcha-latte-uji",
+    "category_slug": "matcha-tea",
+    "name_vi": "Matcha Latte Uji Nhật Bản",
+    "name_en": "Japanese Uji Matcha Latte",
+    "short_description_vi": "Bột Matcha Uji hạng ceremonial đánh chổi tre hòa sữa tươi béo dịu, ít caffeine.",
+    "short_description_en": "Hand-whisked ceremonial Uji matcha poured over creamy fresh milk.",
+    "story_vi": "Hương umami đặc trưng của trà xanh Nhật Bản, không tanh chát, hàm lượng caffeine thấp phù hợp cả buổi chiều.",
+    "image_url": "/images/products/matcha-latte-uji.webp",
+    "taste_tags": ["tea_forward", "creamy", "less_bitter", "sweet"],
+    "caffeine_level": "low",
+    "bitterness_level": 2,
+    "sweetness_level": 3,
+    "has_milk": true,
+    "is_signature": false,
+    "is_featured": true,
+    "display_order": 18,
+    "variants": [
+      { "sku": "BB-MATL-S", "size": "small", "temperature": "both", "price_vnd": 45000, "calories_kcal": 150, "is_available": true },
+      { "sku": "BB-MATL-M", "size": "regular", "temperature": "both", "price_vnd": 52000, "calories_kcal": 185, "is_available": true },
+      { "sku": "BB-MATL-L", "size": "large", "temperature": "iced", "price_vnd": 59000, "calories_kcal": 230, "is_available": true }
+    ],
+    "ingredients": [
+      { "code": "matcha_uji", "is_optional": false },
+      { "code": "fresh_milk", "is_optional": false },
+      { "code": "condensed_milk", "is_optional": true }
+    ]
+  },
+  {
+    "slug": "matcha-sua-hanh-nhan",
+    "category_slug": "matcha-tea",
+    "name_vi": "Matcha Sữa Hạnh Nhân",
+    "name_en": "Almond Milk Matcha",
+    "short_description_vi": "Matcha Uji kết hợp sữa hạnh nhân thanh nhẹ, không sữa bò và ít calo.",
+    "short_description_en": "Uji matcha whisked with light unsweetened almond milk, completely dairy-free.",
+    "story_vi": "Dành cho khách kiêng sữa động vật yêu thích hương trà xanh thanh tao quyện vị bùi của hạnh nhân.",
+    "image_url": "/images/products/matcha-sua-hanh-nhan.webp",
+    "taste_tags": ["tea_forward", "nutty", "less_bitter", "dairy_free"],
+    "caffeine_level": "low",
+    "bitterness_level": 2,
+    "sweetness_level": 2,
+    "has_milk": false,
+    "is_signature": false,
+    "is_featured": false,
+    "display_order": 19,
+    "variants": [
+      { "sku": "BB-MATH-S", "size": "small", "temperature": "both", "price_vnd": 48000, "calories_kcal": 95, "is_available": true },
+      { "sku": "BB-MATH-M", "size": "regular", "temperature": "both", "price_vnd": 54000, "calories_kcal": 120, "is_available": true },
+      { "sku": "BB-MATH-L", "size": "large", "temperature": "iced", "price_vnd": 60000, "calories_kcal": 150, "is_available": true }
+    ],
+    "ingredients": [
+      { "code": "matcha_uji", "is_optional": false },
+      { "code": "almond_milk", "is_optional": false },
+      { "code": "honey", "is_optional": true }
+    ]
+  },
+  {
+    "slug": "tra-o-long-dao-cam-sa",
+    "category_slug": "matcha-tea",
+    "name_vi": "Trà Ô Long Đào Cam Sả",
+    "name_en": "Peach Lemongrass Oolong Tea",
+    "short_description_vi": "Trà Ô Long Lâm Đồng thơm dịu hòa vị đào vàng giòn, cam tươi và sả thanh mát.",
+    "short_description_en": "Highland oolong brewed with crisp peach slices, fresh orange, and lemongrass.",
+    "story_vi": "Thức uống giải nhiệt bán chạy nhất buổi trưa và chiều, không sữa và rất ít caffeine.",
+    "image_url": "/images/products/tra-o-long-dao-cam-sa.webp",
+    "taste_tags": ["fruity", "refreshing", "tea_forward", "less_bitter", "dairy_free"],
+    "caffeine_level": "low",
+    "bitterness_level": 1,
+    "sweetness_level": 3,
+    "has_milk": false,
+    "is_signature": false,
+    "is_featured": true,
+    "display_order": 20,
+    "variants": [
+      { "sku": "BB-OLDC-S", "size": "small", "temperature": "both", "price_vnd": 39000, "calories_kcal": 85, "is_available": true },
+      { "sku": "BB-OLDC-M", "size": "regular", "temperature": "both", "price_vnd": 45000, "calories_kcal": 110, "is_available": true },
+      { "sku": "BB-OLDC-L", "size": "large", "temperature": "iced", "price_vnd": 52000, "calories_kcal": 140, "is_available": true }
+    ],
+    "ingredients": [
+      { "code": "oolong_tea", "is_optional": false },
+      { "code": "peach_compote", "is_optional": false },
+      { "code": "orange_juice", "is_optional": false },
+      { "code": "lemongrass", "is_optional": false }
+    ]
+  },
+  {
+    "slug": "tra-o-long-kem-cheese",
+    "category_slug": "matcha-tea",
+    "name_vi": "Trà Ô Long Kem Cheese",
+    "name_en": "Cheese Foam Oolong Tea",
+    "short_description_vi": "Trà Ô Long rang thơm phủ lớp kem phô mai mặn béo mịn màng.",
+    "short_description_en": "Roasted highland oolong topped with rich, savory cream cheese foam.",
+    "story_vi": "Ủ trà tươi theo từng mẻ nhỏ 4 tiếng để giữ hương thơm tự nhiên, cân bằng hoàn hảo với kem phô mai.",
+    "image_url": "/images/products/tra-o-long-kem-cheese.webp",
+    "taste_tags": ["tea_forward", "creamy", "sweet", "less_bitter"],
+    "caffeine_level": "low",
+    "bitterness_level": 1,
+    "sweetness_level": 4,
+    "has_milk": true,
+    "is_signature": false,
+    "is_featured": false,
+    "display_order": 21,
+    "variants": [
+      { "sku": "BB-OLKC-S", "size": "small", "temperature": "iced", "price_vnd": 44000, "calories_kcal": 170, "is_available": true },
+      { "sku": "BB-OLKC-M", "size": "regular", "temperature": "iced", "price_vnd": 49000, "calories_kcal": 215, "is_available": true },
+      { "sku": "BB-OLKC-L", "size": "large", "temperature": "iced", "price_vnd": 55000, "calories_kcal": 260, "is_available": true }
+    ],
+    "ingredients": [
+      { "code": "oolong_tea", "is_optional": false },
+      { "code": "cream_cheese", "is_optional": false },
+      { "code": "whipping_cream", "is_optional": false }
+    ]
+  },
+  {
+    "slug": "tra-hibiscus-dau-tam",
+    "category_slug": "matcha-tea",
+    "name_vi": "Trà Hibiscus Dâu Tằm",
+    "name_en": "Mulberry Hibiscus Tea",
+    "short_description_vi": "100% không caffeine và không sữa, chua ngọt thanh mát từ hoa atiso đỏ và dâu tằm Đà Lạt.",
+    "short_description_en": "Caffeine-free & dairy-free herbal infusion of hibiscus petals and Da Lat mulberries.",
+    "story_vi": "Lựa chọn tuyệt vời cho buổi tối hoặc người nhạy cảm với caffeine, giàu vitamin C tự nhiên.",
+    "image_url": "/images/products/tra-hibiscus-dau-tam.webp",
+    "taste_tags": ["fruity", "floral", "refreshing", "less_bitter", "dairy_free"],
+    "caffeine_level": "none",
+    "bitterness_level": 1,
+    "sweetness_level": 3,
+    "has_milk": false,
+    "is_signature": false,
+    "is_featured": false,
+    "display_order": 22,
+    "variants": [
+      { "sku": "BB-HBDT-S", "size": "small", "temperature": "both", "price_vnd": 38000, "calories_kcal": 75, "is_available": true },
+      { "sku": "BB-HBDT-M", "size": "regular", "temperature": "both", "price_vnd": 44000, "calories_kcal": 95, "is_available": true },
+      { "sku": "BB-HBDT-L", "size": "large", "temperature": "iced", "price_vnd": 49000, "calories_kcal": 120, "is_available": true }
+    ],
+    "ingredients": [
+      { "code": "hibiscus_tea", "is_optional": false },
+      { "code": "mulberry_jam", "is_optional": false },
+      { "code": "honey", "is_optional": true }
+    ]
+  },
+  {
+    "slug": "cacao-nong-dak-lak",
+    "category_slug": "non-coffee",
+    "name_vi": "Cacao Nóng Đắk Lắk",
+    "name_en": "Dak Lak Hot Cacao",
+    "short_description_vi": "Cacao nguyên chất Đắk Lắk hòa sữa tươi nóng béo ngậy, không caffeine.",
+    "short_description_en": "Rich single-origin Dak Lak cacao steamed with fresh milk, naturally caffeine-free.",
+    "story_vi": "Sử dụng hạt cacao lên men tự nhiên từ nông trại Đắk Lắk, thơm nồng vị socola ấm áp.",
+    "image_url": "/images/products/cacao-nong-dak-lak.webp",
+    "taste_tags": ["chocolatey", "creamy", "sweet", "less_bitter"],
+    "caffeine_level": "none",
+    "bitterness_level": 2,
+    "sweetness_level": 4,
+    "has_milk": true,
+    "is_signature": false,
+    "is_featured": false,
+    "display_order": 23,
+    "variants": [
+      { "sku": "BB-CACN-S", "size": "small", "temperature": "both", "price_vnd": 39000, "calories_kcal": 185, "is_available": true },
+      { "sku": "BB-CACN-M", "size": "regular", "temperature": "both", "price_vnd": 45000, "calories_kcal": 230, "is_available": true },
+      { "sku": "BB-CACN-L", "size": "large", "temperature": "iced", "price_vnd": 52000, "calories_kcal": 280, "is_available": true }
+    ],
+    "ingredients": [
+      { "code": "cacao_daklak", "is_optional": false },
+      { "code": "fresh_milk", "is_optional": false },
+      { "code": "condensed_milk", "is_optional": false }
+    ]
+  },
+  {
+    "slug": "cacao-sua-dua-da",
+    "category_slug": "non-coffee",
+    "name_vi": "Cacao Sữa Dừa Đá",
+    "name_en": "Iced Coconut Cacao",
+    "short_description_vi": "Không caffeine và không sữa bò: cacao Đắk Lắk sánh quyện cốt dừa Bến Tre mát lạnh.",
+    "short_description_en": "Caffeine-free & dairy-free blend of Dak Lak cacao and creamy Ben Tre coconut milk.",
+    "story_vi": "Giải pháp thơm béo chuẩn vị nhiệt đới cho khách thuần chay hoặc không dung nạp lactose.",
+    "image_url": "/images/products/cacao-sua-dua.webp",
+    "taste_tags": ["chocolatey", "coconut", "sweet", "dairy_free"],
+    "caffeine_level": "none",
+    "bitterness_level": 2,
+    "sweetness_level": 4,
+    "has_milk": false,
+    "is_signature": false,
+    "is_featured": false,
+    "display_order": 24,
+    "variants": [
+      { "sku": "BB-CACD-S", "size": "small", "temperature": "iced", "price_vnd": 42000, "calories_kcal": 175, "is_available": true },
+      { "sku": "BB-CACD-M", "size": "regular", "temperature": "iced", "price_vnd": 48000, "calories_kcal": 215, "is_available": true },
+      { "sku": "BB-CACD-L", "size": "large", "temperature": "iced", "price_vnd": 54000, "calories_kcal": 260, "is_available": true }
+    ],
+    "ingredients": [
+      { "code": "cacao_daklak", "is_optional": false },
+      { "code": "coconut_milk", "is_optional": false },
+      { "code": "honey", "is_optional": true }
+    ]
+  },
+  {
+    "slug": "sua-hanh-nhan-vanilla",
+    "category_slug": "non-coffee",
+    "name_vi": "Sữa Hạnh Nhân Vanilla",
+    "name_en": "Vanilla Almond Milk",
+    "short_description_vi": "Sữa hạnh nhân êm dịu cùng hương vani tự nhiên, không caffeine và không sữa bò.",
+    "short_description_en": "Light, smooth almond milk gently infused with natural vanilla, dairy- & caffeine-free.",
+    "story_vi": "Đồ uống thanh nhẹ cho buổi tối thư giãn, ít đường và tốt cho sức khỏe.",
+    "image_url": "/images/products/sua-hanh-nhan-vanilla.webp",
+    "taste_tags": ["nutty", "sweet", "creamy", "less_bitter", "dairy_free"],
+    "caffeine_level": "none",
+    "bitterness_level": 1,
+    "sweetness_level": 3,
+    "has_milk": false,
+    "is_signature": false,
+    "is_featured": false,
+    "display_order": 25,
+    "variants": [
+      { "sku": "BB-ALMV-S", "size": "small", "temperature": "both", "price_vnd": 39000, "calories_kcal": 95, "is_available": true },
+      { "sku": "BB-ALMV-M", "size": "regular", "temperature": "both", "price_vnd": 45000, "calories_kcal": 120, "is_available": true },
+      { "sku": "BB-ALMV-L", "size": "large", "temperature": "iced", "price_vnd": 50000, "calories_kcal": 145, "is_available": true }
+    ],
+    "ingredients": [
+      { "code": "almond_milk", "is_optional": false },
+      { "code": "vanilla_bean", "is_optional": false },
+      { "code": "honey", "is_optional": true }
+    ]
+  },
+  {
+    "slug": "sua-dau-nanh-me-den",
+    "category_slug": "non-coffee",
+    "name_vi": "Sữa Đậu Nành Mè Đen",
+    "name_en": "Black Sesame Soy Milk",
+    "short_description_vi": "Sữa đậu nành hữu cơ sánh mịn quyện mè đen rang thơm bùi, không sữa bò và không caffeine.",
+    "short_description_en": "Organic soy milk blended with roasted black sesame paste, dairy-free and caffeine-free.",
+    "story_vi": "Công thức thực dưỡng bùi béo tự nhiên, rất thích hợp dùng kèm bánh sáng.",
+    "image_url": "/images/products/sua-dau-nanh-me-den.webp",
+    "taste_tags": ["nutty", "creamy", "less_bitter", "dairy_free"],
+    "caffeine_level": "none",
+    "bitterness_level": 1,
+    "sweetness_level": 3,
+    "has_milk": false,
+    "is_signature": false,
+    "is_featured": false,
+    "display_order": 26,
+    "variants": [
+      { "sku": "BB-SOYB-S", "size": "small", "temperature": "both", "price_vnd": 38000, "calories_kcal": 130, "is_available": true },
+      { "sku": "BB-SOYB-M", "size": "regular", "temperature": "both", "price_vnd": 44000, "calories_kcal": 165, "is_available": true },
+      { "sku": "BB-SOYB-L", "size": "large", "temperature": "iced", "price_vnd": 49000, "calories_kcal": 200, "is_available": true }
+    ],
+    "ingredients": [
+      { "code": "soy_milk", "is_optional": false },
+      { "code": "black_sesame", "is_optional": false }
+    ]
+  },
+  {
+    "slug": "croissant-bo-phap",
+    "category_slug": "pastry",
+    "name_vi": "Croissant Bơ Pháp",
+    "name_en": "French Butter Croissant",
+    "short_description_vi": "Vỏ bánh ngàn lớp giòn rụm thơm ngậy bơ lạt Pháp nướng mới mỗi sáng.",
+    "short_description_en": "Flaky, golden 27-layer croissant laminated with cultured French butter.",
+    "story_vi": "Ủ bột lạnh 48 giờ trước khi nướng vàng ươm, hoàn hảo khi chấm cùng Cappuccino hoặc Cold Brew.",
+    "image_url": "/images/products/croissant-bo-phap.webp",
+    "taste_tags": ["creamy", "buttery"],
+    "caffeine_level": "none",
+    "bitterness_level": 1,
+    "sweetness_level": 2,
+    "has_milk": true,
+    "is_signature": false,
+    "is_featured": true,
+    "display_order": 27,
+    "variants": [
+      { "sku": "BB-CROI-M", "size": "regular", "temperature": "hot", "price_vnd": 38000, "calories_kcal": 280, "is_available": true }
+    ],
+    "ingredients": [
+      { "code": "wheat_flour", "is_optional": false },
+      { "code": "french_butter", "is_optional": false }
+    ]
+  },
+  {
+    "slug": "croissant-hanh-nhan",
+    "category_slug": "pastry",
+    "name_vi": "Croissant Hạnh Nhân",
+    "name_en": "Almond Croissant",
+    "short_description_vi": "Croissant nhân kem hạnh nhân béo bùi phủ hạnh nhân lát nướng giòn.",
+    "short_description_en": "Twice-baked butter croissant filled with almond frangipane and toasted almonds.",
+    "story_vi": "Sự kết hợp thơm ngậy của bơ Pháp và hạnh nhân rang vàng, cực kỳ hợp với Americano.",
+    "image_url": "/images/products/croissant-hanh-nhan.webp",
+    "taste_tags": ["nutty", "sweet", "buttery"],
+    "caffeine_level": "none",
+    "bitterness_level": 1,
+    "sweetness_level": 3,
+    "has_milk": true,
+    "is_signature": false,
+    "is_featured": false,
+    "display_order": 28,
+    "variants": [
+      { "sku": "BB-CROA-M", "size": "regular", "temperature": "hot", "price_vnd": 46000, "calories_kcal": 340, "is_available": true }
+    ],
+    "ingredients": [
+      { "code": "wheat_flour", "is_optional": false },
+      { "code": "french_butter", "is_optional": false },
+      { "code": "roasted_almond", "is_optional": false }
+    ]
+  },
+  {
+    "slug": "tiramisu-espresso",
+    "category_slug": "pastry",
+    "name_vi": "Tiramisu Espresso",
+    "name_en": "Espresso Tiramisu",
+    "short_description_vi": "Bánh kem phô mai mềm mịn thấm đẫm Espresso Cầu Đất và phủ bột cacao Đắk Lắk.",
+    "short_description_en": "Velvety cream cheese mousse soaked with Cau Dat espresso and dusted with cacao.",
+    "story_vi": "Mỗi phần bánh được tẩm espresso mới chiết xuất ngay trước khi lên kệ để giữ trọn hương thơm cà phê.",
+    "image_url": "/images/products/tiramisu-espresso.webp",
+    "taste_tags": ["chocolatey", "creamy", "sweet", "less_bitter"],
+    "caffeine_level": "low",
+    "bitterness_level": 2,
+    "sweetness_level": 4,
+    "has_milk": true,
+    "is_signature": false,
+    "is_featured": false,
+    "display_order": 29,
+    "variants": [
+      { "sku": "BB-TIRA-M", "size": "regular", "temperature": "iced", "price_vnd": 55000, "calories_kcal": 320, "is_available": true }
+    ],
+    "ingredients": [
+      { "code": "wheat_flour", "is_optional": false },
+      { "code": "cream_cheese", "is_optional": false },
+      { "code": "whipping_cream", "is_optional": false },
+      { "code": "arabica_caudat", "is_optional": false },
+      { "code": "cacao_daklak", "is_optional": false }
+    ]
+  },
+  {
+    "slug": "basque-burnt-cheesecake",
+    "category_slug": "pastry",
+    "name_vi": "Basque Burnt Cheesecake",
+    "name_en": "Basque Burnt Cheesecake",
+    "short_description_vi": "Bánh phô mai nướng cháy cạnh mịn tan chảy bên trong, ngọt vừa không ngấy.",
+    "short_description_en": "Caramelized crust cheesecake with a creamy, custard-soft center.",
+    "story_vi": "Nướng nhiệt cao tạo lớp vỏ caramel thơm nhẹ, bên trong mềm tan như kem, kết hợp tuyệt vời cùng trà Ô Long.",
+    "image_url": "/images/products/basque-burnt-cheesecake.webp",
+    "taste_tags": ["creamy", "sweet", "less_bitter"],
+    "caffeine_level": "none",
+    "bitterness_level": 1,
+    "sweetness_level": 4,
+    "has_milk": true,
+    "is_signature": false,
+    "is_featured": false,
+    "display_order": 30,
+    "variants": [
+      { "sku": "BB-BASQ-M", "size": "regular", "temperature": "iced", "price_vnd": 59000, "calories_kcal": 360, "is_available": true }
+    ],
+    "ingredients": [
+      { "code": "cream_cheese", "is_optional": false },
+      { "code": "whipping_cream", "is_optional": false },
+      { "code": "wheat_flour", "is_optional": false }
+    ]
+  }
+]

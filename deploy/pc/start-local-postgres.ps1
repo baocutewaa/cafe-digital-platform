@@ -33,11 +33,9 @@ if (-not (Test-Path "$pgData\PG_VERSION")) {
 & "$pgBin\pg_isready.exe" -h 127.0.0.1 -p 5432 | Out-Null
 if ($LASTEXITCODE -ne 0) {
     Write-Host "[INFO] Đang khởi động PostgreSQL 17 Native tại localhost:5432..." -ForegroundColor Cyan
-    Start-Process -FilePath "$pgBin\postgres.exe" -ArgumentList "-D `"$pgData`" -p 5432 -h 127.0.0.1,::1" -RedirectStandardOutput $pgLog -RedirectStandardError "$pgLog.err" -WindowStyle Hidden
-    for ($i = 0; $i -lt 20; $i++) {
-        Start-Sleep -Milliseconds 500
-        & "$pgBin\pg_isready.exe" -h 127.0.0.1 -p 5432 | Out-Null
-        if ($LASTEXITCODE -eq 0) { break }
+    & "$pgBin\pg_ctl.exe" -D $pgData -l $pgLog -o "-p 5432 -h 127.0.0.1,::1" start | Out-Host
+    if ($LASTEXITCODE -ne 0) {
+        throw "Không thể khởi động PostgreSQL 17 Native."
     }
     Write-Host "[OK] PostgreSQL 17 Native đã khởi động tại localhost:5432." -ForegroundColor Green
 } else {

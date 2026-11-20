@@ -36,7 +36,9 @@ async def check_db_connection() -> dict[str, Any]:
     t0 = time.perf_counter()
     try:
         async with AsyncSessionLocal() as session:
-            ver_res = await session.execute(text("SELECT current_database(), server_version"))
+            ver_res = await session.execute(
+                text("SELECT current_database(), current_setting('server_version')")
+            )
             db_name, server_ver = ver_res.one()
 
             ext_res = await session.execute(

@@ -11,3 +11,11 @@ class ResourceNotFoundError(BrewBeanError):
 
 class OllamaUnavailableError(BrewBeanError):
     """Raised when Ollama local node is unreachable or circuit breaker is open."""
+
+
+class UnauthorizedSessionError(BrewBeanError):
+    """Raised when a chat session token is missing or invalid."""
+
+
+class RateLimitExceededError(BrewBeanError):
+    """Raised when a client exceeds chat rate limit thresholds."""
