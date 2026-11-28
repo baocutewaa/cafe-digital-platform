@@ -4,6 +4,7 @@ import json
 from functools import lru_cache
 from pathlib import Path
 from typing import Annotated
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 from pydantic import field_validator
 from pydantic_settings import BaseSettings, NoDecode, SettingsConfigDict
@@ -64,6 +65,36 @@ class Settings(BaseSettings):
     AUTO_SEED_ANSWER_CACHE: bool = True
     ANSWER_CACHE_SEED_PATH: str = ""
     ANSWER_CACHE_TTL_DAYS: int = 7
+
+    @field_validator("DATABASE_URL", "MIGRATION_DATABASE_URL", mode="before")
+    @classmethod
+    def normalize_asyncpg_url(cls, value: str) -> str:
+        """Convert Neon libpq-style URLs (?sslmode=require&channel_binding=...) for asyncpg."""
+        if not isinstance(value, str):
+            return value
+        raw = value.strip()
+        if not raw:
+            return raw
+
+        parsed = urlsplit(raw)
+        scheme = (
+            "postgresql+asyncpg"
+            if parsed.scheme in ("postgres", "postgresql")
+            else parsed.scheme
+        )
+
+        query_items = parse_qsl(parsed.query, keep_blank_values=True)
+        has_ssl = any(k == "ssl" for k, _ in query_items)
+        if not has_ssl:
+            sslmode_val = next((v.lower() for k, v in query_items if k == "sslmode"), None)
+            if sslmode_val and sslmode_val != "disable":
+                query_items.append(("ssl", "require"))
+
+        filtered_items = [
+            (k, v) for k, v in query_items if k not in {"sslmode", "channel_binding"}
+        ]
+        new_query = urlencode(filtered_items)
+        return urlunsplit((scheme, parsed.netloc, parsed.path, new_query, parsed.fragment))
 
     @field_validator("CORS_ORIGINS", mode="before")
     @classmethod

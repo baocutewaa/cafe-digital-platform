@@ -156,3 +156,19 @@ def test_seed_json_bundle_passes_pydantic_validation() -> None:
                 f"Product {product.slug} has has_milk=false but includes dairy "
                 f"{ing_codes & dairy_codes}"
             )
+
+
+def test_settings_normalizes_neon_ssl_urls() -> None:
+    from app.core.config import Settings
+
+    raw_neon = (
+        "postgresql://user:pass@ep-cool.ap-southeast-1.aws.neon.tech/"
+        "neondb?sslmode=require&channel_binding=require"
+    )
+    expected = (
+        "postgresql+asyncpg://user:pass@ep-cool.ap-southeast-1.aws.neon.tech/"
+        "neondb?ssl=require"
+    )
+    assert Settings.normalize_asyncpg_url(raw_neon) == expected
+    local_url = "postgresql+asyncpg://cafe_owner:password@localhost:5432/cafe_db"
+    assert Settings.normalize_asyncpg_url(local_url) == local_url
