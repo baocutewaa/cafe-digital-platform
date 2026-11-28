@@ -1,10 +1,11 @@
 from __future__ import annotations
 
+import re
 import uuid
 from datetime import UTC, datetime, timedelta
 from typing import Any
 
-from sqlalchemy import Float, and_, cast, desc, func, select, update
+from sqlalchemy import Float, and_, cast, delete, desc, func, select, update
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
@@ -15,6 +16,71 @@ from app.models.knowledge import KnowledgeSource
 from app.models.menu import Ingredient, MenuCategory, Product, ProductIngredient
 from app.schemas.menu import ProductSummaryOut
 from app.services.menu_service import build_product_summary
+from rag.generation.guards import is_corrupted_cached_answer
+from rag.text.normalize import strip_vietnamese_accents
+
+_CACHE_FILLER_TOKENS = {
+    "a",
+    "ad",
+    "at",
+    "ban",
+    "bean",
+    "brew",
+    "cam",
+    "cho",
+    "cua",
+    "giup",
+    "hay",
+    "hoi",
+    "minh",
+    "nha",
+    "nhe",
+    "o",
+    "oi",
+    "on",
+    "please",
+    "quan",
+    "shop",
+    "tai",
+    "the",
+    "va",
+    "vay",
+    "voi",
+    "xin",
+}
+_SIZE_SENSITIVE_TOKENS = {"s", "m", "l", "nho", "vua", "lon", "small", "regular", "large"}
+
+
+def _is_safe_fuzzy_cache_hit(query_norm: str, candidate_norm: str) -> bool:
+    """
+    Prevent pg_trgm fuzzy cache collisions when two queries share a long template
+    (e.g. 'Mình đang xem <Product A>...' vs 'Mình đang xem <Product B>...') or
+    differ in numbers/sizes (e.g. 45k vs 50k, Size M vs Size L).
+    """
+    q_ascii = strip_vietnamese_accents(query_norm.lower())
+    c_ascii = strip_vietnamese_accents(candidate_norm.lower())
+
+    q_nums = set(re.findall(r"\d+", q_ascii))
+    c_nums = set(re.findall(r"\d+", c_ascii))
+    if q_nums != c_nums:
+        return False
+
+    q_raw_tokens = set(re.findall(r"[a-z0-9]+", q_ascii))
+    c_raw_tokens = set(re.findall(r"[a-z0-9]+", c_ascii))
+    if (q_raw_tokens & _SIZE_SENSITIVE_TOKENS) != (c_raw_tokens & _SIZE_SENSITIVE_TOKENS):
+        return False
+
+    q_tokens = {t for t in q_raw_tokens if len(t) >= 2 and t not in _CACHE_FILLER_TOKENS}
+    c_tokens = {t for t in c_raw_tokens if len(t) >= 2 and t not in _CACHE_FILLER_TOKENS}
+    if not q_tokens or not c_tokens:
+        return q_ascii == c_ascii
+
+    # Reject if user mentioned substantive tokens absent from cached query (e.g. another drink name)
+    if len(q_tokens - c_tokens) > 1 or len(c_tokens - q_tokens) > 2:
+        return False
+
+    jaccard = len(q_tokens & c_tokens) / len(q_tokens | c_tokens)
+    return jaccard >= 0.8
 
 
 class ChatRepository:
@@ -136,7 +202,11 @@ class ChatRepository:
         )
         rows = list((await self.session.execute(stmt)).scalars().all())
         rows.reverse()
-        return [{"role": row.role, "content": row.content} for row in rows]
+        return [
+            {"role": row.role, "content": row.content}
+            for row in rows
+            if row.role == "user" or not is_corrupted_cached_answer(row.content, "vi")
+        ]
 
     async def get_message_with_session(
         self, message_id: uuid.UUID
@@ -179,17 +249,31 @@ class ChatRepository:
         min_similarity: float = 0.78,
     ) -> AnswerCache | None:
         now = datetime.now(UTC)
-        exact_stmt = (
-            select(AnswerCache)
-            .where(
-                AnswerCache.normalized_query == normalized_query,
-                AnswerCache.language == language,
-                AnswerCache.knowledge_version == knowledge_version,
-                AnswerCache.expires_at > now,
+        exact_rows = list(
+            (
+                await self.session.execute(
+                    select(AnswerCache)
+                    .where(
+                        AnswerCache.normalized_query == normalized_query,
+                        AnswerCache.language == language,
+                        AnswerCache.knowledge_version == knowledge_version,
+                        AnswerCache.expires_at > now,
+                    )
+                    .limit(4)
+                )
             )
-            .limit(1)
+            .scalars()
+            .all()
         )
-        hit = (await self.session.execute(exact_stmt)).scalar_one_or_none()
+
+        poisoned_ids: list[uuid.UUID] = []
+        hit: AnswerCache | None = None
+        for row in exact_rows:
+            if is_corrupted_cached_answer(row.answer, row.language):
+                poisoned_ids.append(row.id)
+            elif hit is None:
+                hit = row
+
         if hit is None:
             sim_expr = cast(
                 func.similarity(AnswerCache.normalized_query, normalized_query), Float
@@ -203,9 +287,22 @@ class ChatRepository:
                     sim_expr >= min_similarity,
                 )
                 .order_by(desc(sim_expr))
-                .limit(1)
+                .limit(4)
             )
-            hit = (await self.session.execute(trgm_stmt)).scalar_one_or_none()
+            candidates = list((await self.session.execute(trgm_stmt)).scalars().all())
+            for cand in candidates:
+                if is_corrupted_cached_answer(cand.answer, cand.language):
+                    poisoned_ids.append(cand.id)
+                    continue
+                if hit is None and _is_safe_fuzzy_cache_hit(
+                    normalized_query, cand.normalized_query
+                ):
+                    hit = cand
+
+        if poisoned_ids:
+            await self.session.execute(
+                delete(AnswerCache).where(AnswerCache.id.in_(poisoned_ids))
+            )
 
         if hit is not None:
             await self.session.execute(
@@ -214,6 +311,18 @@ class ChatRepository:
                 .values(hit_count=AnswerCache.hit_count + 1)
             )
         return hit
+
+    async def purge_corrupted_answer_cache(self) -> int:
+        """Scan `answer_cache` and delete any rows containing leaked thinking or truncation."""
+        rows = list((await self.session.execute(select(AnswerCache))).scalars().all())
+        bad_ids = [
+            row.id
+            for row in rows
+            if is_corrupted_cached_answer(row.answer, row.language)
+        ]
+        if bad_ids:
+            await self.session.execute(delete(AnswerCache).where(AnswerCache.id.in_(bad_ids)))
+        return len(bad_ids)
 
     async def upsert_answer_cache(
         self,
@@ -227,6 +336,17 @@ class ChatRepository:
         knowledge_version: int,
         ttl_days: int | None = None,
     ) -> None:
+        if is_corrupted_cached_answer(answer, language):
+            return
+        # Remove any stale cache row for the same query+language under a different old intent
+        await self.session.execute(
+            delete(AnswerCache).where(
+                AnswerCache.normalized_query == normalized_query,
+                AnswerCache.language == language,
+                AnswerCache.knowledge_version == knowledge_version,
+                AnswerCache.intent != intent,
+            )
+        )
         effective_ttl = ttl_days if ttl_days is not None else settings.ANSWER_CACHE_TTL_DAYS
         expires_at = datetime.now(UTC) + timedelta(days=effective_ttl)
         stmt = (

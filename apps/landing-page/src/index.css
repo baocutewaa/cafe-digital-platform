@@ -6,24 +6,24 @@
   :root {
     --font-sans: "Inter Variable", "Inter", system-ui, -apple-system, sans-serif;
     --font-serif: "Lora Variable", "Lora", Cambria, "Times New Roman", serif;
-    --background: 36 33% 97%;
-    --foreground: 24 28% 12%;
-    --card: 36 30% 99%;
-    --card-foreground: 24 28% 12%;
-    --primary: 24 55% 24%;
-    --primary-foreground: 36 33% 98%;
-    --secondary: 33 38% 91%;
-    --secondary-foreground: 24 40% 18%;
-    --muted: 33 24% 92%;
-    --muted-foreground: 24 14% 38%;
-    --accent: 30 65% 44%;
-    --accent-foreground: 36 33% 98%;
-    --destructive: 0 72% 45%;
+    --background: 38 24% 96%;
+    --foreground: 24 12% 16%;
+    --card: 38 28% 98%;
+    --card-foreground: 24 12% 16%;
+    --primary: 24 12% 17%;
+    --primary-foreground: 38 28% 98%;
+    --secondary: 36 20% 91%;
+    --secondary-foreground: 24 12% 18%;
+    --muted: 36 16% 92%;
+    --muted-foreground: 26 8% 45%;
+    --accent: 28 42% 42%;
+    --accent-foreground: 38 28% 98%;
+    --destructive: 0 65% 44%;
     --destructive-foreground: 0 0% 98%;
-    --border: 30 22% 86%;
-    --input: 30 22% 84%;
-    --ring: 24 55% 24%;
-    --radius: 0.75rem;
+    --border: 36 16% 86%;
+    --input: 36 16% 80%;
+    --ring: 24 12% 17%;
+    --radius: 0.25rem;
   }
 
   * {

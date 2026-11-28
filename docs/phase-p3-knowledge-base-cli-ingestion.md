@@ -14,8 +14,10 @@ Tất cả tài liệu sử dụng YAML frontmatter chuẩn (`title`, `category`
 | `coffee_guide/` (`COFFEE_GUIDE`) | **7** | `01_arabica_cau_dat_vs_robusta_bmt.md`, `02_cold_brew_vs_iced_espresso.md`, `03_roasting_profiles_and_flavor.md`, `04_caffeine_guide_by_time_of_day.md`, `05_pouring_methods_espresso_v60_coldbrew.md`, `06_milk_and_plant_milk_pairings.md`, `07_sweetness_ice_adjustment_guide.md` |
 | `faq/` (`FAQ`, định dạng `### Q:` / `A:`) | **6** | `01_menu_taste_and_customization_faq.md`, `02_allergens_and_dietary_faq.md`, `03_caffeine_and_health_faq.md`, `04_store_spaces_and_amenities_faq.md`, `05_promotions_and_vouchers_faq.md`, `06_bean_ai_and_ordering_faq.md` |
 | `policies/` (`POLICY`) | **4** | `01_allergen_safety_and_cross_contact.md`, `02_quality_guarantee_and_remake.md`, `03_wifi_workspace_and_pet_policy.md`, `04_sustainability_and_packaging.md` |
-| `brand/` (`BRAND`) | **3** | `01_brew_and_bean_story.md`, `02_flagship_spaces_overview.md`, `03_direct_trade_highland_farms.md` |
+| `brand/` (`BRAND`) | **3** | `01_brew_and_bean_story.md`, `02_flagship_spaces_overview.md`, `03_direct_trade_highland_farms.md` *(đã cập nhật theo hệ thống vành đai Hồ Tây, Hà Nội)* |
 | **Tổng cộng** | **28** | Vượt ngưỡng yêu cầu ≥ 25 tài liệu của Giai đoạn P3 |
+
+> *Lưu ý vận hành:* Sau khi chỉnh sửa các tài liệu chi nhánh/thương hiệu tại Tây Hồ (`brand/01`, `brand/02`, `coffee_guide/05`, `policies/03`, `faq/04`), cần chạy lại `python scripts/ingest_knowledge.py --path data/knowledge_base` để `Indexer` tự động phát hiện thay đổi qua `SHA-256`, re-embed các file tương ứng và nâng `knowledge_version`.
 
 ---
 

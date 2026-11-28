@@ -7,7 +7,7 @@ tags: ["brand", "story", "specialty-coffee"]
 
 # Câu chuyện Thương hiệu BREW & BEAN
 
-BREW & BEAN được sáng lập tại TP. Hồ Chí Minh với sứ mệnh nâng tầm trải nghiệm cà phê đặc sản Việt Nam: kết hợp quy trình rang xay chuẩn mực cùng sự minh bạch về thông số hương vị, dinh dưỡng và trợ lý công nghệ **Bean AI Barista**.
+BREW & BEAN ra đời bên vành đai Hồ Tây, Quận Tây Hồ, Hà Nội với sứ mệnh nâng tầm trải nghiệm cà phê đặc sản Việt Nam: kết hợp quy trình rang xay chuẩn mực cùng sự minh bạch về thông số hương vị, dinh dưỡng và trợ lý công nghệ **Bean AI Barista**.
 
 ## Ba giá trị cốt lõi của BREW & BEAN
 1. **Hạt Việt tuyển chọn:** Chỉ sử dụng Arabica Cầu Đất (Lâm Đồng, 1.650m) và Robusta Buôn Ma Thuột sơ chế sạch, rang vừa theo từng mẻ nhỏ hằng tuần.

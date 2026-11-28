@@ -16,4 +16,4 @@ Sử dụng máy pha áp suất ổn định PID ở **92.5°C** với áp suấ
 Hạt Arabica Cầu Đất được xay thô đồng nhất, ủ trong bình thủy tinh chuyên dụng ở kho lạnh 4°C suốt **18 giờ**. Kết quả là nước cốt thanh ngọt, không đắng gắt, bảo quản lạnh giữ hương tươi mới trong vòng 48 giờ.
 
 ## 3. Hand-Poured V60 (2.5–3 phút)
-Phục vụ tại quầy Pour-over Bar (chi nhánh Flagship Nguyễn Huệ) với nhiệt độ nước 91°C, chia 3 lần rót chậm giúp tách cà phê trong trẻo như trà hoa, nổi bật hương cam chanh và vị ngọt hậu kéo dài.
+Phục vụ tại quầy Pour-over Bar (chi nhánh Flagship Nguyễn Đình Thi, vành đai Nam Hồ Tây) với nhiệt độ nước 91°C, chia 3 lần rót chậm giúp tách cà phê trong trẻo như trà hoa, nổi bật hương cam chanh và vị ngọt hậu kéo dài.

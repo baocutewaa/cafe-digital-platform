@@ -12,14 +12,14 @@ export function ChatHeader({ aiMode, onReset, onClose }: ChatHeaderProps) {
   const isOnline = aiMode === "online";
 
   return (
-    <div className="flex items-center justify-between border-b bg-primary px-4 py-3.5 text-primary-foreground sm:rounded-t-2xl">
+    <div className="flex items-center justify-between border-b bg-primary px-4 py-3.5 text-primary-foreground sm:rounded-t-sm">
       <div className="flex items-center gap-2.5">
-        <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent text-accent-foreground">
+        <span className="flex h-9 w-9 items-center justify-center rounded-sm bg-accent text-accent-foreground">
           <Bot className="h-5 w-5" />
         </span>
         <div>
           <div className="flex items-center gap-2">
-            <h2 className="text-sm font-bold">Bean AI Barista</h2>
+            <h2 className="font-serif text-sm font-medium tracking-wide">Bean AI Barista</h2>
             <Badge
               variant={isOnline ? "success" : "warning"}
               className="px-2 py-0 text-[10px]"

@@ -39,8 +39,8 @@ class Store(Base):
     city: Mapped[str] = mapped_column(
         String(100),
         nullable=False,
-        default="TP. Hồ Chí Minh",
-        server_default=text("'TP. Hồ Chí Minh'"),
+        default="Hà Nội",
+        server_default=text("'Hà Nội'"),
     )
     phone: Mapped[str | None] = mapped_column(String(30), nullable=True)
     google_maps_url: Mapped[str | None] = mapped_column(Text, nullable=True)

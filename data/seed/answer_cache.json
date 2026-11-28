@@ -716,7 +716,7 @@
     "normalized_query": "phương pháp hand-poured v60 có ở chi nhánh nào và hương vị ra sao",
     "language": "vi",
     "intent": "STORE_INFO",
-    "answer": "Phương pháp **Hand-Poured V60** hiện được phục vụ tại quầy **Pour-over Bar** ở chi nhánh **BREW & BEAN Flagship Nguyễn Huệ** (88 Nguyễn Huệ, Quận 1):\n- Pha thủ công bằng nước **91°C** chia 3 lần rót chậm trong 2.5–3 phút từ 100% Arabica Cầu Đất.\n- **Hương vị:** Tách cà phê trong trẻo như trà hoa, nổi bật hương hoa trắng, cam chanh và vị ngọt hậu kéo dài.",
+    "answer": "Phương pháp **Hand-Poured V60** hiện được phục vụ tại quầy **Pour-over Bar** ở chi nhánh **BREW & BEAN Flagship Nguyễn Đình Thi** (88 Nguyễn Đình Thi, P. Thụy Khuê, Q. Tây Hồ — vành đai Nam Hồ Tây):\n- Pha thủ công bằng nước **91°C** chia 3 lần rót chậm trong 2.5–3 phút từ 100% Arabica Cầu Đất.\n- **Hương vị:** Tách cà phê trong trẻo như trà hoa, nổi bật hương hoa trắng, cam chanh và vị ngọt hậu kéo dài.",
     "product_slugs": [
       "americano-cau-dat"
     ],
@@ -860,7 +860,7 @@
     "normalized_query": "quy định không gian yên tĩnh, wi-fi và mang thú cưng tại quán như thế nào",
     "language": "vi",
     "intent": "COFFEE_KNOWLEDGE",
-    "answer": "Quy định không gian làm việc, Wi-Fi và thú cưng tại BREW & BEAN:\n- **Wi-Fi & Ổ cắm:** Miễn phí **không giới hạn thời gian** sử dụng Wi-Fi cho khách gọi đồ uống. Bàn họp nhóm tại chi nhánh Võ Văn Tần khuyến khích đặt trước qua hotline nếu đi từ 5 người trở lên.\n- **Khu vực yên tĩnh (`quiet_zone`):** Vui lòng đeo tai nghe khi họp trực tuyến hoặc xem video; toàn bộ phòng máy lạnh cấm hút thuốc và thuốc lá điện tử.\n- **Thú cưng (`pet_friendly`):** Chỉ áp dụng tại khu vực **sân vườn ngoài trời của BREW & BEAN Thảo Điền Garden** (24 Xuân Thủy, Thủ Đức); vui lòng giữ dây dắt.",
+    "answer": "Quy định không gian làm việc, Wi-Fi và thú cưng tại hệ thống BREW & BEAN (Vành đai Hồ Tây, Hà Nội):\n- **Wi-Fi & Ổ cắm:** Miễn phí **không giới hạn thời gian** sử dụng Wi-Fi cho khách gọi đồ uống. Bàn họp nhóm tại chi nhánh **Heritage Trích Sài** (135 Trích Sài) khuyến khích đặt trước qua hotline nếu đi từ 5 người trở lên.\n- **Khu vực yên tĩnh (`quiet_zone`):** Vui lòng đeo tai nghe khi họp trực tuyến hoặc xem video; toàn bộ phòng máy lạnh cấm hút thuốc và thuốc lá điện tử.\n- **Thú cưng (`pet_friendly`):** Áp dụng tại khu vực **sân vườn ngoài trời của BREW & BEAN Quảng An Garden** (24 Quảng An, Bán đảo Quảng An); vui lòng giữ dây dắt.",
     "product_slugs": [],
     "citations": [
       {
@@ -868,7 +868,7 @@
         "title": "Quy định Không gian làm việc, Giữ chỗ và Đón Thú cưng",
         "category": "POLICY",
         "section": "Quy định Không gian làm việc, Giữ chỗ và Đón Thú cưng",
-        "snippet": "- **Wi-Fi & Ổ cắm:** Miễn phí không giới hạn thời gian sử dụng Wi-Fi cho tất cả khách gọi đồ uống tại quán. Bàn họp nhóm tại chi nhánh Võ Văn Tần khuyến khích đặt trước qua hotline"
+        "snippet": "- **Wi-Fi & Ổ cắm:** Miễn phí không giới hạn thời gian sử dụng Wi-Fi cho tất cả khách gọi đồ uống tại quán. Bàn họp nhóm tại chi nhánh Heritage Trích Sài khuyến khích đặt trước qua"
       }
     ]
   },
@@ -892,7 +892,7 @@
     "normalized_query": "câu chuyện thương hiệu và 3 giá trị cốt lõi của brew & bean là gì",
     "language": "vi",
     "intent": "COFFEE_KNOWLEDGE",
-    "answer": "**BREW & BEAN** được sáng lập tại TP. Hồ Chí Minh với sứ mệnh nâng tầm trải nghiệm cà phê đặc sản Việt Nam bằng sự minh bạch thông số hương vị, dinh dưỡng và trợ lý **Bean AI Barista**.\n**Ba giá trị cốt lõi:**\n1. **Hạt Việt tuyển chọn:** 100% Arabica Cầu Đất (1.650m) và Robusta Buôn Ma Thuột sơ chế sạch, rang vừa từng mẻ nhỏ.\n2. **Minh bạch khẩu vị & sức khỏe:** Công khai thang Độ đắng (1–5), Độ ngọt (1–5), Caffeine và cảnh báo dị ứng.\n3. **Công nghệ phục vụ trải nghiệm con người:** Bean AI gợi ý nhanh trong vài giây để Barista tập trung pha chế thủ công tỉ mỉ.",
+    "answer": "**BREW & BEAN** ra đời bên **vành đai Hồ Tây, Quận Tây Hồ, Hà Nội** với sứ mệnh nâng tầm trải nghiệm cà phê đặc sản Việt Nam bằng sự minh bạch thông số hương vị, dinh dưỡng và trợ lý **Bean AI Barista**.\n**Ba giá trị cốt lõi:**\n1. **Hạt Việt tuyển chọn:** 100% Arabica Cầu Đất (1.650m) và Robusta Buôn Ma Thuột sơ chế sạch, rang vừa từng mẻ nhỏ.\n2. **Minh bạch khẩu vị & sức khỏe:** Công khai thang Độ đắng (1–5), Độ ngọt (1–5), Caffeine và cảnh báo dị ứng.\n3. **Công nghệ phục vụ trải nghiệm con người:** Bean AI gợi ý nhanh trong vài giây để Barista tập trung pha chế thủ công tỉ mỉ.",
     "product_slugs": [],
     "citations": [
       {
@@ -900,7 +900,7 @@
         "title": "Câu chuyện Thương hiệu BREW & BEAN",
         "category": "BRAND",
         "section": "Câu chuyện Thương hiệu BREW & BEAN",
-        "snippet": "BREW & BEAN được sáng lập tại TP. Hồ Chí Minh với sứ mệnh nâng tầm trải nghiệm cà phê đặc sản Việt Nam: kết hợp quy trình rang xay chuẩn mực cùng sự minh bạch về thông số hương vị,"
+        "snippet": "BREW & BEAN ra đời bên vành đai Hồ Tây, Quận Tây Hồ, Hà Nội với sứ mệnh nâng tầm trải nghiệm cà phê đặc sản Việt Nam: kết hợp quy trình rang xay chuẩn mực cùng sự minh bạch về thông"
       }
     ]
   },

@@ -3,51 +3,24 @@ from __future__ import annotations
 import re
 import time
 from collections.abc import AsyncGenerator
+from contextlib import aclosing
 from dataclasses import dataclass
 
 from app.core.exceptions import OllamaUnavailableError
 from app.integrations.ollama_client import OllamaClient, ollama_client
 from rag.generation.fast_path import build_offline_fallback_answer
+from rag.generation.guards import (
+    is_corrupted_cached_answer,
+    looks_like_leaked_thinking,
+    strip_think_tags,
+)
 from rag.generation.intent_router import IntentType
 from rag.generation.prompts.system_prompts import build_rag_messages
-from rag.retrieval.context_builder import RetrievalResult
+from rag.retrieval.context_builder import RetrievalResult, _is_pairing_or_alternatives_query
 from rag.text.normalize import strip_vietnamese_accents
 
-_THINK_BLOCK_RE = re.compile(
-    r"<(?:think|thought)>.*?</(?:think|thought)>", re.DOTALL | re.IGNORECASE
-)
-_LEADING_CLOSE_THINK_RE = re.compile(
-    r"^.*?</(?:think|thought)>\s*", re.DOTALL | re.IGNORECASE
-)
-_UNCLOSED_THINK_RE = re.compile(
-    r"<(?:think|thought)>.*$", re.DOTALL | re.IGNORECASE
-)
-_LEAKED_THOUGHT_PREFIX_RE = re.compile(
-    r"^(?:okay,\s*(?:let's|so)|let's\s+(?:tackle|check|look|analyze)|"
-    r"let\s+me\s+(?:check|think|see)|wait,\s+(?:the\s+user|let|but)|"
-    r"first,\s+i\s+need\s+to|thinking\s+process:)",
-    re.IGNORECASE,
-)
 _PRICE_VND_RE = re.compile(r"\b(\d{2,3})[.,](\d{3})\s*(?:đ|d|vnd|dong)?\b", re.IGNORECASE)
 _PRICE_K_RE = re.compile(r"\b(\d{2,3})\s*k\b", re.IGNORECASE)
-
-
-def strip_think_tags(text: str) -> str:
-    cleaned = _THINK_BLOCK_RE.sub("", text)
-    cleaned = _LEADING_CLOSE_THINK_RE.sub("", cleaned)
-    cleaned = _UNCLOSED_THINK_RE.sub("", cleaned)
-    return cleaned.strip()
-
-
-def looks_like_leaked_thinking(text: str, language: str = "vi") -> bool:
-    stripped = text.strip()
-    if not stripped:
-        return True
-    if "SQL VERIFIED MENU DATA" in stripped or "KNOWLEDGE BASE CONTEXT" in stripped:
-        return True
-    if language == "vi" and _LEAKED_THOUGHT_PREFIX_RE.match(stripped):
-        return True
-    return False
 
 
 class _ThinkStreamFilter:
@@ -109,6 +82,14 @@ class _ThinkStreamFilter:
             break
 
         return "".join(out)
+
+    def enter_untagged_think(self) -> None:
+        """
+        Switch into thinking-suppression state when the model emitted untagged reasoning
+        without an opening `<think>`, so tokens are discarded until `</think>` arrives.
+        """
+        self._buf = ""
+        self._in_think = True
 
     def flush(self) -> str:
         if self._in_think or not self._buf:
@@ -248,98 +229,130 @@ class AnswerGenerator:
             )
             return
 
+        single_focus = len(retrieval.products) == 1 and not _is_pairing_or_alternatives_query(
+            retrieval.parsed_query.ascii_query
+        )
         messages = build_rag_messages(
             user_query=retrieval.parsed_query.raw_query,
             formatted_context=retrieval.formatted_context,
             intent=retrieval.intent,
             language=retrieval.parsed_query.language,
             history=history,
+            single_product_focus=single_focus,
         )
 
-        collected: list[str] = []
+        lang = retrieval.parsed_query.language
+        can_promote_fn = getattr(self.ai_client, "can_promote_think_mode", None)
+        promote_fn = getattr(self.ai_client, "promote_to_separate_thinking", None)
+
         stream_filter = _ThinkStreamFilter()
         preamble_buf = ""
         preamble_flushed = False
-        suppressed_leaked_thought = False
-        lang = retrieval.parsed_query.language
+        visible_answer_parts: list[str] = []
 
-        try:
-            async for token in self.ai_client.stream_chat(messages):
-                if ttft_ms is None:
-                    ttft_ms = int((time.perf_counter() - t0) * 1000)
-                collected.append(token)
-                visible = stream_filter.feed(token)
-                if not visible or suppressed_leaked_thought:
-                    continue
+        for attempt in range(2):
+            stream_filter = _ThinkStreamFilter()
+            preamble_buf = ""
+            preamble_flushed = False
+            visible_answer_parts = []
+            need_promote_retry = False
 
-                if not preamble_flushed:
-                    preamble_buf += visible
-                    if len(preamble_buf) < 40 and "\n" not in preamble_buf:
-                        continue
-                    if looks_like_leaked_thinking(preamble_buf, lang):
-                        suppressed_leaked_thought = True
-                        preamble_buf = ""
-                        continue
-                    preamble_flushed = True
-                    yield preamble_buf, None
-                    preamble_buf = ""
+            try:
+                async with aclosing(self.ai_client.stream_chat(messages)) as token_stream:
+                    async for token in token_stream:
+                        if ttft_ms is None:
+                            ttft_ms = int((time.perf_counter() - t0) * 1000)
+                        visible = stream_filter.feed(token)
+                        if not visible:
+                            continue
+
+                        if not preamble_flushed:
+                            preamble_buf += visible
+                            trimmed_pre = preamble_buf.strip()
+                            # Detect leaked thinking early (at >= 16 chars) before flushing anything
+                            if len(trimmed_pre) >= 16 and looks_like_leaked_thinking(
+                                trimmed_pre, lang
+                            ):
+                                if (
+                                    attempt == 0
+                                    and callable(can_promote_fn)
+                                    and callable(promote_fn)
+                                    and can_promote_fn()
+                                ):
+                                    promote_fn()
+                                    need_promote_retry = True
+                                    break
+                                # Already in separate mode (or mock client): discard until </think>
+                                preamble_buf = ""
+                                stream_filter.enter_untagged_think()
+                                continue
+
+                            if len(trimmed_pre) < 64:
+                                continue
+
+                            preamble_flushed = True
+                            visible_answer_parts.append(preamble_buf)
+                            yield preamble_buf, None
+                            preamble_buf = ""
+                        else:
+                            visible_answer_parts.append(visible)
+                            yield visible, None
+            except OllamaUnavailableError:
+                if preamble_flushed and visible_answer_parts:
+                    partial_visible = "".join(visible_answer_parts)
+                    partial = post_check_answer(
+                        partial_visible, retrieval, unsafe_product_names=unsafe_product_names
+                    )
+                    if looks_like_leaked_thinking(partial, lang):
+                        final_text = build_offline_fallback_answer(retrieval)
+                        yield f"\n\n{final_text}", None
+                    else:
+                        rem = stream_filter.flush()
+                        if rem:
+                            visible_answer_parts.append(rem)
+                            yield rem, None
+                        suffix = (
+                            "\n\n*(Kết nối AI tạm gián đoạn — "
+                            "bạn có thể xem thẻ sản phẩm gợi ý đi kèm.)*"
+                        )
+                        yield suffix, None
+                        final_text = f"{''.join(visible_answer_parts)}{suffix}"
                 else:
-                    yield visible, None
-        except OllamaUnavailableError:
-            if collected:
-                # If partial answer streamed before disconnect, finalize what we have safely
-                partial = post_check_answer(
-                    "".join(collected), retrieval, unsafe_product_names=unsafe_product_names
-                )
-                if looks_like_leaked_thinking(partial, lang):
                     final_text = build_offline_fallback_answer(retrieval)
                     yield final_text, None
-                else:
-                    rem = stream_filter.flush()
-                    if preamble_buf and not suppressed_leaked_thought:
-                        rem = preamble_buf + rem
-                    if rem and not suppressed_leaked_thought:
-                        yield rem, None
-                    suffix = (
-                        "\n\n*(Kết nối AI tạm gián đoạn — "
-                        "bạn có thể xem thẻ sản phẩm gợi ý đi kèm.)*"
-                    )
-                    yield suffix, None
-                    final_text = f"{partial}{suffix}"
-            else:
-                final_text = build_offline_fallback_answer(retrieval)
-                yield final_text, None
 
-            yield "", GenerationMetrics(
-                answer=final_text,
-                model="lexical-sql-fallback",
-                ttft_ms=ttft_ms,
-                latency_ms=int((time.perf_counter() - t0) * 1000),
-                degraded=True,
-            )
-            return
+                yield "", GenerationMetrics(
+                    answer=final_text,
+                    model="lexical-sql-fallback",
+                    ttft_ms=ttft_ms,
+                    latency_ms=int((time.perf_counter() - t0) * 1000),
+                    degraded=True,
+                )
+                return
+
+            if need_promote_retry:
+                continue
+            break
 
         tail = stream_filter.flush()
-        if not suppressed_leaked_thought:
-            if not preamble_flushed:
-                combined_head = (preamble_buf + tail).strip()
-                if combined_head and not looks_like_leaked_thinking(combined_head, lang):
-                    yield preamble_buf + tail, None
-                    preamble_flushed = True
-                elif combined_head:
-                    suppressed_leaked_thought = True
-            elif tail:
-                yield tail, None
+        if not preamble_flushed:
+            combined_head = (preamble_buf + tail).strip()
+            if combined_head and not looks_like_leaked_thinking(combined_head, lang):
+                visible_answer_parts.append(preamble_buf + tail)
+                yield preamble_buf + tail, None
+                preamble_flushed = True
+        elif tail:
+            visible_answer_parts.append(tail)
+            yield tail, None
 
-        raw_answer = "".join(collected)
-        stripped_raw = strip_think_tags(raw_answer)
-        if looks_like_leaked_thinking(stripped_raw, lang) or suppressed_leaked_thought:
+        clean_visible = "".join(visible_answer_parts).strip()
+        if not clean_visible or is_corrupted_cached_answer(clean_visible, lang):
             fallback = build_offline_fallback_answer(retrieval)
             if not preamble_flushed:
                 yield fallback, None
                 final_answer = fallback
             else:
-                final_answer = f"{stripped_raw}\n\n{fallback}".strip()
+                final_answer = f"{clean_visible}\n\n{fallback}".strip()
                 yield f"\n\n{fallback}", None
             yield "", GenerationMetrics(
                 answer=final_answer,
@@ -351,10 +364,11 @@ class AnswerGenerator:
             return
 
         checked = post_check_answer(
-            raw_answer, retrieval, unsafe_product_names=unsafe_product_names
+            clean_visible, retrieval, unsafe_product_names=unsafe_product_names
         )
-        if len(checked) > len(stripped_raw):
-            extra = checked[len(stripped_raw) :]
+        stripped_vis = strip_think_tags(clean_visible)
+        if len(checked) > len(stripped_vis):
+            extra = checked[len(stripped_vis) :]
             yield extra, None
 
         yield "", GenerationMetrics(
@@ -387,20 +401,39 @@ class AnswerGenerator:
                 degraded=True,
             )
 
+        single_focus = len(retrieval.products) == 1 and not _is_pairing_or_alternatives_query(
+            retrieval.parsed_query.ascii_query
+        )
         messages = build_rag_messages(
             user_query=retrieval.parsed_query.raw_query,
             formatted_context=retrieval.formatted_context,
             intent=retrieval.intent,
             language=retrieval.parsed_query.language,
             history=history,
+            single_product_focus=single_focus,
         )
+        lang = retrieval.parsed_query.language
+        can_promote_fn = getattr(self.ai_client, "can_promote_think_mode", None)
+        promote_fn = getattr(self.ai_client, "promote_to_separate_thinking", None)
+
         try:
             raw = await self.ai_client.chat(messages)
             checked = post_check_answer(
                 raw, retrieval, unsafe_product_names=unsafe_product_names
             )
+            if (
+                is_corrupted_cached_answer(checked, lang)
+                and callable(can_promote_fn)
+                and callable(promote_fn)
+                and can_promote_fn()
+            ):
+                promote_fn()
+                raw = await self.ai_client.chat(messages)
+                checked = post_check_answer(
+                    raw, retrieval, unsafe_product_names=unsafe_product_names
+                )
             latency_ms = int((time.perf_counter() - t0) * 1000)
-            if looks_like_leaked_thinking(checked, retrieval.parsed_query.language):
+            if is_corrupted_cached_answer(checked, lang):
                 fallback = build_offline_fallback_answer(retrieval)
                 return GenerationMetrics(
                     answer=fallback,

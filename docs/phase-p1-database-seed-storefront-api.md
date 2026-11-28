@@ -44,11 +44,11 @@
 ## 2. Bộ dữ liệu Seed (`data/seed/`) & CLI `scripts/seed_database.py`
 
 ### 2.1. Dữ liệu chuẩn BREW & BEAN
-- `data/seed/stores.json` (**3 chi nhánh**):
-  - `brew-bean-nguyen-hue` (Flagship Nguyễn Huệ — Quận 1)
-  - `brew-bean-thao-dien` (Thảo Điền Garden — TP. Thủ Đức)
-  - `brew-bean-vo-van-tan` (Heritage Võ Văn Tần — Quận 3)
-  - Mỗi chi nhánh có đầy đủ 7 khung giờ mở cửa từ Thứ Hai (`0`) đến Chủ Nhật (`6`).
+- `data/seed/stores.json` (**3 chi nhánh quanh vành đai Hồ Tây, Quận Tây Hồ, Hà Nội** — đã chuyển từ 3 chi nhánh TP. Hồ Chí Minh ban đầu ở bản cập nhật sau P5):
+  - `brew-bean-nguyen-dinh-thi` (Flagship Nguyễn Đình Thi — `88 Nguyễn Đình Thi, P. Thụy Khuê, Q. Tây Hồ, Hà Nội`)
+  - `brew-bean-quang-an` (Quảng An Garden — `24 Quảng An, P. Quảng An, Q. Tây Hồ, Hà Nội`)
+  - `brew-bean-trich-sai` (Heritage Trích Sài — `135 Trích Sài, P. Bưởi, Q. Tây Hồ, Hà Nội`)
+  - Mỗi chi nhánh có đầy đủ 7 khung giờ mở cửa từ Thứ Hai (`0`) đến Chủ Nhật (`6`) và đầu số hotline Hà Nội (`024`).
 - `data/seed/categories.json` (**6 danh mục**):
   - `signature` (5 món), `espresso-coffee` (7 món), `cold-brew` (5 món), `matcha-tea` (5 món), `non-coffee` (4 món), `pastry` (4 món).
 - `data/seed/ingredients.json` (**32 nguyên liệu**): Gắn rõ mã dị ứng `DAIRY`, `NUTS`, `SOY`, `GLUTEN` hoặc `null`.
@@ -59,8 +59,8 @@
   - `MORNING20` (giảm 20% combo sáng), `COLDBREW10K` (giảm 10.000đ Cold Brew 18h), `CHILLDUO` (mua 2 đồ uống tặng 1 bánh ngọt).
 
 ### 2.2. Script `scripts/seed_database.py`
-- Định nghĩa các Pydantic v2 schema (`StoreSeed`, `CategorySeed`, `IngredientSeed`, `ProductSeed`, `PromotionSeed`, `SeedBundle`) kiểm tra tính hợp lệ và tham chiếu chéo (category slug, ingredient code, SKU trùng lặp, product slug trong promotion) trước khi ghi DB.
-- Thực hiện `UPSERT` idempotent (`ON CONFLICT ... DO UPDATE`) trong 1 transaction theo `MIGRATION_DATABASE_URL`, đồng bộ cả bảng con (`store_hours`, `product_variants`, `product_ingredients`, `promotion_products`).
+- Định nghĩa các Pydantic v2 schema (`StoreSeed`, `CategorySeed`, `IngredientSeed`, `ProductSeed`, `PromotionSeed`, `SeedBundle`, mặc định `city="Hà Nội"`) kiểm tra tính hợp lệ và tham chiếu chéo (category slug, ingredient code, SKU trùng lặp, product slug trong promotion) trước khi ghi DB.
+- Thực hiện `UPSERT` idempotent (`ON CONFLICT ... DO UPDATE`) trong 1 transaction theo `MIGRATION_DATABASE_URL`, đồng bộ cả bảng con (`store_hours`, `product_variants`, `product_ingredients`, `promotion_products`) và tự động đánh dấu `is_active = false` cho các slug cửa hàng cũ không còn trong `stores.json`.
 
 ---
 

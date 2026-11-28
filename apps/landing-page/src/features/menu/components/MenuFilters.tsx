@@ -57,7 +57,7 @@ export function MenuFilters({
   return (
     <section
       aria-label="Bộ lọc thực đơn"
-      className="space-y-5 rounded-2xl border bg-card p-5 shadow-sm sm:p-6"
+      className="space-y-5 rounded-sm border border-border/80 bg-card p-5 sm:p-6"
     >
       <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <div className="relative flex-1 md:max-w-md">
@@ -102,8 +102,8 @@ export function MenuFilters({
       </div>
 
       {/* Category pills */}
-      <div className="space-y-2">
-        <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+      <div className="space-y-2.5">
+        <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
           Danh mục
         </p>
         <div className="flex flex-wrap gap-2">
@@ -134,9 +134,9 @@ export function MenuFilters({
       </div>
 
       {/* Price, Caffeine, Taste */}
-      <div className="grid gap-4 border-t pt-4 md:grid-cols-3">
-        <div className="space-y-2">
-          <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+      <div className="grid gap-5 border-t border-border/60 pt-5 md:grid-cols-3">
+        <div className="space-y-2.5">
+          <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
             Mức giá
           </p>
           <div className="flex flex-wrap gap-1.5">
@@ -154,8 +154,8 @@ export function MenuFilters({
           </div>
         </div>
 
-        <div className="space-y-2">
-          <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+        <div className="space-y-2.5">
+          <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
             Mức Caffeine
           </p>
           <div className="flex flex-wrap gap-1.5">
@@ -173,8 +173,8 @@ export function MenuFilters({
           </div>
         </div>
 
-        <div className="space-y-2">
-          <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+        <div className="space-y-2.5">
+          <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
             Gợi ý hương vị
           </p>
           <div className="flex flex-wrap gap-1.5">

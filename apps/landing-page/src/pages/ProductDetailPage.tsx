@@ -124,16 +124,19 @@ export function ProductDetailPage() {
         description={product.short_description_vi}
       />
 
-      <div className="mx-auto max-w-6xl space-y-8 px-4 py-8 sm:px-6 sm:py-12">
-        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm text-muted-foreground">
-          <Link to="/menu" className="inline-flex items-center gap-1 hover:text-primary">
-            <ArrowLeft className="h-4 w-4" />
+      <div className="mx-auto max-w-6xl space-y-8 px-4 py-10 sm:px-6 sm:py-12">
+        <nav
+          aria-label="Breadcrumb"
+          className="flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-[0.14em] text-muted-foreground"
+        >
+          <Link to="/menu" className="inline-flex items-center gap-1.5 hover:text-foreground">
+            <ArrowLeft className="h-3.5 w-3.5" />
             Thực đơn
           </Link>
           <span>/</span>
           <Link
             to={`/menu?category=${product.category.slug}`}
-            className="hover:text-primary"
+            className="hover:text-foreground"
           >
             {product.category.name_vi}
           </Link>
@@ -144,7 +147,7 @@ export function ProductDetailPage() {
         <div className="grid gap-10 lg:grid-cols-12">
           {/* Left column: Image & Story */}
           <div className="space-y-6 lg:col-span-6">
-            <div className="overflow-hidden rounded-3xl border bg-card shadow-sm">
+            <div className="overflow-hidden rounded-sm border border-border/80 bg-card">
               <LazyImage
                 src={product.image_url}
                 alt={product.name_vi}
@@ -158,7 +161,7 @@ export function ProductDetailPage() {
             {product.story_vi && (
               <Card>
                 <CardContent className="space-y-2 p-6">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-accent">
+                  <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
                     Câu chuyện đồ uống
                   </p>
                   <p className="leading-relaxed text-muted-foreground">{product.story_vi}</p>
@@ -173,20 +176,22 @@ export function ProductDetailPage() {
               <div className="flex flex-wrap items-center gap-2">
                 <Badge variant="secondary">{product.category.name_vi}</Badge>
                 {product.is_signature && (
-                  <Badge className="bg-accent text-accent-foreground">Signature</Badge>
+                  <Badge className="bg-primary text-primary-foreground">Signature</Badge>
                 )}
                 {!product.has_milk && <Badge variant="success">Không sữa bò</Badge>}
               </div>
 
-              <h1 className="font-serif text-3xl font-bold text-foreground sm:text-4xl">
+              <h1 className="font-serif text-3xl font-medium tracking-[-0.02em] text-foreground sm:text-4xl">
                 {product.name_vi}
               </h1>
-              <p className="text-sm font-medium text-muted-foreground">{product.name_en}</p>
-              <p className="text-base leading-relaxed text-foreground/90">
+              <p className="text-xs uppercase tracking-[0.14em] text-muted-foreground">
+                {product.name_en}
+              </p>
+              <p className="text-base leading-relaxed text-foreground/85">
                 {product.short_description_vi}
               </p>
 
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap gap-1.5 pt-1">
                 {product.taste_tags.map((tag) => (
                   <Badge key={tag} variant="outline" className="text-xs font-normal">
                     {TASTE_TAG_LABELS[tag] ?? tag}
@@ -203,17 +208,19 @@ export function ProductDetailPage() {
             />
 
             {/* Size & Temp Selector */}
-            <div className="space-y-4 rounded-2xl border bg-card p-5">
+            <div className="space-y-4 rounded-sm border border-border/80 bg-card p-5">
               <div className="flex items-baseline justify-between">
                 <div>
-                  <p className="text-xs text-muted-foreground">Giá bán niêm yết</p>
-                  <p className="text-2xl font-bold text-primary">
+                  <p className="text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
+                    Giá bán niêm yết
+                  </p>
+                  <p className="font-serif text-2xl font-medium text-foreground">
                     {formatVnd(activeVariant.price_vnd)}
                   </p>
                 </div>
                 {activeVariant.calories_kcal !== null &&
                   activeVariant.calories_kcal !== undefined && (
-                    <span className="inline-flex items-center gap-1 rounded-full bg-secondary px-3 py-1 text-xs font-medium">
+                    <span className="inline-flex items-center gap-1 rounded-sm border border-border/70 bg-secondary/60 px-2.5 py-1 text-xs font-medium">
                       <Flame className="h-3.5 w-3.5 text-accent" />
                       {activeVariant.calories_kcal} kcal
                     </span>
@@ -221,7 +228,7 @@ export function ProductDetailPage() {
               </div>
 
               <div className="space-y-2">
-                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
                   Chọn Size
                 </p>
                 <div className="grid grid-cols-3 gap-2">
@@ -237,14 +244,18 @@ export function ProductDetailPage() {
                           if (variant.temperature === "hot") setSelectedTemp("hot");
                           if (variant.temperature === "iced") setSelectedTemp("iced");
                         }}
-                        className={`rounded-xl border px-3 py-2.5 text-left transition-colors ${
+                        className={`rounded-sm border px-3 py-2.5 text-left transition-colors ${
                           selected
-                            ? "border-primary bg-primary/10 text-primary"
-                            : "border-input bg-background hover:bg-secondary/50"
+                            ? "border-primary bg-primary text-primary-foreground"
+                            : "border-border bg-background hover:border-foreground/40 hover:bg-secondary/40"
                         } disabled:cursor-not-allowed disabled:opacity-50`}
                       >
-                        <div className="text-sm font-bold">{SIZE_LABELS[variant.size].full}</div>
-                        <div className="text-xs font-medium">{formatVnd(variant.price_vnd)}</div>
+                        <div className="text-xs font-medium uppercase tracking-wider">
+                          {SIZE_LABELS[variant.size].full}
+                        </div>
+                        <div className="mt-0.5 text-xs opacity-90">
+                          {formatVnd(variant.price_vnd)}
+                        </div>
                       </button>
                     );
                   })}
@@ -252,7 +263,7 @@ export function ProductDetailPage() {
               </div>
 
               <div className="space-y-2">
-                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
                   Nhiệt độ phục vụ
                 </p>
                 <div className="flex gap-2">
@@ -276,14 +287,14 @@ export function ProductDetailPage() {
             </div>
 
             {/* Ingredients & Allergen Warnings */}
-            <div className="space-y-3 rounded-2xl border bg-card p-5">
-              <h2 className="text-sm font-semibold uppercase tracking-wide text-foreground">
+            <div className="space-y-3 rounded-sm border border-border/80 bg-card p-5">
+              <h2 className="text-[11px] font-medium uppercase tracking-[0.18em] text-foreground">
                 Thành phần &amp; Cảnh báo dị ứng
               </h2>
 
               {product.allergens.length > 0 ? (
-                <div className="rounded-xl border border-amber-300 bg-amber-50 p-3.5 text-sm text-amber-950">
-                  <div className="flex items-center gap-2 font-semibold">
+                <div className="rounded-sm border border-amber-300/80 bg-amber-50/70 p-3.5 text-sm text-amber-950">
+                  <div className="flex items-center gap-2 font-medium">
                     <AlertTriangle className="h-4 w-4 shrink-0 text-amber-700" />
                     <span>Lưu ý dị ứng: {product.allergens.join(", ")}</span>
                   </div>
@@ -297,7 +308,7 @@ export function ProductDetailPage() {
                   </ul>
                 </div>
               ) : (
-                <div className="flex items-center gap-2 rounded-xl border border-emerald-200 bg-emerald-50 p-3.5 text-sm text-emerald-900">
+                <div className="flex items-center gap-2 rounded-sm border border-emerald-200/80 bg-emerald-50/70 p-3.5 text-sm text-emerald-900">
                   <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-700" />
                   <span>Không chứa các nhóm chất gây dị ứng phổ biến (Sữa bò, Hạt, Đậu nành, Gluten).</span>
                 </div>
@@ -305,7 +316,7 @@ export function ProductDetailPage() {
 
               <ul className="grid gap-1.5 text-sm sm:grid-cols-2">
                 {product.ingredients.map((ing) => (
-                  <li key={ing.code} className="flex items-center justify-between rounded-lg bg-secondary/40 px-3 py-1.5">
+                  <li key={ing.code} className="flex items-center justify-between rounded-sm bg-secondary/45 px-3 py-1.5">
                     <span>
                       {ing.name_vi}
                       {ing.is_optional ? " (Tùy chọn)" : ""}
@@ -325,7 +336,7 @@ export function ProductDetailPage() {
               <Button
                 type="button"
                 size="lg"
-                className="flex-1 gap-2"
+                className="flex-1 gap-2 text-[11px] uppercase tracking-[0.14em]"
                 onClick={handleOrderClick}
               >
                 <ShoppingBag className="h-4 w-4" />
@@ -335,7 +346,7 @@ export function ProductDetailPage() {
                 type="button"
                 size="lg"
                 variant="outline"
-                className="flex-1 gap-2"
+                className="flex-1 gap-2 text-[11px] uppercase tracking-[0.14em]"
                 onClick={() =>
                   openChatWithPrompt(
                     `Mình đang xem ${product.name_vi} (${SIZE_LABELS[activeVariant.size].full}, ${formatVnd(activeVariant.price_vnd)}). Tư vấn giúp mình cách thưởng thức hoặc điều chỉnh vị ngọt/đá phù hợp nhé!`

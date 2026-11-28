@@ -29,9 +29,9 @@ async def test_stores_list_and_detail(async_client: AsyncClient) -> None:
         assert len(store["hours"]) == 7
         assert isinstance(store["is_open_now"], bool)
 
-    detail_resp = await async_client.get("/api/v1/stores/brew-bean-nguyen-hue")
+    detail_resp = await async_client.get("/api/v1/stores/brew-bean-nguyen-dinh-thi")
     assert detail_resp.status_code == 200
-    assert detail_resp.json()["slug"] == "brew-bean-nguyen-hue"
+    assert detail_resp.json()["slug"] == "brew-bean-nguyen-dinh-thi"
 
     missing_resp = await async_client.get("/api/v1/stores/non-existent-store")
     assert missing_resp.status_code == 404

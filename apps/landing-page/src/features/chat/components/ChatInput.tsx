@@ -28,7 +28,7 @@ export function ChatInput({ isStreaming, onSend, onStop }: ChatInputProps) {
   };
 
   return (
-    <div className="border-t bg-card p-3 sm:rounded-b-2xl">
+    <div className="border-t bg-card p-3 sm:rounded-b-sm">
       <div className="flex items-end gap-2">
         <textarea
           rows={2}
@@ -38,7 +38,7 @@ export function ChatInput({ isStreaming, onSend, onStop }: ChatInputProps) {
           onKeyDown={handleKeyDown}
           placeholder="Hỏi Bean AI về vị, giá, dị ứng, chi nhánh..."
           aria-label="Nhập câu hỏi cho Bean AI"
-          className="max-h-28 min-h-[44px] flex-1 resize-none rounded-xl border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="max-h-28 min-h-[44px] flex-1 resize-none rounded-sm border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
         />
 
         {isStreaming ? (

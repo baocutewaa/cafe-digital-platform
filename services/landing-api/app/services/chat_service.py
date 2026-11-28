@@ -28,6 +28,7 @@ from app.services.menu_service import build_product_summary
 from app.services.rate_limit import chat_rate_limiter
 from rag.generation.answer_generator import AnswerGenerator, GenerationMetrics
 from rag.generation.fast_path import try_build_fast_path
+from rag.generation.guards import is_corrupted_cached_answer
 from rag.generation.intent_router import IntentType, classify_intent
 from rag.retrieval.context_builder import HybridRetriever
 from rag.retrieval.query_parser import parse_query
@@ -136,18 +137,17 @@ class ChatService:
         await self.db.commit()
         return ChatFeedbackResponse.model_validate(fb)
 
-    async def stream_message(
+    async def prepare_stream(
         self,
         *,
         chat_session: ChatSession,
-        content: str,
         client_message_id: str | None,
         client_ip: str,
-    ) -> AsyncGenerator[str, None]:
-        t_start = time.perf_counter()
-        clean_content = content.strip()
-
-        # Idempotency check before rate limit
+    ) -> tuple[Any, Any] | None:
+        """
+        Check idempotent replay and enforce rate limit BEFORE StreamingResponse starts,
+        so RateLimitExceededError produces a proper HTTP 429 JSON response.
+        """
         if client_message_id:
             existing_user = await self.repo.find_user_message_by_client_id(
                 chat_session.id, client_message_id
@@ -157,39 +157,64 @@ class ChatService:
                     chat_session.id, existing_user.created_at
                 )
                 if prev_reply is not None:
-                    prods = await self.repo.get_products_by_slugs(
-                        list(prev_reply.recommended_product_slugs or [])
-                    )
-                    yield format_sse_event(
-                        "meta",
-                        {
-                            "session_id": str(chat_session.id),
-                            "user_message_id": str(existing_user.id),
-                            "assistant_message_id": str(prev_reply.id),
-                            "intent": prev_reply.intent,
-                            "replayed": True,
-                        },
-                    )
-                    if prods:
-                        yield format_sse_event("products", _serialize_products(prods))
-                    yield format_sse_event("token", {"delta": prev_reply.content})
-                    if prev_reply.citations:
-                        yield format_sse_event("sources", prev_reply.citations)
-                    yield format_sse_event(
-                        "done",
-                        {
-                            "message_id": str(prev_reply.id),
-                            "intent": prev_reply.intent,
-                            "model": prev_reply.model,
-                            "ttft_ms": prev_reply.ttft_ms or 0,
-                            "latency_ms": prev_reply.latency_ms or 0,
-                            "cached": prev_reply.cached,
-                            "degraded": prev_reply.degraded,
-                        },
-                    )
-                    return
+                    return existing_user, prev_reply
 
         chat_rate_limiter.check_and_record(str(chat_session.id), client_ip)
+        return None
+
+    async def stream_message(
+        self,
+        *,
+        chat_session: ChatSession,
+        content: str,
+        client_message_id: str | None,
+        client_ip: str,
+        replayed: tuple[Any, Any] | None = None,
+        rate_limit_checked: bool = False,
+    ) -> AsyncGenerator[str, None]:
+        t_start = time.perf_counter()
+        clean_content = content.strip()
+
+        if replayed is None and not rate_limit_checked:
+            replayed = await self.prepare_stream(
+                chat_session=chat_session,
+                client_message_id=client_message_id,
+                client_ip=client_ip,
+            )
+
+        if replayed is not None:
+            existing_user, prev_reply = replayed
+            prods = await self.repo.get_products_by_slugs(
+                list(prev_reply.recommended_product_slugs or [])
+            )
+            yield format_sse_event(
+                "meta",
+                {
+                    "session_id": str(chat_session.id),
+                    "user_message_id": str(existing_user.id),
+                    "assistant_message_id": str(prev_reply.id),
+                    "intent": prev_reply.intent,
+                    "replayed": True,
+                },
+            )
+            if prods:
+                yield format_sse_event("products", _serialize_products(prods))
+            yield format_sse_event("token", {"delta": prev_reply.content})
+            if prev_reply.citations:
+                yield format_sse_event("sources", prev_reply.citations)
+            yield format_sse_event(
+                "done",
+                {
+                    "message_id": str(prev_reply.id),
+                    "intent": prev_reply.intent,
+                    "model": prev_reply.model,
+                    "ttft_ms": prev_reply.ttft_ms or 0,
+                    "latency_ms": prev_reply.latency_ms or 0,
+                    "cached": prev_reply.cached,
+                    "degraded": prev_reply.degraded,
+                },
+            )
+            return
 
         parsed_preview = parse_query(clean_content)
         predicted_intent = classify_intent(parsed_preview)
@@ -281,7 +306,7 @@ class ChatService:
                 return
 
         # 2. Run Hybrid Retrieval + SQL Retrieval
-        retrieval = await self.retriever.retrieve(clean_content)
+        retrieval = await self.retriever.retrieve(clean_content, history=history)
         product_payload = _serialize_products(retrieval.products)
         product_slugs = [p.slug for p in retrieval.products]
         chunk_ids = [str(c.chunk_id) for c in retrieval.chunks]
@@ -372,7 +397,9 @@ class ChatService:
             not final_metrics.degraded
             and final_metrics.model != "abstention"
             and retrieval.intent in _CACHEABLE_INTENTS
-            and final_metrics.answer.strip()
+            and not is_corrupted_cached_answer(
+                final_metrics.answer, retrieval.parsed_query.language
+            )
         ):
             await self.repo.upsert_answer_cache(
                 normalized_query=retrieval.parsed_query.normalized_query,

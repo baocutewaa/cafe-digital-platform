@@ -111,7 +111,7 @@ flowchart LR
 | **ADR-02** | Phạm vi repo & ứng dụng | Tạo dự án mới `cafe-digital-platform`; xây dựng trước `apps/landing-page` và `services/landing-api` | Tách biệt rõ 3 ứng dụng độc lập; dễ mở rộng thêm `apps/online-ordering` và `apps/admin-dashboard` sau này |
 | **ADR-03** | Database (Local No-Docker → Cloud) | **Local Dev (P0–P6):** PostgreSQL 17 cài trực tiếp trên Windows (`localhost:5432`, kèm binary `pgvector`) *hoặc* trỏ tới 1 branch `dev` trên Neon Free. **Production (P7):** **Neon Free Production** (PostgreSQL 17 + `pgvector` + `pg_trgm` + `unaccent`, region **Singapore**) | Không cần bật Docker mà vẫn tương thích 100% SQL/extensions giữa môi trường Local và Production; cùng bộ Alembic migrations và scripts seed/ingest chạy được cho cả hai |
 | **ADR-04** | AI Runtime & Kết nối (Local → Cloud) | **Local Dev:** Gọi trực tiếp `http://127.0.0.1:11434`. **Production (P7):** Kết nối từ Render về PC qua **Cloudflare Named Tunnel (`cloudflared`)** + **Cloudflare Access Service Token** + **WAF Path Allowlist** | Khi code trên máy chỉ cần bật Ollama local; khi deploy lên Render chỉ cần bật thêm `cloudflared` và điền biến môi trường `OLLAMA_BASE_URL=https://ai.<domain>` |
-| **ADR-05** | Model AI | Generation: **`qwen3:8b`** (nếu PC có GPU rời ≥ 6 GB VRAM) hoặc **`qwen3:4b`** (nếu PC chỉ dùng CPU), luôn bật `"think": false`. Embedding: **`bge-m3`** (1024 chiều) | Đảm bảo chất lượng tiếng Việt tự nhiên và thời gian phản hồi nhanh (TTFT < 2.5s trên GPU) |
+| **ADR-05** | Model AI | Generation: Mặc định hiện hành **`qwen2.5:3b`** (hoặc **`qwen3:8b`** / **`qwen3:4b`** với chế độ xử lý `think` tự động qua `/api/show`). Embedding: **`bge-m3`** (1024 chiều) | Đảm bảo chất lượng tiếng Việt tự nhiên, không lọt chuỗi thinking và thời gian phản hồi nhanh trên PC Local |
 | **ADR-06** | Quản lý Menu & Knowledge Base (khi chưa có App 3 Admin) | **Git-driven Declarative Data + Local CLI**: sửa file `data/seed/*.json` & `data/knowledge_base/**/*.md` → chạy `scripts/seed_database.py` & `scripts/ingest_knowledge.py` | Không cần xây Admin Portal trong phạm vi Landing Page; có lịch sử thay đổi (Git version control), idempotent theo `content_hash` |
 | **ADR-07** | Chế độ vận hành khi tắt Ollama / tắt PC (Offline Resilience) | **3 lớp bảo vệ**: (1) SQL Fast-path cho câu hỏi giá/menu/cửa hàng/khuyến mãi, (2) Pre-warmed `answer_cache` cho 40+ câu hỏi phổ biến, (3) Lexical Search (`FTS` + `pg_trgm`) + SQL Product Cards khi Circuit Breaker mở | Kiểm thử được ngay trên Local bằng cách tắt tiến trình Ollama; khi lên Production khách truy cập lúc bạn tắt PC vẫn xem được web và hỏi đáp được 70–80% nhu cầu |
 | **ADR-08** | Hosting Production ở giai đoạn cuối (P7) | **Frontend:** **Vercel** (React 18+ / Vite / TS / Tailwind / shadcn/ui). **Backend:** **Render** Web Service (Python native, region **Singapore** — cũng không cần Docker) | Thiết lập ở bước cuối cùng sau khi bản build local (`npm run build` & `pytest`) và bộ đánh giá RAG đã hoàn toàn ổn định |
@@ -277,7 +277,7 @@ CREATE TABLE stores (
     name VARCHAR(150) NOT NULL,
     address TEXT NOT NULL,
     district VARCHAR(100),
-    city VARCHAR(100) DEFAULT 'TP. Hồ Chí Minh',
+    city VARCHAR(100) DEFAULT 'Hà Nội',
     phone VARCHAR(30),
     google_maps_url TEXT,
     latitude NUMERIC(9,6),
@@ -583,7 +583,7 @@ Với sự bổ sung các cột thuộc tính có cấu trúc (`bitterness_level
 | Intent | Ví dụ câu hỏi của khách | Nguồn dữ liệu xử lý | Hoạt động khi tắt Ollama / tắt PC? |
 |---|---|---|---|
 | `PRODUCT_LOOKUP` | *"Caramel Latte size L giá bao nhiêu?"* | **SQL Fast-path** (trả lời bằng template + Product Card) | **Có (100%)** |
-| `STORE_INFO` | *"Quán ở Quận 1 mấy giờ đóng cửa, có chỗ đậu ô tô không?"* | **SQL Fast-path** (`stores` + `store_hours`) | **Có (100%)** |
+| `STORE_INFO` | *"Quán ở Nguyễn Đình Thi Hồ Tây mấy giờ đóng cửa, có chỗ đậu xe không?"* | **SQL Fast-path** (`stores` + `store_hours`) | **Có (100%)** |
 | `PROMOTION_LOOKUP` | *"Hôm nay quán có mã giảm giá nào không?"* | **SQL Fast-path** (`promotions`) | **Có (100%)** |
 | `PRODUCT_RECOMMENDATION` | *"Mình muốn đồ uống ít đắng, béo nhẹ, dưới 50k uống buổi chiều"* | **SQL Filter** (`price <= 50000`, `bitterness <= 2`, `has_milk = true`) + **Hybrid RAG** (mô tả hương vị) → **Qwen3 tổng hợp** | **Có một phần** (Vẫn lọc đúng Product Cards bằng SQL + Lexical Search khi tắt Ollama) |
 | `COFFEE_KNOWLEDGE` | *"Cold Brew khác gì Espresso pha đá?"* | **Answer Cache** → nếu chưa có: **Hybrid RAG** (`pgvector` + `FTS`/`pg_trgm`, RRF `k=60`) → **Qwen3** | **Có** với các câu đã pre-warm trong Cache; hoặc trích đoạn Lexical Search |
@@ -1137,7 +1137,7 @@ CF_ACCESS_CLIENT_SECRET=
 # --- GIAI ĐOẠN P7 (PRODUCTION QUA CLOUDFLARE TUNNEL): Chỉ điền trên Render ---
 # OLLAMA_BASE_URL=https://ai.<domain>
 
-LLM_MODEL=qwen3:8b
+LLM_MODEL=qwen2.5:3b
 EMBEDDING_MODEL=bge-m3
 EMBEDDING_DIMENSION=1024
 OLLAMA_CONNECT_TIMEOUT_S=4
@@ -1145,7 +1145,8 @@ OLLAMA_READ_TIMEOUT_S=75
 LLM_MAX_CONCURRENCY=1
 LLM_QUEUE_TIMEOUT_S=20
 LLM_NUM_CTX=4096
-LLM_NUM_PREDICT=350
+LLM_NUM_PREDICT=650
+LLM_THINK_NUM_PREDICT=2048
 LLM_TEMPERATURE=0.3
 
 RAG_TOP_K_DENSE=20
@@ -1158,6 +1159,8 @@ RAG_MIN_RELEVANCE=0.35
 SESSION_TTL_HOURS=24
 CHAT_MAX_MESSAGE_LENGTH=1000
 CHAT_RATE_LIMIT_PER_MIN=8
+AUTO_SEED_ANSWER_CACHE=true
+ANSWER_CACHE_TTL_DAYS=7
 ```
 
 ### 14.2. `apps/landing-page/.env.example`

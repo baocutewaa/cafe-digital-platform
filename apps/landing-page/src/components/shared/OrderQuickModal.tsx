@@ -28,14 +28,14 @@ export function OrderQuickModal({ draft, onClose }: OrderQuickModalProps) {
       aria-modal="true"
       aria-labelledby="order-modal-title"
     >
-      <div className="w-full max-w-md rounded-2xl border bg-card p-6 shadow-xl">
+      <div className="w-full max-w-md rounded-sm border border-border bg-card p-6 shadow-xl">
         <div className="flex items-start justify-between gap-4">
           <div className="flex items-center gap-2.5">
-            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+            <span className="flex h-10 w-10 items-center justify-center rounded-sm bg-secondary text-foreground">
               <ShoppingBag className="h-5 w-5" />
             </span>
             <div>
-              <h2 id="order-modal-title" className="text-lg font-semibold">
+              <h2 id="order-modal-title" className="font-serif text-lg font-medium">
                 Đặt món tại quầy / Chi nhánh
               </h2>
               <p className="text-xs text-muted-foreground">SKU: {draft.sku}</p>
@@ -46,7 +46,7 @@ export function OrderQuickModal({ draft, onClose }: OrderQuickModalProps) {
           </Button>
         </div>
 
-        <div className="mt-4 space-y-2 rounded-xl border bg-secondary/40 p-4 text-sm">
+        <div className="mt-4 space-y-2 rounded-sm border border-border/70 bg-secondary/40 p-4 text-sm">
           <div className="flex justify-between gap-2">
             <span className="text-muted-foreground">Sản phẩm</span>
             <span className="font-semibold text-foreground">{draft.productName}</span>
@@ -72,17 +72,17 @@ export function OrderQuickModal({ draft, onClose }: OrderQuickModalProps) {
           <Link
             to="/visit"
             onClick={onClose}
-            className="inline-flex flex-1 items-center justify-center gap-2 rounded-md bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="inline-flex flex-1 items-center justify-center gap-2 rounded-sm bg-primary px-4 py-2.5 text-[11px] font-medium uppercase tracking-[0.14em] text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            <MapPin className="h-4 w-4" />
+            <MapPin className="h-3.5 w-3.5" />
             Xem chi nhánh &amp; Giờ mở cửa
           </Link>
           <a
-            href="tel:02838228899"
-            className="inline-flex items-center justify-center gap-2 rounded-md border border-input bg-background px-4 py-2.5 text-sm font-medium transition-colors hover:bg-secondary/60"
+            href="tel:02437288899"
+            className="inline-flex items-center justify-center gap-2 rounded-sm border border-foreground/20 bg-transparent px-4 py-2.5 text-sm font-medium transition-colors hover:border-foreground hover:bg-secondary/50"
           >
             <Phone className="h-4 w-4" />
-            028 3822 8899
+            024 3728 8899
           </a>
         </div>
       </div>

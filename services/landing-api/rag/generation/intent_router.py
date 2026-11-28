@@ -52,9 +52,10 @@ _RECOMMENDATION_SIGNALS = (
 
 _STORE_SIGNALS = (
     "gio mo cua", "gio dong cua", "may gio mo", "may gio dong", "dong cua", "mo cua",
-    "dia chi", "o dau", "chi nhanh", "cua hang", "quan 1", "quan 3", "thao dien",
-    "nguyen hue", "vo van tan", "dau xe", "cho de xe", "parking", "wifi", "wi-fi",
-    "o cam", "thu cung", "pet", "yen tinh", "lam viec", "opening hours", "address",
+    "dia chi", "o dau", "chi nhanh", "cua hang", "tay ho", "ho tay", "vanh dai",
+    "ha noi", "nguyen dinh thi", "thuy khue", "quang an", "trich sai", "phuong buoi",
+    "dau xe", "cho de xe", "parking", "wifi", "wi-fi", "o cam", "thu cung", "pet",
+    "yen tinh", "lam viec", "opening hours", "address",
 )
 
 _PROMO_SIGNALS = (
@@ -104,9 +105,16 @@ def classify_intent(parsed: ParsedQuery) -> IntentType:
     if any(sig in q for sig in _KNOWLEDGE_SIGNALS):
         return IntentType.COFFEE_KNOWLEDGE
 
-    # 6. Product recommendation vs exact price/catalog lookup
+    # 6. Product recommendation / customization vs exact price/catalog lookup
     has_price_fact = any(re.search(pat, q) for pat in _PRICE_OR_FACT_PATTERNS)
     has_rec = any(sig in q for sig in _RECOMMENDATION_SIGNALS)
+
+    if parsed.is_customization_query:
+        return (
+            IntentType.PRODUCT_RECOMMENDATION
+            if has_rec
+            else IntentType.COFFEE_KNOWLEDGE
+        )
 
     if has_price_fact and not has_rec:
         return IntentType.PRODUCT_LOOKUP
@@ -114,8 +122,11 @@ def classify_intent(parsed: ParsedQuery) -> IntentType:
     if (
         has_rec
         or parsed.taste_tags
+        or parsed.max_bitterness is not None
+        or parsed.max_sweetness is not None
         or parsed.caffeine_level is not None
         or parsed.has_milk is not None
+        or (parsed.max_price is not None and parsed.drinks_only)
     ):
         return IntentType.PRODUCT_RECOMMENDATION
 

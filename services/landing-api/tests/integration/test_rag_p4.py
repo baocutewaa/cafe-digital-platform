@@ -33,12 +33,12 @@ async def test_sql_fast_path_queries_accurate_and_under_800ms() -> None:
         # 2. Store hours & address
         t1 = time.perf_counter()
         res_store = await _run_retrieve(
-            session, "Quán ở Quận 1 mấy giờ đóng cửa, có ổ cắm không?", offline=True
+            session, "Quán ở Nguyễn Đình Thi Hồ Tây mấy giờ đóng cửa, có ổ cắm không?", offline=True
         )
         fp_store = try_build_fast_path(res_store)
         assert res_store.intent == IntentType.STORE_INFO
         assert fp_store.handled is True
-        assert "Nguyễn Huệ" in fp_store.answer
+        assert "Nguyễn Đình Thi" in fp_store.answer
         assert (time.perf_counter() - t1) * 1000.0 < 800.0
 
         # 3. Active promotions

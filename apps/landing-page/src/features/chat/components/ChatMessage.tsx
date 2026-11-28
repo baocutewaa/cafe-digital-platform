@@ -5,18 +5,55 @@ import { Badge } from "@/components/ui/badge";
 import { ProductRecommendationCard } from "@/features/chat/components/ProductRecommendationCard";
 import { SourceCitationBadge } from "@/features/chat/components/SourceCitationBadge";
 import type { ChatMessageItem } from "@/features/chat/types";
+import type { ProductSize } from "@/lib/api-client";
 
 interface ChatMessageProps {
   message: ChatMessageItem;
+  precedingUserContent?: string;
   onFeedback: (localId: string, serverMessageId: string, rating: 1 | -1) => void;
   onOrderDraft: (draft: OrderDraft) => void;
   onNavigate?: () => void;
 }
 
 const INLINE_TOKEN_RE = /(\*\*[^*]+\*\*|`[^`]+`|\*[^*]+\*)/g;
+const BULLET_LINE_RE = /^([-•*])\s*(.+)$/;
+const NUMBERED_LINE_RE = /^(\d+)\.\s+(.+)$/;
+const HEADING_LINE_RE = /^#{1,4}\s+(.+)$/;
+const STRAY_SECTION_TAG_RE = /^\[[^\]\n]+\]$/;
+
+function inferPreferredSize(userText?: string): ProductSize | undefined {
+  if (!userText) return undefined;
+  const lower = userText.toLowerCase();
+  if (/(?:\bsize\s*s\b|\bsize\s+nhỏ\b|\bnhỏ\s*\(\s*s\s*\)|\(\s*s\s*\)|\bsmall\b)/i.test(lower)) {
+    return "small";
+  }
+  if (/(?:\bsize\s*m\b|\bsize\s+vừa\b|\bvừa\s*\(\s*m\s*\)|\(\s*m\s*\)|\bregular\b)/i.test(lower)) {
+    return "regular";
+  }
+  if (/(?:\bsize\s*l\b|\bsize\s+lớn\b|\blớn\s*\(\s*l\s*\)|\(\s*l\s*\)|\blarge\b)/i.test(lower)) {
+    return "large";
+  }
+  return undefined;
+}
+
+function sanitizeIncompleteInlineTokens(line: string): string {
+  let cleaned = line;
+  const boldCount = (cleaned.match(/\*\*/g) ?? []).length;
+  if (boldCount % 2 === 1) {
+    const lastIdx = cleaned.lastIndexOf("**");
+    cleaned = `${cleaned.slice(0, lastIdx)}${cleaned.slice(lastIdx + 2)}`;
+  }
+  const tickCount = (cleaned.match(/`/g) ?? []).length;
+  if (tickCount % 2 === 1) {
+    const lastIdx = cleaned.lastIndexOf("`");
+    cleaned = `${cleaned.slice(0, lastIdx)}${cleaned.slice(lastIdx + 1)}`;
+  }
+  return cleaned;
+}
 
 function renderInlineMarkdown(text: string): ReactNode[] {
-  const parts = text.split(INLINE_TOKEN_RE);
+  const safeText = sanitizeIncompleteInlineTokens(text);
+  const parts = safeText.split(INLINE_TOKEN_RE);
   return parts.map((part, idx) => {
     if (part.startsWith("**") && part.endsWith("**") && part.length > 4) {
       return (
@@ -48,16 +85,45 @@ function SafeMarkdown({ content }: { content: string }) {
   return (
     <div className="space-y-1.5 text-sm leading-relaxed">
       {lines.map((rawLine, idx) => {
+        const isIndented = /^\s{2,}/.test(rawLine);
         const line = rawLine.trim();
         if (!line) return <div key={idx} className="h-1" />;
-        if (line.startsWith("- ") || line.startsWith("• ")) {
+        if (STRAY_SECTION_TAG_RE.test(line)) return null;
+
+        const headingMatch = HEADING_LINE_RE.exec(line);
+        if (headingMatch) {
           return (
-            <div key={idx} className="flex gap-2 pl-1">
-              <span className="text-accent">•</span>
-              <span className="flex-1">{renderInlineMarkdown(line.slice(2))}</span>
+            <p key={idx} className="pt-1 font-semibold text-foreground">
+              {renderInlineMarkdown(headingMatch[1])}
+            </p>
+          );
+        }
+
+        const numberedMatch = NUMBERED_LINE_RE.exec(line);
+        if (numberedMatch) {
+          return (
+            <div key={idx} className="flex gap-2 pl-0.5">
+              <span className="shrink-0 font-semibold text-accent">{numberedMatch[1]}.</span>
+              <span className="flex-1">{renderInlineMarkdown(numberedMatch[2])}</span>
             </div>
           );
         }
+
+        // Distinguish `*italic note*` from `* bullet item`
+        const isItalicLine =
+          line.startsWith("*") && !line.startsWith("**") && line.endsWith("*") && line.length > 2;
+        if (!isItalicLine) {
+          const bulletMatch = BULLET_LINE_RE.exec(line);
+          if (bulletMatch) {
+            return (
+              <div key={idx} className={`flex gap-2 ${isIndented ? "pl-4" : "pl-1"}`}>
+                <span className="shrink-0 text-accent">{isIndented ? "◦" : "•"}</span>
+                <span className="flex-1">{renderInlineMarkdown(bulletMatch[2])}</span>
+              </div>
+            );
+          }
+        }
+
         return <p key={idx}>{renderInlineMarkdown(line)}</p>;
       })}
     </div>
@@ -66,6 +132,7 @@ function SafeMarkdown({ content }: { content: string }) {
 
 export function ChatMessage({
   message,
+  precedingUserContent,
   onFeedback,
   onOrderDraft,
   onNavigate,
@@ -73,12 +140,14 @@ export function ChatMessage({
   if (message.role === "user") {
     return (
       <div className="flex justify-end">
-        <div className="max-w-[85%] rounded-2xl rounded-br-sm bg-primary px-3.5 py-2.5 text-sm text-primary-foreground shadow-sm">
+        <div className="max-w-[85%] rounded-sm bg-primary px-3.5 py-2.5 text-sm text-primary-foreground">
           {message.content}
         </div>
       </div>
     );
   }
+
+  const preferredSize = inferPreferredSize(precedingUserContent);
 
   return (
     <div className="space-y-2.5">
@@ -89,6 +158,7 @@ export function ChatMessage({
             <ProductRecommendationCard
               key={prod.id}
               product={prod}
+              preferredSize={preferredSize}
               onOrderDraft={onOrderDraft}
               onNavigate={onNavigate}
             />
@@ -97,7 +167,7 @@ export function ChatMessage({
       )}
 
       {(message.content || message.isStreaming) && (
-        <div className="rounded-2xl rounded-tl-sm border bg-card px-3.5 py-3 text-card-foreground shadow-sm">
+        <div className="rounded-sm border border-border/80 bg-card px-3.5 py-3 text-card-foreground">
           {message.content ? (
             <SafeMarkdown content={message.content} />
           ) : (

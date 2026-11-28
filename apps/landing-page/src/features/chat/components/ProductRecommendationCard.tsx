@@ -4,28 +4,41 @@ import { LazyImage } from "@/components/shared/LazyImage";
 import type { OrderDraft } from "@/components/shared/OrderQuickModal";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import type { ProductSummary } from "@/lib/api-client";
-import { formatVnd, getOrderingAppUrl } from "@/lib/format";
+import type { ProductSize, ProductSummary } from "@/lib/api-client";
+import { formatVnd, getOrderingAppUrl, SIZE_LABELS } from "@/lib/format";
 
 interface ProductRecommendationCardProps {
   product: ProductSummary;
+  preferredSize?: ProductSize;
   onOrderDraft: (draft: OrderDraft) => void;
   onNavigate?: () => void;
 }
 
 export function ProductRecommendationCard({
   product,
+  preferredSize,
   onOrderDraft,
   onNavigate,
 }: ProductRecommendationCardProps) {
-  const defaultVariant =
+  const matchedPreferred = preferredSize
+    ? product.variants.find((v) => v.size === preferredSize && v.is_available)
+    : undefined;
+
+  const activeVariant =
+    matchedPreferred ??
     product.variants.find((v) => v.size === "regular" && v.is_available) ??
     product.variants.find((v) => v.is_available) ??
     product.variants[0];
 
+  const priceBadgeText = matchedPreferred
+    ? `${SIZE_LABELS[matchedPreferred.size].full} · ${formatVnd(matchedPreferred.price_vnd)}`
+    : product.min_price_vnd === product.max_price_vnd
+      ? formatVnd(product.min_price_vnd)
+      : `Từ ${formatVnd(product.min_price_vnd)}`;
+
   const handleOrder = () => {
-    if (!defaultVariant) return;
-    const ext = getOrderingAppUrl(defaultVariant.sku, product.slug);
+    if (!activeVariant) return;
+    const ext = getOrderingAppUrl(activeVariant.sku, product.slug);
     if (ext) {
       window.open(ext, "_blank", "noopener,noreferrer");
       return;
@@ -33,19 +46,19 @@ export function ProductRecommendationCard({
     onOrderDraft({
       productName: product.name_vi,
       productSlug: product.slug,
-      sku: defaultVariant.sku,
-      size: defaultVariant.size,
-      temperature: defaultVariant.temperature === "hot" ? "hot" : "iced",
-      priceVnd: defaultVariant.price_vnd,
+      sku: activeVariant.sku,
+      size: activeVariant.size,
+      temperature: activeVariant.temperature === "hot" ? "hot" : "iced",
+      priceVnd: activeVariant.price_vnd,
     });
   };
 
   return (
-    <div className="flex gap-3 rounded-xl border bg-background p-2.5 shadow-sm">
+    <div className="flex gap-3 rounded-sm border border-border/80 bg-background p-2.5">
       <Link
         to={`/menu/${product.slug}`}
         onClick={onNavigate}
-        className="h-16 w-16 shrink-0 overflow-hidden rounded-lg bg-muted"
+        className="h-16 w-16 shrink-0 overflow-hidden rounded-sm bg-muted"
       >
         <LazyImage
           src={product.image_url}
@@ -67,7 +80,8 @@ export function ProductRecommendationCard({
               {product.name_vi}
             </Link>
             <span className="shrink-0 text-xs font-bold text-primary">
-              {formatVnd(product.min_price_vnd)}
+              {" "}
+              {priceBadgeText}
             </span>
           </div>
           <div className="mt-1 flex flex-wrap gap-1">
@@ -78,6 +92,9 @@ export function ProductRecommendationCard({
             )}
             <Badge variant="outline" className="px-1.5 py-0 text-[10px]">
               Đắng {product.bitterness_level}/5
+            </Badge>
+            <Badge variant="outline" className="px-1.5 py-0 text-[10px]">
+              Ngọt {product.sweetness_level}/5
             </Badge>
           </div>
         </div>
@@ -90,8 +107,8 @@ export function ProductRecommendationCard({
           >
             <ExternalLink className="h-3 w-3" />
             Chi tiết
-          </Link>
-          {defaultVariant && (
+          </Link>{" "}
+          {activeVariant && (
             <Button
               type="button"
               size="sm"
@@ -99,7 +116,9 @@ export function ProductRecommendationCard({
               onClick={handleOrder}
             >
               <ShoppingBag className="h-3 w-3" />
-              Đặt món
+              {matchedPreferred
+                ? `Đặt size ${SIZE_LABELS[activeVariant.size].short}`
+                : "Đặt món"}
             </Button>
           )}
         </div>

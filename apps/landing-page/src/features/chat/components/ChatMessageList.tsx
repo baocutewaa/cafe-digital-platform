@@ -35,12 +35,12 @@ export function ChatMessageList({
     <div className="flex-1 space-y-4 overflow-y-auto bg-background/60 p-4">
       {messages.length === 0 ? (
         <div className="space-y-5 py-4">
-          <div className="rounded-2xl border bg-card p-4 shadow-sm">
+          <div className="rounded-sm border border-border/80 bg-card p-4">
             <div className="flex items-center gap-2.5">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
+              <span className="flex h-8 w-8 items-center justify-center rounded-sm bg-secondary text-foreground">
                 <Bot className="h-4 w-4" />
               </span>
-              <p className="text-sm font-semibold">Xin chào! Mình là Bean AI Barista</p>
+              <p className="font-serif text-sm font-medium">Xin chào! Mình là Bean AI Barista</p>
             </div>
             <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
               Mình có thể gợi ý đồ uống theo khẩu vị, kiểm tra giá từng size S/M/L, lọc món an
@@ -53,15 +53,23 @@ export function ChatMessageList({
         </div>
       ) : (
         <>
-          {messages.map((msg) => (
-            <ChatMessage
-              key={msg.id}
-              message={msg}
-              onFeedback={onFeedback}
-              onOrderDraft={onOrderDraft}
-              onNavigate={onNavigate}
-            />
-          ))}
+          {messages.map((msg, index) => {
+            const prevMsg = index > 0 ? messages[index - 1] : undefined;
+            const precedingUserContent =
+              msg.role === "assistant" && prevMsg?.role === "user"
+                ? prevMsg.content
+                : undefined;
+            return (
+              <ChatMessage
+                key={msg.id}
+                message={msg}
+                precedingUserContent={precedingUserContent}
+                onFeedback={onFeedback}
+                onOrderDraft={onOrderDraft}
+                onNavigate={onNavigate}
+              />
+            );
+          })}
           <TypingAndStageIndicator stage={stage} />
         </>
       )}

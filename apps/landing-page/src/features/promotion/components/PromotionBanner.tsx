@@ -51,14 +51,14 @@ export function PromotionBanner({ promotion }: PromotionBannerProps) {
               </span>
             </div>
 
-            <h3 className="font-serif text-xl font-bold text-foreground">{promotion.title_vi}</h3>
-            <p className="text-sm text-foreground/90">{promotion.summary_vi}</p>
-            <p className="rounded-lg bg-secondary/50 p-3 text-xs leading-relaxed text-muted-foreground">
+            <h3 className="font-serif text-xl font-medium text-foreground">{promotion.title_vi}</h3>
+            <p className="text-sm text-foreground/85">{promotion.summary_vi}</p>
+            <p className="rounded-sm border border-border/60 bg-secondary/45 p-3 text-xs leading-relaxed text-muted-foreground">
               <strong className="text-foreground">Điều kiện:</strong> {promotion.conditions_vi}
             </p>
           </div>
 
-          <div className="space-y-3 border-t pt-4">
+          <div className="space-y-3 border-t border-border/60 pt-4">
             {promotion.promo_code && (
               <div className="flex flex-wrap items-center gap-3">
                 <span className="text-xs font-medium text-muted-foreground">Mã ưu đãi:</span>
@@ -74,7 +74,7 @@ export function PromotionBanner({ promotion }: PromotionBannerProps) {
                     <Link
                       key={prod.id}
                       to={`/menu/${prod.slug}`}
-                      className="rounded-full border bg-background px-2.5 py-1 text-xs font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
+                      className="rounded-sm border border-border/80 bg-background px-2.5 py-1 text-xs font-medium text-foreground transition-colors hover:border-foreground/50"
                     >
                       {prod.name_vi}
                     </Link>

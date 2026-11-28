@@ -32,9 +32,9 @@ export function ProductGrid({ products, isLoading, onResetFilters }: ProductGrid
 
   if (products.length === 0) {
     return (
-      <div className="rounded-2xl border border-dashed bg-card p-10 text-center">
+      <div className="rounded-sm border border-dashed border-border bg-card p-10 text-center">
         <Coffee className="mx-auto h-10 w-10 text-muted-foreground" />
-        <h3 className="mt-3 text-lg font-semibold">Không tìm thấy đồ uống phù hợp</h3>
+        <h3 className="mt-3 font-serif text-lg font-medium">Không tìm thấy đồ uống phù hợp</h3>
         <p className="mt-1 text-sm text-muted-foreground">
           Hãy thử nới lỏng điều kiện giá, mức caffeine hoặc xóa từ khóa tìm kiếm.
         </p>

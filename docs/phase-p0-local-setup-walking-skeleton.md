@@ -1,7 +1,7 @@
 # Giai đoạn P0 — Thiết lập Môi trường Local (No-Docker) & Walking Skeleton Local
 
 > **Mục tiêu P0:** Dựng hoàn chỉnh cấu trúc Multi-App `cafe-digital-platform`, thiết lập PostgreSQL 17 Native (không dùng Docker), cấu hình bộ khung Backend FastAPI và Frontend React/Vite nối thông suốt qua `/health`, `/ready`, `/api/v1/storefront`.
-> **Phạm vi thực tế:** Phần cài đặt thêm model và chạy benchmark Ollama (`deploy/pc/bench_ollama.py`) được bỏ qua theo yêu cầu để người dùng tự triển khai sau; cấu hình mặc định sử dụng `LLM_MODEL=qwen3:4b` và `EMBEDDING_MODEL=bge-m3`.
+> **Phạm vi thực tế:** Phần cài đặt thêm model và chạy benchmark Ollama (`deploy/pc/bench_ollama.py`) được bỏ qua theo yêu cầu để người dùng tự triển khai sau; cấu hình P0 ban đầu sử dụng `LLM_MODEL=qwen3:4b` và `EMBEDDING_MODEL=bge-m3` (sau P5 mặc định `LLM_MODEL` đã được chuyển sang `qwen2.5:3b`, chi tiết xem [post-p5-updates-and-tay-ho-rebrand.md](./post-p5-updates-and-tay-ho-rebrand.md)).
 
 ---
 
@@ -50,7 +50,7 @@ Theo Mục 7 của [Coffee_Landing_Page_Plan.md](../Coffee_Landing_Page_Plan.md)
 
 ### 3.1. Backend FastAPI (`services/landing-api`)
 - Python `.venv` (Python `3.11.9`) cài đặt đầy đủ `fastapi`, `uvicorn[standard]`, `pydantic`, `pydantic-settings`, `sqlalchemy[asyncio]`, `asyncpg`, `alembic`, `pgvector`, `httpx`, `pytest`, `pytest-asyncio`, `ruff`.
-- Cấu hình tại `app/core/config.py` (`.env` và `.env.example` đã tạo sẵn với `CORS_ORIGINS=["http://localhost:5173","http://localhost:4173"]`, `LLM_MODEL=qwen3:4b`, `EMBEDDING_MODEL=bge-m3`).
+- Cấu hình tại `app/core/config.py` (`.env` và `.env.example` cấu hình sẵn `CORS_ORIGINS=["http://localhost:5173","http://localhost:4173"]`, `EMBEDDING_MODEL=bge-m3`; ở P0 dùng `LLM_MODEL=qwen3:4b` và từ bản cập nhật sau P5 chuyển mặc định sang `LLM_MODEL=qwen2.5:3b`).
 - Kết nối DB tại `app/db/session.py` (`AsyncSessionLocal`, `check_db_connection()`).
 - Client Ollama tích hợp Circuit Breaker (`_failure_threshold = 3`, `_cooldown_seconds = 15.0`) và hỗ trợ `CF-Access-Client-Id`/`Secret` tại `app/integrations/ollama_client.py`.
 - Endpoints P0:

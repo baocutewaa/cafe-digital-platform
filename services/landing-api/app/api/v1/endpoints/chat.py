@@ -41,6 +41,11 @@ async def send_chat_message(
     service = ChatService(db)
     chat_session = await service.verify_session(session_id, x_session_token)
     client_ip = request.client.host if request.client else "unknown"
+    replayed = await service.prepare_stream(
+        chat_session=chat_session,
+        client_message_id=payload.client_message_id,
+        client_ip=client_ip,
+    )
 
     return StreamingResponse(
         service.stream_message(
@@ -48,6 +53,8 @@ async def send_chat_message(
             content=payload.content,
             client_message_id=payload.client_message_id,
             client_ip=client_ip,
+            replayed=replayed,
+            rate_limit_checked=True,
         ),
         media_type="text/event-stream",
         headers={

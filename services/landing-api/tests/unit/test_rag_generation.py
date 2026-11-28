@@ -300,6 +300,9 @@ async def test_seed_answer_cache_from_file_skips_existing_keys(
         def __init__(self, _session: object) -> None:
             pass
 
+        async def purge_corrupted_answer_cache(self) -> int:
+            return 0
+
         async def get_current_knowledge_version(self) -> int:
             return 2
 
@@ -319,7 +322,7 @@ async def test_seed_answer_cache_from_file_skips_existing_keys(
     monkeypatch.setattr("app.services.cache_seed_service.ChatRepository", _FakeRepo)
     fake_session = _FakeSession()
     stats = await seed_answer_cache_from_file(fake_session, seed_path=seed_file)  # type: ignore[arg-type]
-    assert stats == {"total": 2, "seeded": 1, "skipped": 1}
+    assert stats == {"total": 2, "seeded": 1, "skipped": 1, "purged": 0}
     assert upserted == ["q2"]
     assert fake_session.committed is True
 

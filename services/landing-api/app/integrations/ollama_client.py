@@ -170,21 +170,39 @@ class OllamaClient:
         except TimeoutError as exc:
             raise OllamaUnavailableError("Hàng đợi LLM quá tải (queue timeout).") from exc
 
+    def can_promote_think_mode(self, model_name: str | None = None) -> bool:
+        target = model_name or settings.LLM_MODEL
+        return self._model_think_modes.get(target) != "separate"
+
+    def promote_to_separate_thinking(self, model_name: str | None = None) -> None:
+        """
+        Upgrade model to `separate` (`think=True` + larger `num_predict`) when runtime
+        detects that the model ignores `think=False` and emits raw reasoning in `content`
+        (e.g. Qwen3-Thinking-2507 / DeepSeek-R1 variants).
+        """
+        target = model_name or settings.LLM_MODEL
+        self._model_think_modes[target] = "separate"
+
     async def _resolve_think_mode(
         self, client: httpx.AsyncClient, model_name: str
     ) -> str:
         """
         Determine how Ollama handles thinking for the configured model:
         - 'none': non-thinking instruct model (e.g. qwen2.5:3b); omit `think`
-        - 'separate': thinking-only model whose template hardcodes `<think>`; pass `think=True`
+        - 'separate': thinking-only model (or promoted at runtime); pass `think=True`
           so Ollama keeps reasoning in `message.thinking` instead of `message.content`
-        - 'disable': dual-mode thinking model; pass `think=False`
+        - 'disable': dual-mode thinking model; pass `think=False` initially
         """
         cached = self._model_think_modes.get(model_name)
         if cached is not None:
             return cached
 
-        mode = "disable"
+        lower_name = model_name.lower()
+        if any(tag in lower_name for tag in ("thinking", "deepseek-r1", "qwq")):
+            self._model_think_modes[model_name] = "separate"
+            return "separate"
+
+        mode = "disable" if "qwen3" in lower_name else "none"
         try:
             resp = await client.post(
                 f"{self.base_url}/api/show",
@@ -198,7 +216,8 @@ class OllamaClient:
                 template = str(data.get("template") or "")
                 finetune = str(model_info.get("general.finetune") or "").lower()
 
-                if "thinking" not in capabilities and finetune != "thinking":
+                has_think_cap = "thinking" in capabilities or "<think>" in template
+                if not has_think_cap and finetune != "thinking" and "qwen3" not in lower_name:
                     mode = "none"
                 elif finetune == "thinking" or (
                     "<think>" in template and ".Think" not in template
@@ -218,7 +237,7 @@ class OllamaClient:
         think_mode: str = "disable",
     ) -> dict[str, Any]:
         num_predict = (
-            max(settings.LLM_NUM_PREDICT, 1024)
+            max(settings.LLM_NUM_PREDICT, settings.LLM_THINK_NUM_PREDICT)
             if think_mode == "separate"
             else settings.LLM_NUM_PREDICT
         )
@@ -257,6 +276,12 @@ class OllamaClient:
                     messages, stream=False, think_mode=think_mode
                 )
                 resp = await client.post(f"{self.base_url}/api/chat", json=payload)
+                if resp.status_code == 400 and "think" in payload:
+                    payload.pop("think", None)
+                    payload["options"]["num_predict"] = max(
+                        settings.LLM_NUM_PREDICT, settings.LLM_THINK_NUM_PREDICT
+                    )
+                    resp = await client.post(f"{self.base_url}/api/chat", json=payload)
                 resp.raise_for_status()
                 data = resp.json()
                 self._record_success()
@@ -289,6 +314,31 @@ class OllamaClient:
                 async with client.stream(
                     "POST", f"{self.base_url}/api/chat", json=payload
                 ) as resp:
+                    if resp.status_code == 400 and "think" in payload:
+                        fallback_payload = dict(payload)
+                        fallback_payload.pop("think", None)
+                        fallback_payload["options"] = {
+                            **payload["options"],
+                            "num_predict": max(
+                                settings.LLM_NUM_PREDICT, settings.LLM_THINK_NUM_PREDICT
+                            ),
+                        }
+                        async with client.stream(
+                            "POST", f"{self.base_url}/api/chat", json=fallback_payload
+                        ) as retry_resp:
+                            retry_resp.raise_for_status()
+                            self._record_success()
+                            async for line in retry_resp.aiter_lines():
+                                if not line.strip():
+                                    continue
+                                chunk = json.loads(line)
+                                token = chunk.get("message", {}).get("content", "")
+                                if token:
+                                    yield token
+                                if chunk.get("done"):
+                                    break
+                        return
+
                     resp.raise_for_status()
                     self._record_success()
                     async for line in resp.aiter_lines():

@@ -39,7 +39,7 @@ class Settings(BaseSettings):
     CF_ACCESS_CLIENT_ID: str = ""
     CF_ACCESS_CLIENT_SECRET: str = ""
 
-    LLM_MODEL: str = "qwen3:4b"
+    LLM_MODEL: str = "qwen2.5:3b"
     EMBEDDING_MODEL: str = "bge-m3"
     EMBEDDING_DIMENSION: int = 1024
     OLLAMA_CONNECT_TIMEOUT_S: float = 4.0
@@ -47,7 +47,8 @@ class Settings(BaseSettings):
     LLM_MAX_CONCURRENCY: int = 1
     LLM_QUEUE_TIMEOUT_S: float = 20.0
     LLM_NUM_CTX: int = 4096
-    LLM_NUM_PREDICT: int = 350
+    LLM_NUM_PREDICT: int = 650
+    LLM_THINK_NUM_PREDICT: int = 2048
     LLM_TEMPERATURE: float = 0.3
 
     RAG_TOP_K_DENSE: int = 20

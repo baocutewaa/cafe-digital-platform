@@ -21,34 +21,34 @@ export function VisitPage() {
   return (
     <>
       <SeoHead
-        title="Chi nhánh & Giờ mở cửa — BREW & BEAN"
-        description="Địa chỉ, giờ mở cửa theo ngày, trạng thái đang mở cửa và tiện ích Wi-Fi, chỗ đậu xe tại các chi nhánh BREW & BEAN TP. Hồ Chí Minh."
+        title="Hệ thống Quán Vành đai Hồ Tây & Giờ mở cửa — BREW & BEAN"
+        description="Địa chỉ, giờ mở cửa theo ngày, trạng thái đang mở cửa và tiện ích Wi-Fi, chỗ đậu xe tại hệ thống quán BREW & BEAN quanh vành đai Hồ Tây, Quận Tây Hồ, Hà Nội."
       />
 
-      <div className="mx-auto max-w-6xl space-y-8 px-4 py-10 sm:px-6">
-        <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+      <div className="mx-auto max-w-6xl space-y-8 px-4 py-12 sm:px-6">
+        <div className="flex flex-col justify-between gap-4 border-b border-border/70 pb-6 sm:flex-row sm:items-end">
           <div className="space-y-2">
-            <p className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-accent">
-              <MapPin className="h-3.5 w-3.5" />
-              Hệ thống cửa hàng TP. Hồ Chí Minh
+            <p className="inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+              <MapPin className="h-3.5 w-3.5 text-accent" />
+              Vành đai Hồ Tây · Quận Tây Hồ, Hà Nội
             </p>
-            <h1 className="font-serif text-3xl font-bold sm:text-4xl">
-              Ghé thăm không gian BREW &amp; BEAN
+            <h1 className="font-serif text-3xl font-medium tracking-[-0.02em] sm:text-4xl">
+              Ghé thăm không gian BREW &amp; BEAN Hồ Tây
             </h1>
             <p className="text-sm text-muted-foreground sm:text-base">
-              Trạng thái mở cửa được cập nhật tự động theo giờ địa phương (UTC+7).
+              Ba không gian ven hồ trên các cung đường Nguyễn Đình Thi, Quảng An và Trích Sài
             </p>
           </div>
 
           <Button
             type="button"
             variant="outline"
-            className="gap-2 self-start"
+            className="gap-2 self-start text-[11px] uppercase tracking-[0.14em]"
             onClick={() =>
               openChatWithPrompt("Chi nhánh BREW & BEAN nào yên tĩnh, có ổ cắm điện và chỗ đậu xe?")
             }
           >
-            <Sparkles className="h-4 w-4 text-accent" />
+            <Sparkles className="h-3.5 w-3.5 text-accent" />
             Hỏi Bean AI chọn chi nhánh
           </Button>
         </div>

@@ -114,8 +114,9 @@ class StorefrontService:
             tagline_vi="Nghệ thuật Cà phê Đặc sản & Trợ lý Barista AI",
             tagline_en="Specialty Coffee Craft & Personal AI Barista",
             story_summary_vi=(
-                "Từ nông trại Arabica Cầu Đất ở độ cao 1.650m đến Robusta Buôn Ma Thuột rang vừa, "
-                "mỗi tách cà phê tại BREW & BEAN đều được tinh chỉnh theo đúng khẩu vị của bạn."
+                "Hệ thống không gian cà phê đặc sản quanh vành đai Hồ Tây, Hà Nội — "
+                "kết nối hạt Arabica Cầu Đất 1.650m và Robusta Buôn Ma Thuột rang vừa "
+                "với đúng khẩu vị của bạn."
             ),
             ai_mode=ollama_health.get("ai_mode", "fast_lookup_only"),
             ai_model=ollama_health.get("llm_model"),

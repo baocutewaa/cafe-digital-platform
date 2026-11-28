@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="BREW &amp; BEAN Flagship Nguyễn Đình Thi — Vành đai Hồ Tây, Hà Nội">
+  <rect width="1200" height="675" fill="#2A2420" />
+  <rect x="28" y="28" width="1144" height="619" fill="none" stroke="#9C7046" stroke-opacity="0.35" stroke-width="1.5" />
+
+  <!-- Subtle West Lake ripple motif -->
+  <circle cx="910" cy="338" r="245" fill="none" stroke="#9C7046" stroke-opacity="0.28" stroke-width="1.5" />
+  <circle cx="910" cy="338" r="185" fill="none" stroke="#9C7046" stroke-opacity="0.45" stroke-width="1.5" />
+  <circle cx="910" cy="338" r="126" fill="none" stroke="#F5F0E6" stroke-opacity="0.85" stroke-width="1.8" />
+
+  <!-- Minimalist Pour-over V60 motif -->
+  <g transform="translate(855, 250)" stroke="#F5F0E6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 22 L98 22 L66 78 L44 78 Z" fill="#9C7046" fill-opacity="0.22" />
+    <path d="M26 78 L84 78 L96 138 C98 148 90 156 80 156 L30 156 C20 156 12 148 14 138 Z" />
+    <line x1="22" y1="120" x2="88" y2="120" stroke="#9C7046" />
+    <path d="M40 6 C38 -4 44 -10 42 -18" stroke="#9C7046" stroke-width="2.5" />
+    <path d="M55 6 C53 -4 59 -10 57 -18" stroke="#9C7046" stroke-width="2.5" />
+    <path d="M70 6 C68 -4 74 -10 72 -18" stroke="#9C7046" stroke-width="2.5" />
+    <line x1="20" y1="174" x2="90" y2="174" stroke="#9C7046" stroke-opacity="0.7" />
+  </g>
+
+  <!-- Editorial West Lake location copy -->
+  <text x="86" y="218" fill="#C49567" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="600" letter-spacing="4">
+    BREW &amp; BEAN · NAM HỒ TÂY
+  </text>
+  <text x="86" y="294" fill="#F7F3EA" font-family="Lora, Georgia, serif" font-size="52" font-weight="600">
+    Flagship Nguyễn Đình Thi
+  </text>
+  <text x="86" y="346" fill="#DDD5C8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24">
+    88 Nguyễn Đình Thi, P. Thụy Khuê, Q. Tây Hồ, Hà Nội
+  </text>
+
+  <line x1="86" y1="392" x2="230" y2="392" stroke="#C49567" stroke-width="3" />
+
+  <text x="86" y="446" fill="#C8BFB1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="20" letter-spacing="1.5">
+    VÀNH ĐAI HỒ TÂY · POUR-OVER V60 BAR · WORK FRIENDLY
+  </text>
+</svg>

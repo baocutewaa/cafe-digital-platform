@@ -21,7 +21,7 @@ export function SourceCitationBadge({ citations }: SourceCitationBadgeProps) {
               key={`${cit.source_key}-${idx}`}
               type="button"
               onClick={() => setExpandedIdx(isOpen ? null : idx)}
-              className="inline-flex items-center gap-1 rounded-full border bg-secondary/60 px-2.5 py-0.5 text-[11px] font-medium text-secondary-foreground transition-colors hover:bg-secondary"
+              className="inline-flex items-center gap-1 rounded-sm border border-border/80 bg-secondary/50 px-2.5 py-0.5 text-[11px] font-medium text-secondary-foreground transition-colors hover:bg-secondary"
             >
               <BookOpen className="h-3 w-3 text-accent" />
               <span className="max-w-[190px] truncate">{cit.title}</span>

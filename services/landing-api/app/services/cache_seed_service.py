@@ -11,6 +11,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.config import BASE_DIR, settings
 from app.db.session import AsyncSessionLocal
 from app.repositories.chat_repo import ChatRepository
+from rag.generation.guards import is_corrupted_cached_answer
 
 logger = logging.getLogger(__name__)
 
@@ -78,6 +79,7 @@ async def seed_answer_cache_from_file(
         return {"total": 0, "seeded": 0, "skipped": 0}
 
     repo = ChatRepository(session)
+    purged = await repo.purge_corrupted_answer_cache()
     kb_version = await repo.get_current_knowledge_version()
     existing_keys = (
         set() if force else await repo.get_active_answer_cache_keys(kb_version)
@@ -86,6 +88,9 @@ async def seed_answer_cache_from_file(
     seeded = 0
     skipped = 0
     for item in items:
+        if is_corrupted_cached_answer(item.answer, item.language):
+            skipped += 1
+            continue
         key = (item.normalized_query, item.language, item.intent)
         if not force and key in existing_keys:
             skipped += 1
@@ -104,15 +109,16 @@ async def seed_answer_cache_from_file(
         seeded += 1
 
     await session.commit()
-    return {"total": len(items), "seeded": seeded, "skipped": skipped}
+    return {"total": len(items), "seeded": seeded, "skipped": skipped, "purged": purged}
 
 
 async def export_answer_cache_to_file(
     session: AsyncSession,
     output_path: Path,
 ) -> int:
-    """Xuất các bản ghi answer_cache còn hiệu lực từ DB ra file seed JSON."""
+    """Xuất các bản ghi answer_cache còn hiệu lực (và sạch, không dính thinking) ra JSON."""
     repo = ChatRepository(session)
+    await repo.purge_corrupted_answer_cache()
     kb_version = await repo.get_current_knowledge_version()
     rows = await repo.list_active_answer_cache(kb_version)
     payload = [
@@ -125,7 +131,9 @@ async def export_answer_cache_to_file(
             citations=list(row.citations or []),
         ).model_dump(mode="json")
         for row in rows
+        if not is_corrupted_cached_answer(row.answer, row.language)
     ]
+    await session.commit()
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(
         json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
@@ -135,18 +143,21 @@ async def export_answer_cache_to_file(
 
 
 async def startup_seed_answer_cache() -> dict[str, int] | None:
-    """Hook khởi động trong FastAPI lifespan; lỗi DB/file chỉ log cảnh báo, không chặn boot."""
+    """Hook khởi động trong FastAPI lifespan; dọn cache bẩn và nạp lại từ file seed."""
     if not settings.AUTO_SEED_ANSWER_CACHE:
         return None
     try:
         async with AsyncSessionLocal() as session:
-            stats = await seed_answer_cache_from_file(session)
-        if stats["total"] > 0:
+            # Luôn đảm bảo các câu hỏi chuẩn trong file seed được đồng bộ sạch (force=True)
+            # sau khi đã dọn mọi bản ghi dính thinking/cắt cụt trong answer_cache.
+            stats = await seed_answer_cache_from_file(session, force=True)
+        if stats["total"] > 0 or stats.get("purged", 0) > 0:
             logger.info(
-                "Answer cache seed: total=%d, seeded=%d, skipped=%d",
+                "Answer cache seed: total=%d, seeded=%d, skipped=%d, purged=%d",
                 stats["total"],
                 stats["seeded"],
                 stats["skipped"],
+                stats.get("purged", 0),
             )
         return stats
     except Exception as exc:

@@ -25,14 +25,14 @@ export function PromotionPage() {
         description="Tổng hợp các chương trình ưu đãi, combo sáng, tuần lễ Cold Brew 18h và mã giảm giá đang áp dụng tại BREW & BEAN."
       />
 
-      <div className="mx-auto max-w-6xl space-y-8 px-4 py-10 sm:px-6">
-        <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+      <div className="mx-auto max-w-6xl space-y-8 px-4 py-12 sm:px-6">
+        <div className="flex flex-col justify-between gap-4 border-b border-border/70 pb-6 sm:flex-row sm:items-end">
           <div className="space-y-2">
-            <p className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-accent">
-              <Tag className="h-3.5 w-3.5" />
+            <p className="inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+              <Tag className="h-3.5 w-3.5 text-accent" />
               Khuyến mãi đang áp dụng
             </p>
-            <h1 className="font-serif text-3xl font-bold sm:text-4xl">
+            <h1 className="font-serif text-3xl font-medium tracking-[-0.02em] sm:text-4xl">
               Ưu đãi đặc biệt tại BREW &amp; BEAN
             </h1>
             <p className="text-sm text-muted-foreground sm:text-base">
@@ -43,12 +43,12 @@ export function PromotionPage() {
           <Button
             type="button"
             variant="outline"
-            className="gap-2 self-start"
+            className="gap-2 self-start text-[11px] uppercase tracking-[0.14em]"
             onClick={() =>
               openChatWithPrompt("Hôm nay BREW & BEAN có mã giảm giá hay combo nào áp dụng cho Cold Brew không?")
             }
           >
-            <Sparkles className="h-4 w-4 text-accent" />
+            <Sparkles className="h-3.5 w-3.5 text-accent" />
             Hỏi Bean AI về ưu đãi
           </Button>
         </div>

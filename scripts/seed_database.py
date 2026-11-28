@@ -17,7 +17,7 @@ from pathlib import Path
 from typing import Literal
 
 from pydantic import BaseModel, Field, model_validator
-from sqlalchemy import delete, select
+from sqlalchemy import delete, select, update
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
@@ -50,7 +50,7 @@ class StoreSeed(BaseModel):
     name: str = Field(min_length=1, max_length=150)
     address: str = Field(min_length=1)
     district: str | None = Field(default=None, max_length=100)
-    city: str = Field(default="TP. Hồ Chí Minh", max_length=100)
+    city: str = Field(default="Hà Nội", max_length=100)
     phone: str | None = Field(default=None, max_length=30)
     google_maps_url: str | None = None
     latitude: Decimal | None = None
@@ -265,6 +265,14 @@ async def upsert_bundle(session: AsyncSession, bundle: SeedBundle) -> dict[str, 
                 )
             )
             await session.execute(hour_stmt)
+
+    desired_store_slugs = [s.slug for s in bundle.stores]
+    if desired_store_slugs:
+        await session.execute(
+            update(Store)
+            .where(Store.slug.not_in(desired_store_slugs))
+            .values(is_active=False)
+        )
 
     # 2. Menu Categories
     category_ids_by_slug: dict[str, object] = {}
@@ -492,7 +500,9 @@ async def upsert_bundle(session: AsyncSession, bundle: SeedBundle) -> dict[str, 
     await session.flush()
 
     # Verify total active counts in DB
-    stores_total = len((await session.execute(select(Store.id))).all())
+    stores_total = len(
+        (await session.execute(select(Store.id).where(Store.is_active.is_(True)))).all()
+    )
     categories_total = len((await session.execute(select(MenuCategory.id))).all())
     ingredients_total = len((await session.execute(select(Ingredient.id))).all())
     products_total = len((await session.execute(select(Product.id))).all())

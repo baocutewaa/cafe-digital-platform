@@ -26,12 +26,12 @@ function LevelDots({
           <span
             key={step}
             className={cn(
-              "h-2 w-4 rounded-full transition-colors",
+              "h-1.5 w-4 rounded-[1px] transition-colors",
               step <= value ? activeColor : "bg-muted"
             )}
           />
         ))}
-        <span className="ml-1.5 text-xs font-semibold text-foreground">{value}/5</span>
+        <span className="ml-1.5 text-xs font-medium text-foreground">{value}/5</span>
       </div>
     </div>
   );
@@ -45,14 +45,19 @@ export function FlavorMeter({
 }: FlavorMeterProps) {
   const caff = CAFFEINE_LABELS[caffeineLevel];
   return (
-    <div className={cn("space-y-2", compact ? "text-xs" : "rounded-xl border bg-secondary/35 p-4")}>
+    <div
+      className={cn(
+        "space-y-2.5",
+        compact ? "text-xs" : "rounded-sm border border-border/80 bg-secondary/35 p-4"
+      )}
+    >
       <LevelDots label="Độ đắng" value={bitterness} activeColor="bg-primary" />
       <LevelDots label="Độ ngọt" value={sweetness} activeColor="bg-accent" />
       <div className="flex items-center justify-between gap-2 pt-1">
         <span className="text-xs font-medium text-muted-foreground">Caffeine</span>
         <span
           className={cn(
-            "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium",
+            "inline-flex items-center rounded-sm border px-2 py-0.5 text-[11px] font-medium",
             caff.tone
           )}
         >

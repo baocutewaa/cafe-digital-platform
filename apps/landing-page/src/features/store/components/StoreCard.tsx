@@ -35,16 +35,16 @@ export function StoreCard({ store, showFullSchedule = true }: StoreCardProps) {
             <OpeningStatusBadge isOpenNow={store.is_open_now} todayHours={store.today_hours} />
           </div>
 
-          <h3 className="font-serif text-xl font-bold text-foreground">{store.name}</h3>
+          <h3 className="font-serif text-xl font-medium text-foreground">{store.name}</h3>
 
           <p className="flex items-start gap-2 text-sm text-muted-foreground">
-            <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+            <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
             <span>{store.address}</span>
           </p>
 
           {store.phone && (
             <p className="flex items-center gap-2 text-sm">
-              <Phone className="h-4 w-4 shrink-0 text-primary" />
+              <Phone className="h-4 w-4 shrink-0 text-accent" />
               <a href={`tel:${store.phone.replace(/\s+/g, "")}`} className="font-medium hover:underline">
                 {store.phone}
               </a>
@@ -62,8 +62,10 @@ export function StoreCard({ store, showFullSchedule = true }: StoreCardProps) {
           )}
 
           {showFullSchedule && store.hours.length > 0 && (
-            <div className="rounded-xl border bg-secondary/35 p-3 text-xs">
-              <p className="mb-2 font-semibold text-foreground">Giờ mở cửa trong tuần</p>
+            <div className="rounded-sm border border-border/70 bg-secondary/35 p-3.5 text-xs">
+              <p className="mb-2 text-[10px] font-medium uppercase tracking-[0.16em] text-foreground">
+                Giờ mở cửa trong tuần
+              </p>
               <ul className="space-y-1">
                 {store.hours.map((h) => {
                   const isToday = h.day_of_week === todayIndex;
@@ -96,9 +98,9 @@ export function StoreCard({ store, showFullSchedule = true }: StoreCardProps) {
             href={store.google_maps_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-10 w-full items-center justify-center gap-2 rounded-md border border-input bg-background px-4 text-sm font-medium transition-colors hover:bg-secondary/60"
+            className="inline-flex h-10 w-full items-center justify-center gap-2 rounded-sm border border-foreground/20 bg-transparent px-4 text-[11px] font-medium uppercase tracking-[0.14em] text-foreground transition-colors hover:border-foreground hover:bg-secondary/50"
           >
-            <ExternalLink className="h-4 w-4" />
+            <ExternalLink className="h-3.5 w-3.5" />
             Chỉ đường trên Google Maps
           </a>
         )}

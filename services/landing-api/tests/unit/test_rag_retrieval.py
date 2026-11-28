@@ -30,8 +30,11 @@ def test_query_parser_extracts_vietnamese_and_english_constraints() -> None:
     q4 = parse_query("Đồ uống không caffeine cho buổi tối")
     assert q4.caffeine_level == "none"
 
-    q5 = parse_query("Quán ở Quận 1 mấy giờ đóng cửa?")
-    assert q5.store_hint == "nguyen hue"
+    q5 = parse_query("Quán ở Nguyễn Đình Thi Tây Hồ mấy giờ đóng cửa?")
+    assert q5.store_hint == "nguyen dinh thi"
+
+    q_evening = parse_query("Mình muốn đồ uống ít đắng uống buổi chiều tối")
+    assert q_evening.store_hint is None
 
     q6 = parse_query("Mình bị dị ứng các loại hạt (NUTS) thì chọn món nào?")
     assert "NUTS" in q6.excluded_allergens
@@ -43,7 +46,9 @@ def test_intent_router_classifies_all_seven_intents() -> None:
         == IntentType.PRODUCT_LOOKUP
     )
     assert (
-        classify_intent(parse_query("Quán ở Quận 1 mấy giờ đóng cửa, có ổ cắm không?"))
+        classify_intent(
+            parse_query("Quán ở Nguyễn Đình Thi Hồ Tây mấy giờ đóng cửa, có ổ cắm không?")
+        )
         == IntentType.STORE_INFO
     )
     assert (

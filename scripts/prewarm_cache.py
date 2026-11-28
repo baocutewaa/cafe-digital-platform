@@ -2,7 +2,7 @@
 """
 BREW & BEAN — Answer Cache Pre-warming CLI (Giai đoạn P5)
 Sinh trước và lưu câu trả lời chuẩn vào bảng answer_cache cho 40+ câu hỏi
-phổ biến & toàn bộ Suggested Questions trên Landing Page (dùng qwen3:4b local).
+phổ biến & toàn bộ Suggested Questions trên Landing Page (dùng LLM_MODEL từ .env).
 """
 
 from __future__ import annotations
@@ -25,6 +25,7 @@ from app.services.cache_seed_service import (
     seed_answer_cache_from_file,
 )
 from rag.generation.answer_generator import AnswerGenerator
+from rag.generation.guards import is_corrupted_cached_answer
 from rag.retrieval.context_builder import HybridRetriever
 from rag.retrieval.query_parser import parse_query
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
@@ -107,6 +108,10 @@ async def prewarm(
     try:
         async with session_factory() as session:
             repo = ChatRepository(session)
+            purged = await repo.purge_corrupted_answer_cache()
+            await session.commit()
+            if purged:
+                print(f"[BREW & BEAN] Đã dọn {purged} bản ghi answer_cache lỗi/dính thinking.")
             kb_version = await repo.get_current_knowledge_version()
 
         for idx, query in enumerate(questions, start=1):
@@ -135,7 +140,9 @@ async def prewarm(
             metrics = await generator.generate_complete(
                 retrieval, history=None, unsafe_product_names=unsafe_names
             )
-            if metrics.degraded or not metrics.answer.strip():
+            if metrics.degraded or is_corrupted_cached_answer(
+                metrics.answer, retrieval.parsed_query.language
+            ):
                 failed += 1
                 print(f"[{idx}/{len(questions)}] FAIL/DEGRADED ({metrics.model}): {query[:60]}")
                 continue

@@ -99,13 +99,13 @@ export function MenuPage() {
         description="Khám phá 30 đồ uống cà phê đặc sản, Cold Brew ủ lạnh 18h, Matcha Uji, sữa hạt không caffeine và bánh ngọt thủ công."
       />
 
-      <div className="mx-auto max-w-6xl space-y-8 px-4 py-10 sm:px-6">
-        <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+      <div className="mx-auto max-w-6xl space-y-8 px-4 py-12 sm:px-6">
+        <div className="flex flex-col justify-between gap-4 border-b border-border/70 pb-6 sm:flex-row sm:items-end">
           <div className="space-y-2">
-            <p className="text-xs font-semibold uppercase tracking-wider text-accent">
+            <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
               Menu &amp; Dinh dưỡng
             </p>
-            <h1 className="font-serif text-3xl font-bold sm:text-4xl">
+            <h1 className="font-serif text-3xl font-medium tracking-[-0.02em] sm:text-4xl">
               Thực đơn BREW &amp; BEAN
             </h1>
             <p className="text-sm text-muted-foreground sm:text-base">
@@ -116,12 +116,12 @@ export function MenuPage() {
           <Button
             type="button"
             variant="outline"
-            className="gap-2 self-start"
+            className="gap-2 self-start text-[11px] uppercase tracking-[0.14em]"
             onClick={() =>
               openChatWithPrompt("Mình đang xem Menu, hãy gợi ý món hợp khẩu vị giúp mình!")
             }
           >
-            <Sparkles className="h-4 w-4 text-accent" />
+            <Sparkles className="h-3.5 w-3.5 text-accent" />
             Nhờ Bean AI gợi ý món
           </Button>
         </div>

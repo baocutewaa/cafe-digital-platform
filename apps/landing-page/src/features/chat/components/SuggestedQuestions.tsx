@@ -1,17 +1,29 @@
+import { useQueryClient } from "@tanstack/react-query";
 import { Sparkles } from "lucide-react";
 import { useLocation } from "react-router-dom";
+import type { ProductDetail } from "@/lib/api-client";
 
 interface SuggestedQuestionsProps {
   onSelect: (question: string) => void;
   disabled?: boolean;
 }
 
-function getQuestionsForPath(pathname: string): string[] {
+function humanizeSlug(slug: string): string {
+  return slug
+    .split("-")
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
+function getQuestionsForPath(pathname: string, activeProductName?: string): string[] {
   if (pathname.startsWith("/menu/")) {
+    const label = activeProductName?.trim() || "món này";
+    const subject = activeProductName ? `Món ${label}` : "Món này";
     return [
-      "Món này có chứa sữa bò hay chất gây dị ứng nào không?",
-      "Độ đắng và caffeine của món này phù hợp uống buổi nào?",
-      "Có thể đổi sang sữa hạt hoặc giảm ngọt được không?",
+      `${subject} có chứa sữa bò hay chất gây dị ứng nào không?`,
+      `Độ đắng và caffeine của ${label} phù hợp uống buổi nào?`,
+      `${subject} có thể đổi sang sữa hạt hoặc giảm ngọt được không?`,
     ];
   }
   if (pathname.startsWith("/menu")) {
@@ -29,7 +41,7 @@ function getQuestionsForPath(pathname: string): string[] {
   }
   if (pathname.startsWith("/visit")) {
     return [
-      "Chi nhánh Quận 1 Nguyễn Huệ mấy giờ đóng cửa?",
+      "Chi nhánh Nguyễn Đình Thi (Hồ Tây) mấy giờ đóng cửa?",
       "Chi nhánh nào có chỗ đậu xe và cho mang thú cưng?",
     ];
   }
@@ -49,7 +61,18 @@ function getQuestionsForPath(pathname: string): string[] {
 
 export function SuggestedQuestions({ onSelect, disabled }: SuggestedQuestionsProps) {
   const { pathname } = useLocation();
-  const questions = getQuestionsForPath(pathname);
+  const queryClient = useQueryClient();
+
+  let activeProductName: string | undefined;
+  if (pathname.startsWith("/menu/")) {
+    const slug = pathname.slice("/menu/".length).split("/")[0]?.trim();
+    if (slug) {
+      const cached = queryClient.getQueryData<ProductDetail>(["product-detail", slug]);
+      activeProductName = cached?.name_vi ?? humanizeSlug(slug);
+    }
+  }
+
+  const questions = getQuestionsForPath(pathname, activeProductName);
 
   return (
     <div className="space-y-2">
@@ -64,7 +87,7 @@ export function SuggestedQuestions({ onSelect, disabled }: SuggestedQuestionsPro
             type="button"
             disabled={disabled}
             onClick={() => onSelect(q)}
-            className="rounded-full border bg-secondary/60 px-3 py-1.5 text-left text-xs text-foreground transition-colors hover:border-primary hover:bg-secondary disabled:opacity-50"
+            className="rounded-sm border border-border/80 bg-secondary/45 px-3 py-1.5 text-left text-xs text-foreground transition-colors hover:border-foreground/40 hover:bg-secondary disabled:opacity-50"
           >
             {q}
           </button>

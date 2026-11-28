@@ -69,9 +69,9 @@ export function ChatWidget({
           type="button"
           onClick={onOpen}
           aria-label="Mở trợ lý Bean AI Barista"
-          className="fixed bottom-5 right-5 z-40 inline-flex items-center gap-2.5 rounded-full bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground shadow-lg transition-transform hover:scale-105 hover:bg-primary/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          className="fixed bottom-5 right-5 z-40 inline-flex items-center gap-2.5 rounded-sm border border-primary/80 bg-primary px-4 py-3 text-[11px] font-medium uppercase tracking-[0.15em] text-primary-foreground shadow-lg transition-all hover:-translate-y-0.5 hover:bg-primary/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
-          <MessageCircle className="h-5 w-5 text-accent" />
+          <MessageCircle className="h-4 w-4 text-accent" />
           <span className="hidden sm:inline">Hỏi Bean AI Barista</span>
         </button>
       )}

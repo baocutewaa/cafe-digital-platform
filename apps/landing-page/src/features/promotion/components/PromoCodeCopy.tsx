@@ -20,8 +20,8 @@ export function PromoCodeCopy({ code }: PromoCodeCopyProps) {
   };
 
   return (
-    <div className="inline-flex items-center gap-2 rounded-lg border border-dashed border-primary/50 bg-secondary/70 px-3 py-1.5">
-      <span className="font-mono text-sm font-bold tracking-wider text-primary">{code}</span>
+    <div className="inline-flex items-center gap-2 rounded-sm border border-dashed border-foreground/35 bg-secondary/60 px-3 py-1.5">
+      <span className="font-mono text-sm font-semibold tracking-wider text-foreground">{code}</span>
       <Button
         type="button"
         variant="ghost"

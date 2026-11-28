@@ -34,7 +34,7 @@ export function ChatWindow({
       role="dialog"
       aria-modal="true"
       aria-label="Bean AI Barista Chat"
-      className="fixed inset-0 z-50 flex flex-col bg-card shadow-2xl sm:inset-auto sm:bottom-6 sm:right-6 sm:h-[620px] sm:max-h-[85vh] sm:w-[420px] sm:rounded-2xl sm:border"
+      className="fixed inset-0 z-50 flex flex-col bg-card shadow-2xl sm:inset-auto sm:bottom-6 sm:right-6 sm:h-[620px] sm:max-h-[85vh] sm:w-[420px] sm:rounded-sm sm:border sm:border-border"
     >
       <ChatHeader aiMode={aiMode} onReset={onReset} onClose={onClose} />
 
